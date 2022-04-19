@@ -8,7 +8,6 @@ beforeAll(() => {
 	jest.spyOn(db.prototype, 'save').mockReturnValue(Promise.resolve());
 	jest.spyOn(db, 'find').mockReturnValue(Promise.resolve());
 	jest.spyOn(db, 'findOne').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'update').mockReturnValue(Promise.resolve());
 	jest.spyOn(db, 'updateOne').mockReturnValue(Promise.resolve());
 	jest.spyOn(db, 'deleteOne').mockReturnValue(Promise.resolve());
 });
