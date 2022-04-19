@@ -1,3 +1,5 @@
+// You should close this file and not modify it 😉
+
 const mongoose = require('mongoose');
 const connectionString = require('../connection');
 
