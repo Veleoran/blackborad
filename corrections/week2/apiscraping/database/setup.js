@@ -7,15 +7,16 @@ mongoose.connect(connectionString, {
 	connectTimeoutMS: 2000,
 }).catch(error => console.error(error));
 
-const articleSchema = mongoose.Schema({
+const fruitSchema = mongoose.Schema({
 	name: String,
-	description: String,
-	price: Number,
-	stock: Number,
-	weight: Number,
-	image: String,
+	family: String,
+	carbohydrates : Number,
+	protein: Number,
+	fat: Number,
+	calories: Number,
+	sugar: Number,
 });
 
-const Article = mongoose.model('articles', articleSchema);
+const Fruit = mongoose.model('fruits', fruitSchema);
 
-module.exports = Article;
+module.exports = Fruit;
