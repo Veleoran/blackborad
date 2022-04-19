@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const connectionString = require('../connection');
 
 mongoose.connect(connectionString, {
-	connectTimeoutMS: 1000,
+	connectTimeoutMS: 2000,
 }).catch(error => console.error(error));
 
 const todoSchema = mongoose.Schema({

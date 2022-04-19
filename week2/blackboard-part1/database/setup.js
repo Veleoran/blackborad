@@ -7,12 +7,15 @@ mongoose.connect(connectionString, {
 	connectTimeoutMS: 2000,
 }).catch(error => console.error(error));
 
-const todoSchema = mongoose.Schema({
+const articlesSchema = mongoose.Schema({
 	name: String,
-	priority: Number,
-	done: Boolean,
+	description: String,
+	price: Number,
+	stock: Number,
+	weight: Number,
+	image: String,
 });
 
-const Todo = mongoose.model('todos', todoSchema);
+const Article = mongoose.model('articles', articlesSchema);
 
-module.exports = Todo;
+module.exports = Article;
