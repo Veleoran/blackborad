@@ -1,0 +1,9 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "jsdom": "^19.0.0",
+    "node-fetch": "2"
+  }
+}
