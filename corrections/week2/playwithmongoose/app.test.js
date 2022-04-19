@@ -17,16 +17,17 @@ it('Creates todo', () => {
 	createTodo(todoName, todoPriority);
 
 	const _db = new db();
-	expect(_db.save).toHaveBeenCalledTimes(1);
-	expect(_db.save.mock.instances[0]).toHaveProperty('name', todoName);
-	expect(_db.save.mock.instances[0]).toHaveProperty('priority', todoPriority);
-	expect(_db.save.mock.instances[0]).toHaveProperty('done', false);
+	const lastInstanceIndex = _db.save.mock.instances.length - 1;
+	expect(_db.save).toHaveBeenCalled();
+	expect(_db.save.mock.instances[lastInstanceIndex]).toHaveProperty('name', todoName);
+	expect(_db.save.mock.instances[lastInstanceIndex]).toHaveProperty('priority', todoPriority);
+	expect(_db.save.mock.instances[lastInstanceIndex]).toHaveProperty('done', false);
 });
 
 it('Completes todo', () => {
 	completeTodo(todoName);
 
-	expect(db.updateOne).toHaveBeenCalledTimes(1);
+	expect(db.updateOne).toHaveBeenCalled();
 	expect(db.updateOne.mock.lastCall[0]).toHaveProperty('name', todoName);
 	expect(db.updateOne.mock.lastCall[1]).toHaveProperty('done', true);
 });
@@ -34,7 +35,7 @@ it('Completes todo', () => {
 it('Deletes todo', async () => {	
 	deleteTodo(todoName);
 
-	expect(db.deleteOne).toHaveBeenCalledTimes(1);
+	expect(db.deleteOne).toHaveBeenCalled();
 	expect(db.deleteOne.mock.lastCall[0]).toHaveProperty('name', todoName);
 });
 
