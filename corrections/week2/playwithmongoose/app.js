@@ -40,3 +40,5 @@ function deleteTodo(name) {
 		});
 	});
 }
+
+module.exports = { createTodo, completeTodo, deleteTodo }; // Do not edit/remove this line
