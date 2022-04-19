@@ -1,42 +1,12 @@
 const db = require('./database/setup'); // Do not edit/remove this line
 
 // Create todo with name and priority (done = false by default)
-function createTodo(name, priority) {
-	const newTodo = new db({
-		name: name,
-		priority: priority,
-		done: false,
-	});
-
-	newTodo.save().then(() => {
-		// Display created todo
-		db.findOne({ name: name }).then(data => {
-			console.log(data);
-		});
-	});
-}
+function createTodo(name, priority) {}
 
 
 // Complete one todo by name (update done = true)
-function completeTodo(name) {
-	db.updateOne(
-		{ name: name },
-		{ done: true },
-	).then(() => {
-		// Display updated todo
-		db.findOne({ name: name }).then(data => {
-			console.log(data);
-		});
-	});
-}
+function completeTodo(name) {}
 
 
 // Delete one todo by name
-function deleteTodo(name) {
-	db.deleteOne({ name: name }).then(() => {
-		// Display all todos
-		db.find().then(data => {
-			console.log(data);
-		});
-	});
-}
+function deleteTodo(name) {}
