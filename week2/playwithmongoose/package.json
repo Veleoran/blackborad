@@ -5,7 +5,7 @@
  "scripts": {
   "start": "node app.js"
  },
- "dependencies": {
-  "mongoose": "^6.3.0"
+ "devDependencies": {
+  "jest": "^27.5.1"
  }
 }
