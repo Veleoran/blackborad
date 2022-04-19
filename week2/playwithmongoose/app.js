@@ -16,6 +16,7 @@ function createTodo(name, priority) {
 	});
 }
 
+
 // Complete one todo by name (update done = true)
 function completeTodo(name) {
 	db.updateOne(
@@ -28,6 +29,7 @@ function completeTodo(name) {
 		});
 	});
 }
+
 
 // Delete one todo by name
 function deleteTodo(name) {
