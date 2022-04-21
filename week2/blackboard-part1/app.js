@@ -20,4 +20,11 @@ function resetStocks() {}
 
 
 // Do not edit/remove code under this line
-module.exports = { displayAllArticles, displayArticleByName, displayArticleByID, updateArticlePrice, updateArticleStock, resetStocks };
+module.exports = {
+	displayAllArticles,
+	displayArticleByName,
+	displayArticleByID,
+	updateArticlePrice,
+	updateArticleStock,
+	resetStocks,
+};

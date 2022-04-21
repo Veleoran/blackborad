@@ -3,21 +3,21 @@ const db = require('./database/setup'); // Do not edit/remove this line
 
 function displayAllArticles() {
 	db.find().then(data => {
-		console.log(data);
+		console.log('ARTICLES =>', data);
 	});
 }
 
 
 function displayArticleByName(articleName) {
 	db.findOne({ name: articleName }).then(data => {
-		console.log(data);
+		console.log('ARTICLE =>', data);
 	});
 }
 
 
 function displayArticleByID(articleId) {
 	db.findById(articleId).then(data => {
-		console.log(data);
+		console.log('ARTICLE =>', data);
 	});
 }
 
@@ -44,4 +44,11 @@ function resetStocks() {
 
 
 // Do not edit/remove code under this line
-module.exports = { displayAllArticles, displayArticleByName, displayArticleByID, updateArticlePrice, updateArticleStock, resetStocks };
+module.exports = {
+	displayAllArticles,
+	displayArticleByName,
+	displayArticleByID,
+	updateArticlePrice,
+	updateArticleStock,
+	resetStocks,
+};

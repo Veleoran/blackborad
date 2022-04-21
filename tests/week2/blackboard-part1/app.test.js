@@ -1,8 +1,13 @@
-const { displayAllArticles, displayArticleByName, displayArticleByID, updateArticlePrice, updateArticleStock, resetStocks } = require('./app');
+const mongoose = require('mongoose');
 const db = require('./database/setup');
-
-const articleName = 'Awesome article';
-const articleId = '625efd3ce35bb06b64abe923';
+const {
+	displayAllArticles,
+	displayArticleByName,
+	displayArticleByID,
+	updateArticlePrice,
+	updateArticleStock,
+	resetStocks,
+} = require('./app');
 
 beforeAll(() => {
 	jest.spyOn(db, 'find').mockReturnValue(Promise.resolve());
@@ -11,6 +16,9 @@ beforeAll(() => {
 	jest.spyOn(db, 'updateOne').mockReturnValue(Promise.resolve());
 	jest.spyOn(db, 'updateMany').mockReturnValue(Promise.resolve());
 });
+
+const articleName = 'Awesome article';
+const articleId = '625efd3ce35bb06b64abe923';
 
 it('Finds all articles', () => {
 	displayAllArticles();
@@ -58,6 +66,5 @@ it('Updates all articles stock to 0', () => {
 });
 
 afterAll(() => {
-	const mongoose = require('mongoose');
 	mongoose.connection.close();
 });

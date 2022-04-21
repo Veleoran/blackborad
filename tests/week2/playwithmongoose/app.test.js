@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const { createTodo, completeTodo, deleteTodo } = require('./app');
 const db = require('./database/setup');
 
@@ -39,6 +40,5 @@ it('Deletes todo', async () => {
 });
 
 afterAll(() => {
-	const mongoose = require('mongoose');
 	mongoose.connection.close();
 });

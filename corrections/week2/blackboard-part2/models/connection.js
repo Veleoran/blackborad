@@ -1,4 +1,7 @@
-// Insert your connection string inside this variable
+const mongoose = require('mongoose');
+
 const connectionString = 'mongodb+srv://.../blackboard';
 
-module.exports = connectionString; // Do not edit/remove this line
+mongoose.connect(connectionString, {
+  connectTimeoutMS: 2000,
+}).catch(error => console.error(error));
