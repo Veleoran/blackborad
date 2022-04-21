@@ -6,11 +6,12 @@ const todoName = 'Awesome task';
 const todoPriority = 3;
 
 beforeAll(() => {
-	jest.spyOn(db.prototype, 'save').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'find').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'findOne').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'updateOne').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'deleteOne').mockReturnValue(Promise.resolve());
+	// TODO Antoine: Mock real return values
+	jest.spyOn(db.prototype, 'save').mockResolvedValue({});
+	jest.spyOn(db, 'find').mockResolvedValue([]);
+	jest.spyOn(db, 'findOne').mockResolvedValue({});
+	jest.spyOn(db, 'updateOne').mockResolvedValue({});
+	jest.spyOn(db, 'deleteOne').mockResolvedValue({});
 });
 
 it('Creates todo', () => {
@@ -32,7 +33,7 @@ it('Completes todo', () => {
 	expect(db.updateOne.mock.lastCall[1]).toHaveProperty('done', true);
 });
 
-it('Deletes todo', async () => {	
+it('Deletes todo', async () => {
 	deleteTodo(todoName);
 
 	expect(db.deleteOne).toHaveBeenCalled();

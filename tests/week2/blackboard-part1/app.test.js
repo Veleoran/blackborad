@@ -10,11 +10,12 @@ const {
 } = require('./app');
 
 beforeAll(() => {
-	jest.spyOn(db, 'find').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'findOne').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'findById').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'updateOne').mockReturnValue(Promise.resolve());
-	jest.spyOn(db, 'updateMany').mockReturnValue(Promise.resolve());
+	// TODO Antoine: Mock real return values
+	jest.spyOn(db, 'find').mockResolvedValue([]);
+	jest.spyOn(db, 'findOne').mockResolvedValue({});
+	jest.spyOn(db, 'findById').mockResolvedValue({});
+	jest.spyOn(db, 'updateOne').mockResolvedValue({});
+	jest.spyOn(db, 'updateMany').mockResolvedValue({});
 });
 
 const articleName = 'Awesome article';
