@@ -1,4 +1,4 @@
-// Add your own import here 😉
+// Add your own requires here 😉
 
 /*
 ** Articles
