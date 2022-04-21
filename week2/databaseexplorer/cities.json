@@ -1,0 +1,502 @@
+[
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa84"
+    },
+    "city": "Tokyo",
+    "lat": "35.685",
+    "lng": "139.7514",
+    "country": "Japan",
+    "population": "35676000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa85"
+    },
+    "city": "New York",
+    "lat": "40.6943",
+    "lng": "-73.9249",
+    "country": "United States",
+    "population": "19354922"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa86"
+    },
+    "city": "Mexico City",
+    "lat": "19.4424",
+    "lng": "-99.131",
+    "country": "Mexico",
+    "population": "19028000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa87"
+    },
+    "city": "Mumbai",
+    "lat": "19.017",
+    "lng": "72.857",
+    "country": "India",
+    "population": "18978000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa88"
+    },
+    "city": "São Paulo",
+    "lat": "-23.5587",
+    "lng": "-46.625",
+    "country": "Brazil",
+    "population": "18845000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa89"
+    },
+    "city": "Delhi",
+    "lat": "28.67",
+    "lng": "77.23",
+    "country": "India",
+    "population": "15926000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa8a"
+    },
+    "city": "Shanghai",
+    "lat": "31.2165",
+    "lng": "121.4365",
+    "country": "China",
+    "population": "14987000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa8b"
+    },
+    "city": "Kolkata",
+    "lat": "22.495",
+    "lng": "88.3247",
+    "country": "India",
+    "population": "14787000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa8c"
+    },
+    "city": "Los Angeles",
+    "lat": "34.1139",
+    "lng": "-118.4068",
+    "country": "United States",
+    "population": "12815475"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa8d"
+    },
+    "city": "Dhaka",
+    "lat": "23.7231",
+    "lng": "90.4086",
+    "country": "Bangladesh",
+    "population": "12797394"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa8e"
+    },
+    "city": "Buenos Aires",
+    "lat": "-34.6025",
+    "lng": "-58.3975",
+    "country": "Argentina",
+    "population": "12795000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa8f"
+    },
+    "city": "Karachi",
+    "lat": "24.87",
+    "lng": "66.99",
+    "country": "Pakistan",
+    "population": "12130000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa90"
+    },
+    "city": "Cairo",
+    "lat": "30.05",
+    "lng": "31.25",
+    "country": "Egypt",
+    "population": "11893000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa91"
+    },
+    "city": "Rio de Janeiro",
+    "lat": "-22.925",
+    "lng": "-43.225",
+    "country": "Brazil",
+    "population": "11748000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa92"
+    },
+    "city": "Ōsaka",
+    "lat": "34.75",
+    "lng": "135.4601",
+    "country": "Japan",
+    "population": "11294000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa93"
+    },
+    "city": "Beijing",
+    "lat": "39.9289",
+    "lng": "116.3883",
+    "country": "China",
+    "population": "11106000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa94"
+    },
+    "city": "Manila",
+    "lat": "14.6042",
+    "lng": "120.9822",
+    "country": "Philippines",
+    "population": "11100000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa95"
+    },
+    "city": "Moscow",
+    "lat": "55.7522",
+    "lng": "37.6155",
+    "country": "Russia",
+    "population": "10452000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa96"
+    },
+    "city": "Istanbul",
+    "lat": "41.105",
+    "lng": "29.01",
+    "country": "Turkey",
+    "population": "10061000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa97"
+    },
+    "city": "Paris",
+    "lat": "48.8667",
+    "lng": "2.3333",
+    "country": "France",
+    "population": "9904000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa98"
+    },
+    "city": "Seoul",
+    "lat": "37.5663",
+    "lng": "126.9997",
+    "country": "Korea, South",
+    "population": "9796000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa99"
+    },
+    "city": "Lagos",
+    "lat": "6.4433",
+    "lng": "3.3915",
+    "country": "Nigeria",
+    "population": "9466000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa9a"
+    },
+    "city": "Jakarta",
+    "lat": "-6.1744",
+    "lng": "106.8294",
+    "country": "Indonesia",
+    "population": "9125000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa9b"
+    },
+    "city": "Guangzhou",
+    "lat": "23.145",
+    "lng": "113.325",
+    "country": "China",
+    "population": "8829000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa9c"
+    },
+    "city": "Chicago",
+    "lat": "41.8373",
+    "lng": "-87.6861",
+    "country": "United States",
+    "population": "8675982"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa9d"
+    },
+    "city": "London",
+    "lat": "51.5",
+    "lng": "-0.1167",
+    "country": "United Kingdom",
+    "population": "8567000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa9e"
+    },
+    "city": "Lima",
+    "lat": "-12.048",
+    "lng": "-77.0501",
+    "country": "Peru",
+    "population": "8012000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aa9f"
+    },
+    "city": "Tehran",
+    "lat": "35.6719",
+    "lng": "51.4243",
+    "country": "Iran",
+    "population": "7873000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa0"
+    },
+    "city": "Kinshasa",
+    "lat": "-4.3297",
+    "lng": "15.315",
+    "country": "Congo (Kinshasa)",
+    "population": "7843000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa1"
+    },
+    "city": "Bogota",
+    "lat": "4.5964",
+    "lng": "-74.0833",
+    "country": "Colombia",
+    "population": "7772000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa2"
+    },
+    "city": "Shenzhen",
+    "lat": "22.5524",
+    "lng": "114.1221",
+    "country": "China",
+    "population": "7581000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa3"
+    },
+    "city": "Wuhan",
+    "lat": "30.58",
+    "lng": "114.27",
+    "country": "China",
+    "population": "7243000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa4"
+    },
+    "city": "Hong Kong",
+    "lat": "22.305",
+    "lng": "114.185",
+    "country": "Hong Kong",
+    "population": "7206000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa5"
+    },
+    "city": "Tianjin",
+    "lat": "39.13",
+    "lng": "117.2",
+    "country": "China",
+    "population": "7180000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa6"
+    },
+    "city": "Chennai",
+    "lat": "13.09",
+    "lng": "80.28",
+    "country": "India",
+    "population": "7163000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa7"
+    },
+    "city": "Taipei",
+    "lat": "25.0358",
+    "lng": "121.5683",
+    "country": "Taiwan",
+    "population": "6900273"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa8"
+    },
+    "city": "Bangalore",
+    "lat": "12.97",
+    "lng": "77.56",
+    "country": "India",
+    "population": "6787000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaa9"
+    },
+    "city": "Bangkok",
+    "lat": "13.75",
+    "lng": "100.5166",
+    "country": "Thailand",
+    "population": "6704000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaaa"
+    },
+    "city": "Lahore",
+    "lat": "31.56",
+    "lng": "74.35",
+    "country": "Pakistan",
+    "population": "6577000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaab"
+    },
+    "city": "Chongqing",
+    "lat": "29.565",
+    "lng": "106.595",
+    "country": "China",
+    "population": "6461000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaac"
+    },
+    "city": "Miami",
+    "lat": "25.784",
+    "lng": "-80.2102",
+    "country": "United States",
+    "population": "6381966"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaad"
+    },
+    "city": "Hyderabad",
+    "lat": "17.4",
+    "lng": "78.48",
+    "country": "India",
+    "population": "6376000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaae"
+    },
+    "city": "Dallas",
+    "lat": "32.7937",
+    "lng": "-96.7662",
+    "country": "United States",
+    "population": "5733259"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aaaf"
+    },
+    "city": "Santiago",
+    "lat": "-33.45",
+    "lng": "-70.667",
+    "country": "Chile",
+    "population": "5720000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aab0"
+    },
+    "city": "Philadelphia",
+    "lat": "40.0076",
+    "lng": "-75.134",
+    "country": "United States",
+    "population": "5637884"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aab1"
+    },
+    "city": "Belo Horizonte",
+    "lat": "-19.915",
+    "lng": "-43.915",
+    "country": "Brazil",
+    "population": "5575000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aab2"
+    },
+    "city": "Madrid",
+    "lat": "40.4",
+    "lng": "-3.6834",
+    "country": "Spain",
+    "population": "5567000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aab3"
+    },
+    "city": "Houston",
+    "lat": "29.7868",
+    "lng": "-95.3905",
+    "country": "United States",
+    "population": "5446468"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aab4"
+    },
+    "city": "Ahmedabad",
+    "lat": "23.0301",
+    "lng": "72.58",
+    "country": "India",
+    "population": "5375000"
+  },
+  {
+    "_id": {
+      "$oid": "62615e373ba46f4483c1aab5"
+    },
+    "city": "Ho Chi Minh City",
+    "lat": "10.78",
+    "lng": "106.695",
+    "country": "Vietnam",
+    "population": "5314000"
+  }
+]
