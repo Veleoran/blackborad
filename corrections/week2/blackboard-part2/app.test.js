@@ -79,12 +79,6 @@ it('Checks user schema & model', () => {
 	expect(newUser).toHaveProperty('inscriptionDate', date);
 });
 
-it('Checks database connection', async () => {
-	require('./models/connection');
-	const article = await Article.findOne();
-	console.log(article);
-});
-
 it('Finds all users', () => {
 	displayAllUsers();
 
