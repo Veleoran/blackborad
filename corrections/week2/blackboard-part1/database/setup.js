@@ -9,7 +9,6 @@ mongoose.connect(connectionString, {
 
 const articleSchema = mongoose.Schema({
 	name: String,
-	description: String,
 	price: Number,
 	stock: Number,
 	weight: Number,

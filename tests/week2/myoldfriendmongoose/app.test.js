@@ -8,7 +8,7 @@ beforeAll(() => {
 	jest.spyOn(Country.prototype, 'save').mockResolvedValue({});
 	jest.spyOn(City.prototype, 'save').mockResolvedValue({});
 	jest.spyOn(Country, 'findOne').mockResolvedValue({});
-	jest.spyOn(City, 'findOne').mockReturnValue({ populate: jest.fn(() => Promise.resolve({})), then: jest.fn() });
+	jest.spyOn(City, 'findOne').mockReturnValue({ populate: jest.fn((field) => Promise.resolve({ field })), then: jest.fn() });
 });
 
 const countryName = 'France';
@@ -59,13 +59,14 @@ it('Finds country by name', () => {
 	expect(Country.findOne.mock.lastCall[0]).toHaveProperty('name', countryName);
 });
 
-it('Finds city by name (with populate)', () => {
+it('Finds city country by city name (with populate)', () => {
 	displayCountryFromCityName(cityName);
 
 	const lastInstanceIndex = City.findOne.mock.results.length - 1;
 	expect(City.findOne).toHaveBeenCalled();
 	expect(City.findOne.mock.lastCall[0]).toHaveProperty('name', cityName);
 	expect(City.findOne.mock.results[lastInstanceIndex].value.populate).toHaveBeenCalled();
+	expect(City.findById.mock.results[lastInstanceIndex].value.populate.mock.lastCall[0]).toBe('country');
 });
 
 afterAll(() => {

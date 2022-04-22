@@ -21,17 +21,17 @@ it('Checks emissions schema & model', () => {
 it('Checks songs schema & model', () => {
 	expect(Song).toBeDefined();
 
-	const date = new Date();
+	const creationDate = new Date();
 	const newSong = new Song({
 		artist: 'ARTIST',
 		title: 'TITLE',
-		creationDate: date,
+		creationDate,
 		annoying: false,
 	});
 
 	expect(newSong).toHaveProperty('_id');
 	expect(newSong).toHaveProperty('artist', 'ARTIST');
 	expect(newSong).toHaveProperty('title', 'TITLE');
-	expect(newSong).toHaveProperty('creationDate', date);
+	expect(newSong).toHaveProperty('creationDate', creationDate);
 	expect(newSong).toHaveProperty('annoying', false);
 });

@@ -27,7 +27,6 @@ it('Checks articles schema & model', () => {
 
 	const newArticle = new Article({
 		name: 'NAME',
-		description: 'DESCRIPTION',
 		price: 500,
 		stock: 5,
 		weight: 150,
@@ -36,7 +35,6 @@ it('Checks articles schema & model', () => {
 
 	expect(newArticle).toHaveProperty('_id');
 	expect(newArticle).toHaveProperty('name', 'NAME');
-	expect(newArticle).toHaveProperty('description', 'DESCRIPTION');
 	expect(newArticle).toHaveProperty('price', 500);
 	expect(newArticle).toHaveProperty('stock', 5);
 	expect(newArticle).toHaveProperty('weight', 150);
@@ -46,37 +44,37 @@ it('Checks articles schema & model', () => {
 it('Checks orders schema & model', () => {
 	expect(Order).toBeDefined();
 
-	const date = new Date();
+	const purchaseDate = new Date();
 	const newOrder = new Order({
 		total: 50,
 		shippingFees: 5,
 		paid: true,
-		purchaseDate: date,
+		purchaseDate,
 	});
 
 	expect(newOrder).toHaveProperty('_id');
 	expect(newOrder).toHaveProperty('total', 50);
 	expect(newOrder).toHaveProperty('shippingFees', 5);
 	expect(newOrder).toHaveProperty('paid', true);
-	expect(newOrder).toHaveProperty('purchaseDate', date);
+	expect(newOrder).toHaveProperty('purchaseDate', purchaseDate);
 });
 
 it('Checks user schema & model', () => {
 	expect(User).toBeDefined();
 
-	const date = new Date();
+	const inscriptionDate = new Date();
 	const newUser = new User({
 		firstName: 'FIRSTNAME',
 		lastName: 'LASTNAME',
 		email: 'firstname.lastname@gmail.com',
-		inscriptionDate: date,
+		inscriptionDate,
 	});
 
 	expect(newUser).toHaveProperty('_id');
 	expect(newUser).toHaveProperty('firstName', 'FIRSTNAME');
 	expect(newUser).toHaveProperty('lastName', 'LASTNAME');
 	expect(newUser).toHaveProperty('email', 'firstname.lastname@gmail.com');
-	expect(newUser).toHaveProperty('inscriptionDate', date);
+	expect(newUser).toHaveProperty('inscriptionDate', inscriptionDate);
 });
 
 it('Finds all users', () => {
