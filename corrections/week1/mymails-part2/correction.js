@@ -2,7 +2,7 @@
 
 const newMessage = ` 
   <div class="row new-row">
-  <img class="avatar" src="/images/avatar-1.jpg" />
+  <img class="avatar" src="images//avatar-1.jpg" />
   <div class="text-container">
     <h6>John Doe</h6>
     <p>New message</p>
