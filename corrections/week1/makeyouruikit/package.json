@@ -1,5 +1,9 @@
 {
-  "dependencies": {
+  "name": "makeyouruikit",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "jest": "^27.5.1",
     "dom-parser": "^0.1.6",
     "jsdom": "^19.0.0"
   }
