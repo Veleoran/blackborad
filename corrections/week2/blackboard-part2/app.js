@@ -25,7 +25,7 @@ function displayArticleByName(articleName) {
 // displayArticleByName('Weebot');
 
 function displayArticleByID(articleId) {
-	Article.finArticleyId(articleId).then(data => {
+	Article.findById(articleId).then(data => {
 		console.log('ARTICLE =>', data);
 	});
 }
