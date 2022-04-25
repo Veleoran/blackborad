@@ -27,7 +27,6 @@ it('Checks articles schema & model', () => {
 
 	const newArticle = new Article({
 		name: 'NAME',
-		description: 'DESCRIPTION',
 		price: 500,
 		stock: 5,
 		weight: 150,
@@ -36,7 +35,6 @@ it('Checks articles schema & model', () => {
 
 	expect(newArticle).toHaveProperty('_id');
 	expect(newArticle).toHaveProperty('name', 'NAME');
-	expect(newArticle).toHaveProperty('description', 'DESCRIPTION');
 	expect(newArticle).toHaveProperty('price', 500);
 	expect(newArticle).toHaveProperty('stock', 5);
 	expect(newArticle).toHaveProperty('weight', 150);
