@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Play = require('./models/plays');
 const playUno = require('./app');
 
@@ -23,8 +24,10 @@ it('Plays uno', () => {
 	const cards = [
 		{ color: 'blue', number: 5 },
 		{ color: 'red', number: 5 },
+		{ color: 'blue', number: 7 },
 		{ color: 'blue', number: 1 },
 		{ color: 'red', number: 2 },
+		{ color: 'yellow', number: 4 },
 	];
 	const lastPlay = { color: 'green', number: 2 };
 
@@ -34,6 +37,7 @@ it('Plays uno', () => {
 		{ color: 'red', number: 2 },
 		{ color: 'red', number: 5 },
 		{ color: 'blue', number: 5 },
+		{ color: 'blue', number: 7 },
 		{ color: 'blue', number: 1 },
 	];
 
@@ -43,4 +47,8 @@ it('Plays uno', () => {
 		expect(_play.save.mock.instances[i]).toHaveProperty('color', playedCards[i].color);
 		expect(_play.save.mock.instances[i]).toHaveProperty('number', playedCards[i].number);
 	}
+});
+
+afterAll(() => {
+	mongoose.connection.close();
 });
