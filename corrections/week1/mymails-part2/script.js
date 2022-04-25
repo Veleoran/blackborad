@@ -14,7 +14,6 @@ document.querySelector('#msg-container').innerHTML += newMessage;
 const messagesCount = document.querySelectorAll('p').length;
 document.querySelector('#count').textContent = messagesCount;
 
-// Bonus
 let year = new Date().getUTCFullYear();
 let month;
 let day;
