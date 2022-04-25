@@ -1,38 +1,61 @@
 require('./models/connection');
 const Play = require('./models/plays');
 
-function getFirstCardToPlay(cards, lastPlay) {
-	let cardsToPlay = [];
+let cards = [
+	{
+		'color': 'green',
+		'number': 6,
+	},
+	{
+		'color': 'red',
+		'number': 6,
+	},
+	{
+		'color': 'red',
+		'number': 9,
+	},
+	{
+		'color': 'green',
+		'number': 9,
+	}, {
+		'color': 'yellow',
+		'number': 9,
+	}
+]
 
-	for (let i = 0; i < cards.length; i++) {
-			if (cards[i].color === lastPlay.color || cards[i].number === lastPlay.number) {
-					cardsToPlay.push(cards[i]);
+let lastPlay = {
+	'color': 'blue',
+	'number': 6,
+}
+
+function playUno(myCards, lastCard) {
+
+	const gameLength = myCards.length;
+
+	for (let i = 0; i < gameLength; i++) {
+
+		let cardsToPlay = [];
+
+		for (let i = 0; i < myCards.length; i++) {
+			if (myCards[i].color === lastCard.color || myCards[i].number === lastCard.number) {
+				cardsToPlay.push(myCards[i]);
 			}
-	}
+		}
 
-	lastPlay = cardsToPlay[0];
-	const index = cards.indexOf(lastPlay);
-	if (index != null) {
-			cards.splice(index, 1);
-	}
+		lastCard = cardsToPlay[0];
+		const index = myCards.indexOf(lastCard);
+		if (index != null) {
+			myCards.splice(index, 1);
+		}
 
-	return lastPlay;
+		const newPlay = new Play({
+			color: lastCard.color,
+			number: lastCard.number,
+		});
+		newPlay.save();
+	}
 }
 
-function playUno(cards, lastPlay) {
-	// TODO Julie
+playUno(cards, lastPlay)
 
-	const newPlay = new Play({
-		color: 'green',
-		number: 2,
-	});
-	newPlay.save();
-
-	const newPlay2 = new Play({
-		color: 'green',
-		number: 3,
-	});
-	newPlay2.save();
-}
-
-module.exports = playUno; // Do not edit/remove this line
+module.exports = playUno;
