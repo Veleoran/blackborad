@@ -30,7 +30,7 @@ it('Plays uno', () => {
 
 	playUno(cards, lastPlay);
 
-	const cardsToPlay = [
+	const playedCards = [
 		{ color: 'red', number: 2 },
 		{ color: 'red', number: 5 },
 		{ color: 'blue', number: 5 },
@@ -38,9 +38,9 @@ it('Plays uno', () => {
 	];
 
 	const _play = new Play();
-	expect(_play.save.mock.instances.length).toBe(cardsToPlay.length);
-	for (let i = 0; i < cardsToPlay.length; i++) {
-		expect(_play.save.mock.instances[i]).toHaveProperty('color', cardsToPlay[i].color);
-		expect(_play.save.mock.instances[i]).toHaveProperty('number', cardsToPlay[i].number);
+	expect(_play.save.mock.instances.length).toBe(playedCards.length);
+	for (let i = 0; i < playedCards.length; i++) {
+		expect(_play.save.mock.instances[i]).toHaveProperty('color', playedCards[i].color);
+		expect(_play.save.mock.instances[i]).toHaveProperty('number', playedCards[i].number);
 	}
 });
