@@ -19,10 +19,7 @@ function createTodo(name, priority) {
 
 // Complete one todo by name (update done = true)
 function completeTodo(name) {
-	db.updateOne(
-		{ name: name },
-		{ done: true },
-	).then(() => {
+	db.updateOne({ name: name }, { done: true }).then(() => {
 		// Display updated todo
 		db.findOne({ name: name }).then(data => {
 			console.log(data);

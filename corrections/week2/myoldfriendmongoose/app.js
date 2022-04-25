@@ -36,7 +36,7 @@ function createCity(name, population, countryId) {
 // createCity('Sydney', 5312163, 'COUNTRY_ID_TO_REPLACE');
 
 
-// Display country leaders from country name
+// This function answers the following question: Who are the leaders of this country?
 function displayCountryLeaders(countryName) {
 	Country.findOne({ name: countryName })
 		.then((data) => {
@@ -44,7 +44,7 @@ function displayCountryLeaders(countryName) {
 		});
 }
 
-
+// This function answers the following question: In which country this city is located?
 // Display country informations from city name (with populate)
 function displayCountryFromCityName(cityName) {
 	City.findOne({ name: cityName })

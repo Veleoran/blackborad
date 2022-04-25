@@ -36,10 +36,10 @@ it('Finds article by name', () => {
 });
 
 it('Finds article by ID', () => {
-	displayArticleByID(articleName);
+	displayArticleByID(articleId);
 
 	expect(db.findById).toHaveBeenCalled();
-	expect(db.findById.mock.lastCall[0]).toBe(articleName);
+	expect(db.findById.mock.lastCall[0]).toBe(articleId);
 });
 
 it('Updates article price by ID', () => {
