@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { JSDOM } = require("jsdom");
+const { JSDOM } = require('jsdom');
 
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const css = fs.readFileSync(path.resolve(__dirname, './style.css'), 'utf8');

@@ -1,6 +1,10 @@
 {
-  "dependencies": {
+  "name": "mymails-part2",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
     "jest": "^27.5.1",
-    "jsdom": "^16.7.0"
+    "dom-parser": "^0.1.6",
+    "jsdom": "^19.0.0"
   }
 }

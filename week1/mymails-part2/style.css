@@ -206,8 +206,7 @@ span {
   outline: 1px #ffffff solid;
 }
 
-/* UI KIT  */
-
+/* UI Kit */
 #container-uikit {
   display: flex;
   flex-direction: column;

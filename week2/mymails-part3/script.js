@@ -2,12 +2,12 @@
 
 /* const newMessage = ` 
   <div class="row new-row">
-  <img class="avatar" src="images//avatar-1.jpg" />
+  <img class="avatar" src="images/avatar-1.jpg" />
   <div class="text-container">
     <h6>John Doe</h6>
     <p>New message</p>
   </div>
-  <span class="delete">&#x2716;</span>
+  <span class="delete">✖</span>
   </div>
   `;
 
@@ -57,10 +57,10 @@ document.querySelector('#btn-add').addEventListener("click",
         <div class="row new-row">
         <img class="avatar" src="avatar-1.jpg" />
         <div class="text-container">
-          <h6>Noel Paganelli</h6>
+          <h6>John Doe</h6>
           <p>${message}</p>
         </div>
-        <span class="delete">&#x2716;</span>
+        <span class="delete">✖</span>
       </div>
 `;
         document.querySelector('#add-message').value = "";
