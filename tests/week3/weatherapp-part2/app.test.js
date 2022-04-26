@@ -1,7 +1,6 @@
 const request = require('supertest');
 const app = require('./app');
 
-
 it('POST /weather - New city', async () => {
 	const newCity = { city: 'City1_TEST', description: 'rainy', tempMin: 5.2, tempMax: 25.9 };
 	const res = await request(app).post('/weather').send(newCity);
