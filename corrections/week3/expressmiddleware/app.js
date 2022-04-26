@@ -12,7 +12,7 @@ var app = express();
 // authorization middleware
 const apiKeys = ['azerty123', 'supersecretapikey'];
 app.use(function(req, res, next) {
-  if (!req.headers.authorization || !apiKeys.includes(req.headers.authorization)) {
+  if (!req.headers.key || !apiKeys.includes(req.headers.key)) {
     return res.status(403).json({ result: false });
   }
   next();
