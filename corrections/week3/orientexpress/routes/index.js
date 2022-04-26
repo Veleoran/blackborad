@@ -17,8 +17,6 @@ router.get('/lastTrip', (req, res) => {
 });
 
 router.put('/trips/:departure/:arrival', (req, res) => {
-  console.log(req.params, req.body);
-
   for (let i = 0; i < trips.length; i++) {
     if (trips[i].departure === req.params.departure && trips[i].arrival === req.params.arrival) {
       trips[i] = { departure: req.body.departure, arrival: req.body.arrival };
