@@ -22,7 +22,7 @@ beforeAll(() => {
 const userId = '625efd3ce35bb06b64abe924';
 const orderId = '625efd3ce35bb06b64abe925';
 
-it('Checks articles schema & model', () => {
+it('Articles schema & model', () => {
 	expect(Article).toBeDefined();
 
 	const newArticle = new Article({
@@ -41,7 +41,7 @@ it('Checks articles schema & model', () => {
 	expect(newArticle).toHaveProperty('image', 'IMAGE');
 });
 
-it('Checks orders schema & model', () => {
+it('Orders schema & model', () => {
 	expect(Order).toBeDefined();
 
 	const purchaseDate = new Date();
@@ -59,7 +59,7 @@ it('Checks orders schema & model', () => {
 	expect(newOrder).toHaveProperty('purchaseDate', purchaseDate);
 });
 
-it('Checks user schema & model', () => {
+it('User schema & model', () => {
 	expect(User).toBeDefined();
 
 	const inscriptionDate = new Date();

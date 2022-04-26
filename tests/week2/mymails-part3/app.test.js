@@ -59,7 +59,7 @@ it('Search message button + retrieve messsage + search message + clean input', (
   documentJS.querySelector('#search-message').value = '';
 });
 
-it('Check delete message button + update counter', () => {
+it('Delete message button + update counter', () => {
   const elems = documentJS.querySelectorAll('.delete');
 
   for (let i = 0; i < elems.length; i++) {

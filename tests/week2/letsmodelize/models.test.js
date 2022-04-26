@@ -1,7 +1,7 @@
 const Country = require('./models/countries');
 const City = require('./models/cities');
 
-it('Checks countries schema & model', () => {
+it('Countries schema & model', () => {
 	expect(Country).toBeDefined();
 
 	const newCountry = new Country({
@@ -23,7 +23,7 @@ it('Checks countries schema & model', () => {
 	));
 });
 
-it('Checks cities schema & model', () => {
+it('Cities schema & model', () => {
 	expect(City).toBeDefined();
 
 	const newCountry = new Country({

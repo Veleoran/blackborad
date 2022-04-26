@@ -7,7 +7,7 @@ beforeAll(() => {
 	jest.spyOn(Play.prototype, 'save').mockResolvedValue({});
 });
 
-it('Checks plays schema & model', () => {
+it('Plays schema & model', () => {
 	expect(Play).toBeDefined();
 
 	const newPlay = new Play({
@@ -20,7 +20,7 @@ it('Checks plays schema & model', () => {
 	expect(newPlay).toHaveProperty('number', 2);
 });
 
-it('Plays uno', () => {
+it('Function playUno', () => {
 	const cards = [
 		{ color: 'blue', number: 5 },
 		{ color: 'red', number: 5 },

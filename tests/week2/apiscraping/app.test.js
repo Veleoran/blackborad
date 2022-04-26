@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const db = require('./database/setup');
 
-it('Checks API scraping - All fruits', async () => {
+it('API scraping - All fruits', async () => {
 	const fruits = await db.find();
 	const res = await fetch('https://www.fruityvice.com/api/fruit/all');
 	const data = await res.json();
@@ -9,7 +9,7 @@ it('Checks API scraping - All fruits', async () => {
 	expect(fruits.length).toBe(data.length);
 });
 
-it('Checks API scraping - Single fruit', async () => {
+it('API scraping - Single fruit', async () => {
 	const fruit = await db.findOne({ name: 'Papaya' });
 	const res = await fetch('https://www.fruityvice.com/api/fruit/papaya');
 	const data = await res.json();

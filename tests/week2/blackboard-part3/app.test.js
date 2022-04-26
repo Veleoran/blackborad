@@ -20,7 +20,7 @@ const userAddresses = [
 	{ street: 'STREET 2', city: 'CITY 2', zipCode: 'ZIPCODE 2', isFavourite: false },			
 ];
 
-it('Checks user schema & model', () => {
+it('User schema & model', () => {
 	expect(User).toBeDefined();
 
 	const inscriptionDate = new Date();
@@ -44,7 +44,7 @@ it('Checks user schema & model', () => {
 	));;
 });
 
-it('Checks orders schema & model', () => {
+it('Orders schema & model', () => {
 	expect(Order).toBeDefined();
 
 	const inscriptionDate = new Date();
