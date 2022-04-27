@@ -6,6 +6,7 @@ const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const htmlUikit = fs.readFileSync(path.resolve(__dirname, './uikit.html'), 'utf8');
 const css = fs.readFileSync(path.resolve(__dirname, './style.css'), 'utf8');
 
+// Create virtual DOM
 const virtualPage = new JSDOM(html);
 const document = virtualPage.window.document;
 const virtualPageUikit = new JSDOM(htmlUikit);
@@ -55,10 +56,10 @@ it('Header and footer grid-row and grid-column settings', () => {
 
 // UI Kit
 it('Typography section children element and style', () => {
-  const elements = documentUikit.querySelector('#typography').children
+  const elements = documentUikit.querySelector('#typography').children;
   let elementsArray = [];
   for (const e of elements) {
-    elementsArray.push(e.tagName)
+    elementsArray.push(e.tagName);
   }
 
   expect(elementsArray.includes('H1' && 'H6' && 'P')).toBe(true);
@@ -69,11 +70,11 @@ it('Typography section children element and style', () => {
 });
 
 it('Images section children element and style', () => {
-  const elements = documentUikit.querySelector('#images').children
+  const elements = documentUikit.querySelector('#images').children;
   let elementsArray = [];
   for (const e of elements) {
     if (e.tagName === 'IMG') {
-      elementsArray.push(e.tagName)
+      elementsArray.push(e.tagName);
     }
   }
 
@@ -85,10 +86,10 @@ it('Images section children element and style', () => {
 });
 
 it('Buttons & inputs section children element and style', () => {
-  const elements = documentUikit.querySelector('#buttonsandinputs').children
+  const elements = documentUikit.querySelector('#buttonsandinputs').children;
   let elementsArray = [];
   for (const e of elements) {
-    elementsArray.push(e.tagName)
+    elementsArray.push(e.tagName);
   }
 
   expect(elementsArray.includes('BUTTON' && 'SPAN' && 'INPUT')).toBe(true);

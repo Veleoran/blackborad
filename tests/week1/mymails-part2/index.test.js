@@ -5,16 +5,18 @@ const { JSDOM } = require('jsdom');
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const js = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf8');
 
-let virtualPageHTML = new JSDOM(html);
-let virtualPage = new JSDOM(html, { runScripts: 'dangerously' });
+// Create virtual DOM
+const virtualPageHTML = new JSDOM(html);
+const virtualPage = new JSDOM(html, { runScripts: 'dangerously' });
 const document = virtualPageHTML.window.document;
 const documentJS = virtualPage.window.document;
 
+// Insert script.js into virtual DOM
 const script = documentJS.createElement('script');
 script.textContent = js;
 documentJS.body.appendChild(script);
 
-it('New message created in script.js', () => {
+it('New message created via DOM', () => {
   const h6Length = document.querySelectorAll('h6').length;
   const pLength = document.querySelectorAll('p').length;
   const imgLength = document.querySelectorAll('img').length;

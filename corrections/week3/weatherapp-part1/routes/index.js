@@ -2,22 +2,24 @@ var express = require('express');
 var router = express.Router();
 
 let weather = [
-  { city: 'London', description: 'cloudy', tempMin: 12.95, tempMax: 17.39 },
-  { city: 'Rio de Janeiro', description: 'sunny', tempMin: 23.98, tempMax: 28.63 },
-  { city: 'Stockholm', description: 'sunny', tempMin: 6.03, tempMax: 10.59 },
+  { cityName: 'London', description: 'cloudy', tempMin: 12.95, tempMax: 17.39 },
+  { cityName: 'Rio de Janeiro', description: 'sunny', tempMin: 23.98, tempMax: 28.63 },
+  { cityName: 'Stockholm', description: 'sunny', tempMin: 6.03, tempMax: 10.59 },
 ];
 
 router.post('/weather', (req, res) => {
-  if (!weather.some(element => element.city === req.body.city)) {
-    weather.push({
-      city: req.body.city,
+  if (!weather.some(element => element.cityName === req.body.cityName)) {
+    const newCity = {
+      cityName: req.body.cityName,
       description: req.body.description,
       tempMin: req.body.tempMin,
       tempMax: req.body.tempMax,
-    });
-    res.json({ result: true, weather });
+    };
+
+    weather.push(newCity);
+    res.json({ result: true, weather: newCity });
   } else {
-    res.json({ result: false });
+    res.json({ result: false, error: 'City already saved' });
   }
 });
 
@@ -25,22 +27,22 @@ router.get('/weather', (req, res) => {
   res.json({ weather });
 });
 
-router.get('/weather/:city', (req, res) => {
-  const searchedWeather = weather.find(element => element.city === req.params.city);
+router.get('/weather/:cityName', (req, res) => {
+  const searchedWeather = weather.find(element => element.cityName === req.params.cityName);
   if (searchedWeather) {
     res.json({ result: true, weather: searchedWeather });
   } else {
-    res.json({ result: false });
+    res.json({ result: false, error: 'City not found' });
   }
 });
 
-router.delete('/weather/:city', (req, res) => {
-  const searchedWeather = weather.find(element => element.city === req.params.city);
+router.delete('/weather/:cityName', (req, res) => {
+  const searchedWeather = weather.find(element => element.cityName === req.params.cityName);
   if (searchedWeather) {
-    weather = weather.filter(element => element.city !== req.params.city);
+    weather = weather.filter(element => element.cityName !== req.params.cityName);
     res.json({ result: true, weather });
   } else {
-    res.json({ result: false });
+    res.json({ result: false, error: 'City not found' });
   }
 });
 

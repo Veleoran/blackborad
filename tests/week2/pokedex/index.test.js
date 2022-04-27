@@ -21,9 +21,9 @@ it('Clicks next button', async () => {
 	document.querySelector('#next').dispatchEvent(event);
 	document.querySelector('#next').dispatchEvent(event);
 
-	let pokeData = await fetch('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20');
-	pokeData = await pokeData.json();
-	
+	const res = await fetch('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20');
+	const pokeData = await res.json();
+
 	const pokeListFromApi = pokeData.results.map(pokemon => pokemon.name);
 	const pokeListFromDom = [...document.querySelectorAll('li')].map(li => li.textContent);
 
@@ -39,9 +39,9 @@ it('Clicks next and prev buttons', async () => {
 	document.querySelector('#next').dispatchEvent(event);
 	document.querySelector('#prev').dispatchEvent(event);
 
-	let pokeData = await fetch('https://pokeapi.co/api/v2/pokemon?offset=80&limit=20');
-	pokeData = await pokeData.json();
-	
+	const res = await fetch('https://pokeapi.co/api/v2/pokemon?offset=80&limit=20');
+	const pokeData = await res.json();
+
 	const pokeListFromApi = pokeData.results.map(pokemon => pokemon.name);
 	const pokeListFromDom = [...document.querySelectorAll('li')].map(li => li.textContent);
 

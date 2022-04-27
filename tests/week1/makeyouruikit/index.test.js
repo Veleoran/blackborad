@@ -5,6 +5,7 @@ const { JSDOM } = require('jsdom');
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const css = fs.readFileSync(path.resolve(__dirname, './style.css'), 'utf8');
 
+// Create virtual DOM
 const virtualPage = new JSDOM(html);
 const document = virtualPage.window.document;
 document.head.innerHTML = `<style>${css}</style>`;

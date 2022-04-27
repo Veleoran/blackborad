@@ -1,72 +1,115 @@
 const request = require('supertest');
+const mongoose = require('mongoose');
 const app = require('./app');
+const City = require('./models/cities');
+
+const newCity = 'Las Vegas';
+
+beforeEach(async () => {
+	await City.deleteOne({ cityName: newCity });
+});
+
+// Backend
+it('Cities schema & model', () => {
+	expect(City).toBeDefined();
+
+	const newCity = new City({
+		cityName: 'City1_TEST',
+		description: 'rainy',
+		tempMin: 5.2,
+		tempMax: 25.9,
+	});
+
+	expect(newCity).toHaveProperty('_id');
+	expect(newCity).toHaveProperty('cityName', 'City1_TEST');
+	expect(newCity).toHaveProperty('description', 'rainy');
+	expect(newCity).toHaveProperty('tempMin', 5.2);
+	expect(newCity).toHaveProperty('tempMax', 25.9);
+});
 
 it('POST /weather - New city', async () => {
-	const newCity = { city: 'City1_TEST', description: 'rainy', tempMin: 5.2, tempMax: 25.9 };
-	const res = await request(app).post('/weather').send(newCity);
+	const res = await request(app).post('/weather').send({ cityName: newCity });
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(true);
-	expect(res.body.weather).toEqual(expect.arrayContaining([newCity]));
+	expect(res.body).toHaveProperty('weather');
+	expect(res.body.weather).toHaveProperty('cityName', newCity);
+	expect(res.body.weather).toHaveProperty('description', expect.any(String));
+	expect(res.body.weather).toHaveProperty('tempMin', expect.any(Number));
+	expect(res.body.weather).toHaveProperty('tempMax', expect.any(Number));
 });
 
 it('POST /weather - Duplicate city', async () => {
-	const newCity = { city: 'City2_TEST', description: 'sunny', tempMin: 32.32, tempMax: 42.8 };
-
-	const res = await request(app).post('/weather').send(newCity);
+	const res = await request(app).post('/weather').send({ cityName: newCity });
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(true);
-	expect(res.body.weather).toEqual(expect.arrayContaining([newCity]));
+	expect(res.body).toHaveProperty('weather');
+	expect(res.body.weather).toHaveProperty('cityName', newCity);
+	expect(res.body.weather).toHaveProperty('description', expect.any(String));
+	expect(res.body.weather).toHaveProperty('tempMin', expect.any(Number));
+	expect(res.body.weather).toHaveProperty('tempMax', expect.any(Number));
 
-	const res2 = await request(app).post('/weather').send(newCity);
+	const res2 = await request(app).post('/weather').send({ cityName: newCity });
 	expect(res2.statusCode).toBe(200);
 	expect(res2.body.result).toBe(false);
+	expect(res2.body.error).toBe('City already saved');
 });
 
 it('GET /weather', async () => {
-	const newCity = { city: 'City3_TEST', description: 'sunny', tempMin: 32.32, tempMax: 42.8 };
-	const newCity2 = { city: 'City4_TEST', description: 'rainy', tempMin: 5.2, tempMax: 25.9 };
+	const newCity2 = 'New York';
+	await City.deleteOne({ cityName: newCity2 });
 
-	await request(app).post('/weather').send(newCity);
-	await request(app).post('/weather').send(newCity2);
+	await request(app).post('/weather').send({ cityName: newCity });
+	await request(app).post('/weather').send({ cityName: newCity2 });
 	const res = await request(app).get('/weather');
 
 	expect(res.statusCode).toBe(200);
-	expect(res.body.weather).toEqual(expect.arrayContaining([newCity, newCity2]));
+	expect(res.body.weather).toEqual(expect.arrayContaining([
+		expect.objectContaining({ cityName: newCity, description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }),
+		expect.objectContaining({ cityName: newCity2, description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }), ,
+	]));
 });
 
-it('GET /weather/:city - Existing city', async () => {
-	const newCity = { city: 'City5_TEST', description: 'rainy', tempMin: 5.2, tempMax: 25.9 };
-
-	await request(app).post('/weather').send(newCity);
-	const res = await request(app).get(`/weather/${newCity.city}`);
+it('GET /weather/:cityName - Existing city', async () => {
+	await request(app).post('/weather').send({ cityName: newCity });
+	const res = await request(app).get(`/weather/${newCity}`);
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(true);
-	expect(res.body.weather).toEqual(newCity);
+	expect(res.body).toHaveProperty('weather');
+	expect(res.body.weather).toHaveProperty('cityName', newCity);
+	expect(res.body.weather).toHaveProperty('description', expect.any(String));
+	expect(res.body.weather).toHaveProperty('tempMin', expect.any(Number));
+	expect(res.body.weather).toHaveProperty('tempMax', expect.any(Number));
 });
 
-it('GET /weather/:city - Not existing city', async () => {
+it('GET /weather/:cityName - Not existing city', async () => {
 	const res = await request(app).get('/weather/CityNotExisting_TEST');
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
+	expect(res.body.error).toBe('City not found');
 });
 
-it('DELETE /weather/:city - Existing city', async () => {
-	const newCity = { city: 'City6_TEST', description: 'sunny', tempMin: 32.32, tempMax: 42.8 };
-
-	await request(app).post('/weather').send(newCity);
-	const res = await request(app).delete(`/weather/${newCity.city}`);
+it('DELETE /weather/:cityName - Existing city', async () => {
+	await request(app).post('/weather').send({ cityName: newCity });
+	const res = await request(app).delete(`/weather/${newCity}`);
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(true);
-	expect(res.body.weather).toEqual(expect.not.arrayContaining([newCity]));
+	expect(res.body.weather).toEqual(expect.not.arrayContaining([
+		expect.objectContaining({ cityName: newCity}),
+	]));
 });
 
-it('DELETE /weather/:city - Not existing city', async () => {
+it('DELETE /weather/:cityName - Not existing city', async () => {
 	const res = await request(app).delete('/weather/CityNotExisting2_TEST');
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
+	expect(res.body.error).toBe('City not found');
+});
+
+afterAll(() => {
+	mongoose.connection.close();
 });
