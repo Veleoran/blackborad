@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const citySchema = mongoose.Schema({
 	name: String,
-	population: Number,
+	currentPopulation: Number,
 	country: { type: mongoose.Schema.Types.ObjectId, ref: 'countries' },
 });
 
