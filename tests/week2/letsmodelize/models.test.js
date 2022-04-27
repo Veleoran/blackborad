@@ -17,7 +17,7 @@ it('Countries schema & model', () => {
 	expect(newCountry).toHaveProperty('name', 'Australia');
 	expect(newCountry).toHaveProperty('currency', 'AUD');
 	expect(newCountry).toHaveProperty('population');
-	expect(newCountry.leaders).toEqual(expect.arrayContaining(
+	expect(newCountry.population).toEqual(expect.arrayContaining(
 		[expect.objectContaining({ populationNbr: 25400000, year: new Date('2015-08-24') })],
 		[expect.objectContaining({ populationNbr: 26100000, year: new Date('2020-09-15') })],
 	));
