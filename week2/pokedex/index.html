@@ -1,36 +1,22 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-	<h1>Pokédex</h1>
-	<ul>
-		<li>Pokémon 1</li>
-		<li>Pokémon 2</li>
-		<li>Pokémon 3</li>
-		<li>Pokémon 4</li>
-		<li>Pokémon 5</li>
-		<li>Pokémon 6</li>
-		<li>Pokémon 7</li>
-		<li>Pokémon 8</li>
-		<li>Pokémon 9</li>
-		<li>Pokémon 10</li>
-		<li>Pokémon 11</li>
-		<li>Pokémon 12</li>
-		<li>Pokémon 13</li>
-		<li>Pokémon 14</li>
-		<li>Pokémon 15</li>
-		<li>Pokémon 16</li>
-		<li>Pokémon 17</li>
-		<li>Pokémon 18</li>
-		<li>Pokémon 19</li>
-		<li>Pokémon 20</li>
-	</ul>
-	<button id="prev">Previous</button>
-	<button id="next">Next</button>
-</body>
-
+	<head>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Pokédex</h1>
+		<div id="poke_container" class="poke-container">
+			<div class="pokemon fairy">
+				<div class="img-container">
+					<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png" alt="pokémon1" />
+				</div>
+				<div class="info">
+					<h3 class="name">Clefairy</h3>
+					<span class="type">Type: <span>fairy</span></span>
+				</div>
+			</div>
+		</div>
+		<button id="next">Next</button>
+        <script src='script.js'></script>
+	</body>
 </html>
