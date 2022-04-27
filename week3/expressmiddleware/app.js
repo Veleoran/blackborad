@@ -8,6 +8,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const cors = require('cors');
+app.use(cors());
+
 // authorization middleware
 const apiKeys = ['azerty123', 'supersecretapikey'];
 
