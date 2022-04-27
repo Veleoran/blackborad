@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
-const { expect, it } = require('@jest/globals');
 
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const js = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf8');
@@ -65,8 +64,8 @@ it('Adds a new city', async () => {
 	event.initMouseEvent('click');
 	document.querySelector('#addCityBtn').dispatchEvent(event);
 
-	// Wait 500ms for the new city to be added
-	await new Promise((r) => setTimeout(r, 500));
+	// Wait 100ms for the new city to be added
+	await new Promise((r) => setTimeout(r, 100));
 
 	const expectedNbCityAfterAdd = initialDummyWeatherData.length + 1;
 	expect(document.querySelectorAll('.cityElement').length).toBe(expectedNbCityAfterAdd);
@@ -87,8 +86,8 @@ it('Deletes a city', async () => {
 	event.initMouseEvent('click');
 	document.querySelector('#addCityBtn').dispatchEvent(event);
 
-	// Wait 500ms for the new city to be added
-	await new Promise((r) => setTimeout(r, 500));
+	// Wait 100ms for the new city to be added
+	await new Promise((r) => setTimeout(r, 100));
 
 	const expectedNbCityAfterAdd = initialDummyWeatherData.length + 2;
 	expect(document.querySelectorAll('.cityElement').length).toBe(expectedNbCityAfterAdd);
@@ -102,8 +101,8 @@ it('Deletes a city', async () => {
 	// Click on last city delete button
 	document.querySelectorAll('.deleteCityBtn')[expectedNbCityAfterAdd - 1].dispatchEvent(event);
 
-	// Wait 500ms for the new city to be deleted
-	await new Promise((r) => setTimeout(r, 500));
+	// Wait 100ms for the new city to be deleted
+	await new Promise((r) => setTimeout(r, 100));
 
 	const expectedNbCityAfterDelete = initialDummyWeatherData.length + 1;
 	expect(document.querySelectorAll('.cityElement').length).toBe(expectedNbCityAfterDelete);
