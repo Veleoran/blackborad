@@ -39,7 +39,7 @@ function createCity(name, population, countryId) {
 // This function answers the following question: Who are the leaders of this country?
 function displayCountryLeaders(countryName) {
 	Country.findOne({ name: countryName })
-		.then((data) => {
+		.then(data => {
 			console.log('LEADERS =>', data.leaders);
 		});
 }
@@ -49,7 +49,7 @@ function displayCountryLeaders(countryName) {
 function displayCountryFromCityName(cityName) {
 	City.findOne({ name: cityName })
 		.populate('country')
-		.then((data) => {
+		.then(data => {
 			console.log('COUNTRY =>', data.country);
 		});
 }

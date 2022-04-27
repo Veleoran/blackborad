@@ -1,7 +1,7 @@
 const Emission = require('./models/emissions');
 const Song = require('./models/songs');
 
-it('Checks emissions schema & model', () => {
+it('Emissions schema & model', () => {
 	expect(Emission).toBeDefined();
 
 	const newEmission = new Emission({
@@ -18,7 +18,7 @@ it('Checks emissions schema & model', () => {
 	expect(newEmission).toHaveProperty('discontinued', true);
 });
 
-it('Checks songs schema & model', () => {
+it('Songs schema & model', () => {
 	expect(Song).toBeDefined();
 
 	const creationDate = new Date();

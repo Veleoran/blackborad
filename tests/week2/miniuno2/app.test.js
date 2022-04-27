@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Play = require('./models/plays');
 const playUno = require('./app');
 
@@ -6,7 +7,7 @@ beforeAll(() => {
 	jest.spyOn(Play.prototype, 'save').mockResolvedValue({});
 });
 
-it('Checks plays schema & model', () => {
+it('Plays schema & model', () => {
 	expect(Play).toBeDefined();
 
 	const newPlay = new Play({
@@ -19,12 +20,14 @@ it('Checks plays schema & model', () => {
 	expect(newPlay).toHaveProperty('number', 2);
 });
 
-it('Plays uno', () => {
+it('Function playUno', () => {
 	const cards = [
 		{ color: 'blue', number: 5 },
 		{ color: 'red', number: 5 },
+		{ color: 'blue', number: 7 },
 		{ color: 'blue', number: 1 },
 		{ color: 'red', number: 2 },
+		{ color: 'yellow', number: 4 },
 	];
 	const lastPlay = { color: 'green', number: 2 };
 
@@ -34,6 +37,7 @@ it('Plays uno', () => {
 		{ color: 'red', number: 2 },
 		{ color: 'red', number: 5 },
 		{ color: 'blue', number: 5 },
+		{ color: 'blue', number: 7 },
 		{ color: 'blue', number: 1 },
 	];
 
@@ -43,4 +47,8 @@ it('Plays uno', () => {
 		expect(_play.save.mock.instances[i]).toHaveProperty('color', playedCards[i].color);
 		expect(_play.save.mock.instances[i]).toHaveProperty('number', playedCards[i].number);
 	}
+});
+
+afterAll(() => {
+	mongoose.connection.close();
 });
