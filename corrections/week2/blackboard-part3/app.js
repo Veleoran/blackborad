@@ -98,7 +98,7 @@ function displayOrderArticles(orderId) {
 }
 
 function displayUserOrders(userId) {
-	Order.find({ user: userId }).then((data) => {
+	Order.find({ user: userId }).then(data => {
 		console.log('ORDERS =>', data);
 	})
 }
