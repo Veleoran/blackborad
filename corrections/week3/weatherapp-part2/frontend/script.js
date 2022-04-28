@@ -1,8 +1,8 @@
 
 
 function updateDeleteCityEventListener() {
-	for (let i = 0; i < document.querySelectorAll('.deleteCityBtn').length; i++) {
-		document.querySelectorAll('.deleteCityBtn')[i].addEventListener('click', function () {
+	for (let i = 0; i < document.querySelectorAll('.deleteCity').length; i++) {
+		document.querySelectorAll('.deleteCity')[i].addEventListener('click', function () {
 			fetch(`http://localhost:3000/weather/${this.id}`, { method: 'DELETE' })
 				.then(response => response.json())
 				.then(data => {
@@ -20,12 +20,12 @@ fetch('http://localhost:3000/weather')
 		if (data.weather) {
 			for (let i = 0; i < data.weather.length; i++) {
 				document.querySelector('#cityList').innerHTML += `
-					<li class="cityElement">
-					  <p class="weatherCityName">INITIAL : ${data.weather[i].cityName}</p>
-						<p class="weatherDescription">${data.weather[i].description}</p>
-						<p class="weatherTempMin">${data.weather[i].tempMin}°C</p>
-						<p class="weatherTempMax">${data.weather[i].tempMax}°C</p/>
-						<button class="deleteCityBtn" id="${data.weather[i].cityName}">X</button>
+					<li class="city">
+					  <p class="name">${data.weather[i].cityName}</p>
+						<p class="description">${data.weather[i].description}</p>
+						<p class="tempMin">${data.weather[i].tempMin}°C</p>
+						<p class="tempMax">${data.weather[i].tempMax}°C</p/>
+						<button class="deleteCity" id="${data.weather[i].cityName}">X</button>
 					</li>
 				`;
 			}
@@ -33,7 +33,7 @@ fetch('http://localhost:3000/weather')
 		}
 	});
 
-document.querySelector('#addCityBtn').addEventListener('click', () => {
+document.querySelector('#addCity').addEventListener('click', () => {
 	const cityName = document.querySelector('#cityNameInput').value;
 
 	fetch('http://localhost:3000/weather', {
@@ -45,15 +45,16 @@ document.querySelector('#addCityBtn').addEventListener('click', () => {
 		.then(data => {
 			if (data.result) {
 				document.querySelector('#cityList').innerHTML += `
-					<li class="cityElement">
-						<p class="weatherCityName">${data.weather.cityName}</p>
-						<p class="weatherDescription">${data.weather.description}</p>
-						<p class="weatherTempMin">${data.weather.tempMin}°C</p>
-						<p class="weatherTempMax">${data.weather.tempMax}°C</p/>
-						<button class="deleteCityBtn" id="${data.weather.cityName}">X</button>
+					<li class="city">
+						<p class="name">${data.weather.cityName}</p>
+						<p class="description">${data.weather.description}</p>
+						<p class="tempMin">${data.weather.tempMin}°C</p>
+						<p class="tempMax">${data.weather.tempMax}°C</p/>
+						<button class="deleteCity" id="${data.weather.cityName}">X</button>
 					</li>
 				`;
 				updateDeleteCityEventListener();
+				document.querySelector('#cityNameInput').value = '';
 			}
 		});
 });

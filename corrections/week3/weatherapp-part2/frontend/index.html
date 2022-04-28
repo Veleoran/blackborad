@@ -9,11 +9,19 @@
 	<h1>WeatherApp</h1>
 	<div>
 		<input id="cityNameInput" type="text" name="cityName" placeholder="Add new city" />
-		<button id="addCityBtn">Add</button>
+		<button id="addCity">Add</button>
 	</div>
 	<div>
 		<h2>City list</h2>
-		<ul id="cityList"></ul>
+		<ul id="cityList">
+			<li class="city">
+				<p class="name">Fake city</p>
+				<p class="description">Fake description</p>
+				<p class="tempMin">-15°C</p>
+				<p class="tempMax">42°C</p>
+				<button class="deleteCity" id="Fake city">X</button>
+			</li>
+		</ul>
 	</div>
 	<script src="script.js"></script>
 </body>
