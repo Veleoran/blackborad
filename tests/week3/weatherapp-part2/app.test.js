@@ -66,7 +66,7 @@ it('GET /weather', async () => {
 	expect(res.statusCode).toBe(200);
 	expect(res.body.weather).toEqual(expect.arrayContaining([
 		expect.objectContaining({ cityName: newCity, description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }),
-		expect.objectContaining({ cityName: newCity2, description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }), ,
+		expect.objectContaining({ cityName: newCity2, description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }),
 	]));
 });
 

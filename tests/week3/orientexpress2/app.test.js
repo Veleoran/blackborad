@@ -23,7 +23,7 @@ it('POST /trips', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.allTrips).toEqual(expect.arrayContaining([
-		expect.objectContaining({ ...newTrip, _id: expect.any(String) })
+		expect.objectContaining({ ...newTrip, _id: expect.any(String) }),
 	]));
 });
 
@@ -55,7 +55,7 @@ it('DELETE /trips', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.allTrips).toEqual(expect.arrayContaining([
-		expect.objectContaining({ ...newTrip, _id: expect.any(String) })
+		expect.objectContaining({ ...newTrip, _id: expect.any(String) }),
 	]));
 });
 
