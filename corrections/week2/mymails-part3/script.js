@@ -1,6 +1,6 @@
 for (let i = 0; i < document.querySelectorAll('.delete').length; i++) {
   document.querySelectorAll('.delete')[i].addEventListener('click',
-    function() {
+    function () {
       this.parentNode.remove();
       const messagesCount = document.querySelectorAll('p').length;
       document.querySelector('#count').textContent = messagesCount;
@@ -8,11 +8,10 @@ for (let i = 0; i < document.querySelectorAll('.delete').length; i++) {
   )
 }
 
-document.querySelector('#btn-add').addEventListener('click',
-  function () {
-    const message = document.getElementById('add-message').value;
+document.querySelector('#btn-add').addEventListener('click', function () {
+  const message = document.getElementById('add-message').value;
 
-    document.querySelector('#msg-container').innerHTML += ` 
+  document.querySelector('#msg-container').innerHTML += ` 
       <div class="row new-row">
         <img class="avatar" src="images/avatar-1.jpg" />
         <div class="text-container">
@@ -22,39 +21,37 @@ document.querySelector('#btn-add').addEventListener('click',
         <span class="delete">✖</span>
       </div>
     `;
-    document.querySelector('#add-message').value = '';
+  document.querySelector('#add-message').value = '';
 
-    const messagesCount = document.querySelectorAll('p').length;
-    document.querySelector('#count').textContent = messagesCount;
+  const messagesCount = document.querySelectorAll('p').length;
+  document.querySelector('#count').textContent = messagesCount;
 
-    for (let i = 0; i < document.querySelectorAll('.delete').length; i++) {
-      document.querySelectorAll('.delete')[i].addEventListener('click',
-        function() {
-          this.parentNode.remove();
-          const messagesCount = document.querySelectorAll('p').length;
-          document.querySelector('#count').textContent = messagesCount;
-        }
-      )
+  for (let i = 0; i < document.querySelectorAll('.delete').length; i++) {
+    document.querySelectorAll('.delete')[i].addEventListener('click', function () {
+      this.parentNode.remove();
+      const messagesCount = document.querySelectorAll('p').length;
+      document.querySelector('#count').textContent = messagesCount;
     }
+    )
   }
+}
 )
 
-document.querySelector('#btn-search').addEventListener('click',
-  function () {
-    const textToCompare = document.querySelector('#search-message').value.toLowerCase();
+document.querySelector('#btn-search').addEventListener('click', function () {
+  const textToCompare = document.querySelector('#search-message').value.toLowerCase();
 
-    for (let i = 0; i < document.querySelectorAll('h6').length; i++) {
-      if (document.querySelectorAll('h6')[i].textContent.toLowerCase().includes(textToCompare) === false) {
-        const textToShow = document.querySelectorAll('h6')[i].parentNode.parentNode;
-        textToShow.style.display = 'none';
-      } else {
-        const textToHide = document.querySelectorAll('h6')[i].parentNode.parentNode;
-        textToHide.style.display = 'flex';
-      }
+  for (let i = 0; i < document.querySelectorAll('h6').length; i++) {
+    if (document.querySelectorAll('h6')[i].textContent.toLowerCase().includes(textToCompare) === false) {
+      const textToShow = document.querySelectorAll('h6')[i].parentNode.parentNode;
+      textToShow.style.display = 'none';
+    } else {
+      const textToHide = document.querySelectorAll('h6')[i].parentNode.parentNode;
+      textToHide.style.display = 'flex';
     }
-
-    document.querySelector('#search-message').value = '';
   }
+
+  document.querySelector('#search-message').value = '';
+}
 );
 
 let year = new Date().getUTCFullYear();

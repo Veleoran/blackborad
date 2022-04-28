@@ -3,13 +3,12 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const City = require('./models/cities');
 
-const newCity = 'Las Vegas';
-
 beforeEach(async () => {
 	await City.deleteOne({ cityName: newCity });
 });
 
-// Backend
+const newCity = 'Las Vegas';
+
 it('Cities schema & model', () => {
 	expect(City).toBeDefined();
 

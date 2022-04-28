@@ -33,15 +33,14 @@ fetch('http://localhost:3000/weather')
 		}
 	});
 
-document.querySelector('#addCity').addEventListener('click', () => {
+document.querySelector('#addCity').addEventListener('click', function () {
 	const cityName = document.querySelector('#cityNameInput').value;
 
 	fetch('http://localhost:3000/weather', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ cityName }),
-	})
-		.then(response => response.json())
+	}).then(response => response.json())
 		.then(data => {
 			if (data.result) {
 				document.querySelector('#cityList').innerHTML += `
