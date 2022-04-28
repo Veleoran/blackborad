@@ -18,52 +18,51 @@ const script = document.createElement('script');
 script.textContent = js;
 document.body.appendChild(script);
 
+const pokemonNameList = [
+	'arbok', 'arcanine', 'beedrill',
+	'blastoise', 'bulbasaur', 'butterfree',
+	'caterpie', 'charizard', 'charmander',
+	'charmeleon', 'diglett', 'dugtrio',
+	'ekans', 'fearow', 'golduck',
+	'growlithe', 'ivysaur', 'kakuna',
+	'mankey', 'meowth', 'metapod',
+	'nidoran-f', 'nidorina', 'paras',
+	'parasect', 'persian', 'pidgeot',
+	'pidgeotto', 'pidgey', 'pikachu',
+	'poliwag', 'primeape', 'psyduck',
+	'raichu', 'raticate', 'rattata',
+	'sandshrew', 'sandslash', 'spearow',
+	'squirtle', 'venomoth', 'venonat',
+	'venusaur', 'wartortle', 'weedle'
+];
+
 it('Initial pokemon list', async () => {
-	// Wait 1s for the list to be updated
-	await new Promise((r) => setTimeout(r, 1000));
+	// Wait 2s for the list to be updated
+	await new Promise((r) => setTimeout(r, 2000));
 
-	const res = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=15');
-	const pokeData = await res.json();
-
-	const pokeListFromApi = pokeData.results.map(pokemon => pokemon.name.toLowerCase());
-	let pokeListFromDom = [...document.querySelectorAll('.name')].map(li => li.textContent.toLowerCase());
-
-	if (pokeListFromDom[0] === 'clefairy') {
-		pokeListFromDom.splice(0, 1);
+	let pokemonListFromDom = [...document.querySelectorAll('.name')].map(li => li.textContent.toLowerCase());
+	if (pokemonListFromDom[0] === 'clefairy') {
+		pokemonListFromDom.splice(0, 1);
 	}
 
-	expect(pokeListFromDom.sort()).toEqual(pokeListFromApi.sort());
+	expect(pokemonListFromDom.length).toEqual(15);
+	expect(pokemonNameList).toEqual(expect.arrayContaining(pokemonListFromDom));
 });
 
-// it('Clicks next button', async () => {
-// 	const event = document.createEvent('MouseEvents');
-// 	event.initMouseEvent('click');
-// 	document.querySelector('#next').dispatchEvent(event);
-// 	document.querySelector('#next').dispatchEvent(event);
+it('Clicks next button (2 times)', async () => {
+	const event = document.createEvent('MouseEvents');
+	event.initMouseEvent('click');
+	document.querySelector('#next').dispatchEvent(event);
+	document.querySelector('#next').dispatchEvent(event);
 
-// 	const res = await fetch('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20');
-// 	const pokeData = await res.json();
+	// Wait 2s for the list to be updated
+	await new Promise((r) => setTimeout(r, 2000));
 
-// 	const pokeListFromApi = pokeData.results.map(pokemon => pokemon.name);
-// 	const pokeListFromDom = [...document.querySelectorAll('li')].map(li => li.textContent);
+	let pokemonListFromDom = [...document.querySelectorAll('.name')].map(li => li.textContent.toLowerCase());
+	if (pokemonListFromDom[0] === 'clefairy') {
+		pokemonListFromDom.splice(0, 1);
+	}
 
-// 	expect(pokeListFromDom).toEqual(pokeListFromApi);
-// });
-
-// it('Clicks next and prev buttons', async () => {
-// 	const event = document.createEvent('MouseEvents');
-// 	event.initMouseEvent('click');
-// 	document.querySelector('#next').dispatchEvent(event);
-// 	document.querySelector('#next').dispatchEvent(event);
-// 	document.querySelector('#next').dispatchEvent(event);
-// 	document.querySelector('#next').dispatchEvent(event);
-// 	document.querySelector('#prev').dispatchEvent(event);
-
-// 	const res = await fetch('https://pokeapi.co/api/v2/pokemon?offset=80&limit=20');
-// 	const pokeData = await res.json();
-
-// 	const pokeListFromApi = pokeData.results.map(pokemon => pokemon.name);
-// 	const pokeListFromDom = [...document.querySelectorAll('li')].map(li => li.textContent);
-
-// 	expect(pokeListFromDom).toEqual(pokeListFromApi);
-// });
+	expect(pokemonListFromDom.length).toEqual(45);
+	expect(pokemonListFromDom.sort()).toEqual(pokemonListFromDom);
+});
