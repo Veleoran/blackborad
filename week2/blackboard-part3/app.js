@@ -21,7 +21,7 @@ function displayArticleByName(articleName) {
 }
 
 function displayArticleByID(articleId) {
-	Article.finArticleyId(articleId).then(data => {
+	Article.findById(articleId).then(data => {
 		console.log('ARTICLE =>', data);
 	});
 }
@@ -89,9 +89,9 @@ function deleteOrder(orderId) {
 ** Query population
 */
 
-function displayOrderArticles(orderId) {}
+function displayOrderArticles(orderId) { }
 
-function displayUserOrders(userId) {}
+function displayUserOrders(userId) { }
 
 
 // Do not edit/remove code under this line

@@ -17,7 +17,7 @@ function displayArticleByName(articleName) {
 }
 
 function displayArticleByID(articleId) {
-	Article.finArticleyId(articleId).then(data => {
+	Article.findById(articleId).then(data => {
 		console.log('ARTICLE =>', data);
 	});
 }
@@ -45,20 +45,20 @@ function resetStocks() {
 ** Users
 */
 
-function displayAllUsers() {}
+function displayAllUsers() { }
 
-function deleteUser(userId) {}
+function deleteUser(userId) { }
 
 
 /*
 ** Orders
 */
 
-function displayAllOrders() {}
+function displayAllOrders() { }
 
-function updateOrderPaymentStatus(orderId, isPaid) {} 
+function updateOrderPaymentStatus(orderId, isPaid) { }
 
-function deleteOrder(orderId) {}
+function deleteOrder(orderId) { }
 
 
 // Do not edit/remove code under this line
