@@ -75,4 +75,3 @@ it('Finds city country by city name (with populate)', () => {
 afterAll(() => {
 	mongoose.connection.close();
 });
-

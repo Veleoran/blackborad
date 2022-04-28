@@ -37,7 +37,7 @@ it('Add message button + counter update', () => {
   expect(documentJS.querySelector('#count').textContent).toContain(String(nbMessageBeforeAdd + 1));
 });
 
-it('Search message button + retrieve messsage + search message', () => {
+it('Search message', () => {
   documentJS.querySelector('#search-message').value = 'Alexandra';
   const textToCompare = documentJS.querySelector('#search-message').value.toLowerCase();
 
@@ -51,7 +51,7 @@ it('Search message button + retrieve messsage + search message', () => {
       expect(textToShow.style.display).toBe('none');
     } else {
       const textToHide = documentJS.querySelectorAll('.row')[i];
-      expect(textToHide.style.display).toBe('flex');
+      expect(textToHide.style.display).not.toBe('none');
     }
   }
 });
