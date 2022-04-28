@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Country = require('./models/countries');
 const City = require('./models/cities');
-const { createCountry, createCity, displayCountryLeaders, displayCountryFromCityName } = require('./app');
+const { createCountry, createCity, displayCountryPopulation, displayCountryFromCityName } = require('./app');
 
 beforeAll(() => {
 	// TODO Antoine: Mock real return values
@@ -12,48 +12,51 @@ beforeAll(() => {
 });
 
 const countryName = 'France';
+const countryFlag = 'france.png';
 const countryCurrency = 'EUR';
-const countryLeaders = [
-	{ firstName: 'Mr', lastName: 'President', electionDate: new Date('2010-01-01') },
-	{ firstName: 'Ms', lastName: 'President', electionDate: new Date('2000-01-01') },
+const countryPopulation = [
+	{ populationNbr: 63300000, year: new Date('2019-01-24') },
+	{ populationNbr: 65600000, year: new Date('2021-01-15') },
 ];
 const cityName = 'Paris';
-const cityPopulation = 2165423;
+const cityCurrentPopulation = 2165423;
 
 it('Creates country', () => {
-	createCountry(countryName, countryCurrency, countryLeaders);
+	createCountry(countryName, countryFlag, countryCurrency, countryPopulation);
 
 	const _country = new Country();
 	const lastInstanceIndex = _country.save.mock.instances.length - 1;
 	expect(_country.save).toHaveBeenCalled();
 	expect(_country.save.mock.instances[lastInstanceIndex]).toHaveProperty('name', countryName);
+	expect(_country.save.mock.instances[lastInstanceIndex]).toHaveProperty('flagImg', countryFlag);
 	expect(_country.save.mock.instances[lastInstanceIndex]).toHaveProperty('currency', countryCurrency);
-	expect(_country.save.mock.instances[lastInstanceIndex]).toHaveProperty('leaders')
-	expect(_country.save.mock.instances[lastInstanceIndex].leaders).toEqual(expect.arrayContaining(
-		[expect.objectContaining(countryLeaders[0])],
-		[expect.objectContaining(countryLeaders[1])],
+	expect(_country.save.mock.instances[lastInstanceIndex]).toHaveProperty('population')
+	expect(_country.save.mock.instances[lastInstanceIndex].population).toEqual(expect.arrayContaining(
+		[expect.objectContaining(countryPopulation[0])],
+		[expect.objectContaining(countryPopulation[1])],
 	));;
 });
 
 it('Creates city', () => {
 	const newCountry = new Country({
 		name: countryName,
+		countryFlag: countryFlag,
 		currency: countryCurrency,
-		leaders: countryLeaders,
+		population: countryPopulation,
 	});
 
-	createCity(cityName, cityPopulation, newCountry._id);
+	createCity(cityName, cityCurrentPopulation, newCountry._id);
 
 	const _city = new City();
 	const lastInstanceIndex = _city.save.mock.instances.length - 1;
 	expect(_city.save).toHaveBeenCalled();
 	expect(_city.save.mock.instances[lastInstanceIndex]).toHaveProperty('name', cityName);
-	expect(_city.save.mock.instances[lastInstanceIndex]).toHaveProperty('population', cityPopulation);
+	expect(_city.save.mock.instances[lastInstanceIndex]).toHaveProperty('currentPopulation', cityCurrentPopulation);
 	expect(_city.save.mock.instances[lastInstanceIndex]).toHaveProperty('country', newCountry._id);
 });
 
 it('Finds country by name', () => {
-	displayCountryLeaders(countryName);
+	displayCountryPopulation(countryName);
 
 	expect(Country.findOne).toHaveBeenCalled();
 	expect(Country.findOne.mock.lastCall[0]).toHaveProperty('name', countryName);
@@ -66,9 +69,10 @@ it('Finds city country by city name (with populate)', () => {
 	expect(City.findOne).toHaveBeenCalled();
 	expect(City.findOne.mock.lastCall[0]).toHaveProperty('name', cityName);
 	expect(City.findOne.mock.results[lastInstanceIndex].value.populate).toHaveBeenCalled();
-	expect(City.findById.mock.results[lastInstanceIndex].value.populate.mock.lastCall[0]).toBe('country');
+	expect(City.findOne.mock.results[lastInstanceIndex].value.populate.mock.lastCall[0]).toBe('country');
 });
 
 afterAll(() => {
 	mongoose.connection.close();
 });
+

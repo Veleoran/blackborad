@@ -2,12 +2,13 @@ const Country = require('./models/countries');
 const City = require('./models/cities');
 
 
-// Create country with name, currency and leaders
-function createCountry(name, currency, leaders) {
+// Create country with name, flag name, currency and population
+function createCountry(name, flagImg, currency, population) {
 	const newCountry = new Country({
 		name: name,
+		flagImg: flagImg,
 		currency: currency,
-		leaders: leaders,
+		population: population,
 	});
 
 	newCountry.save().then(() => {
@@ -15,16 +16,16 @@ function createCountry(name, currency, leaders) {
 	});
 }
 // Sample call:
-// createCountry('Australia', 'AUD', [
-//  { firstName: 'Scott', lastName: 'Morrison', electionDate: new Date('2018-08-24') },
+// createCountry('Australia', 'autralia.png', 'AUD', [
+//  { populationNbr: 25400000, year: new Date('2015-08-24') },
 // ]);
 
 
 // Create city with name, population and country foreign key
-function createCity(name, population, countryId) {
+function createCity(name, currentPopulation, countryId) {
 	const newCity = new City({
 		name: name,
-		population: population,
+		currentPopulation: currentPopulation,
 		country: countryId,
 	});
 
@@ -36,11 +37,11 @@ function createCity(name, population, countryId) {
 // createCity('Sydney', 5312163, 'COUNTRY_ID_TO_REPLACE');
 
 
-// This function answers the following question: Who are the leaders of this country?
-function displayCountryLeaders(countryName) {
+// This function answers the following question: What is and were the population of this country?
+function displayCountryPopulation(countryName) {
 	Country.findOne({ name: countryName })
 		.then(data => {
-			console.log('LEADERS =>', data.leaders);
+			console.log('POPULATION =>', data.population);
 		});
 }
 
@@ -55,4 +56,4 @@ function displayCountryFromCityName(cityName) {
 }
 
 
-module.exports = { createCountry, createCity, displayCountryLeaders, displayCountryFromCityName }; // Do not edit/remove this line
+module.exports = { createCountry, createCity, displayCountryPopulation, displayCountryFromCityName }; // Do not edit/remove this line

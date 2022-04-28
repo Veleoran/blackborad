@@ -6,6 +6,7 @@ it('Countries schema & model', () => {
 
 	const newCountry = new Country({
 		name: 'Australia',
+		flagImg: 'australia.png',
 		currency: 'AUD',
 		population: [
 			{ populationNbr: 25400000, year: new Date('2015-08-24') },
@@ -15,6 +16,7 @@ it('Countries schema & model', () => {
 
 	expect(newCountry).toHaveProperty('_id');
 	expect(newCountry).toHaveProperty('name', 'Australia');
+	expect(newCountry).toHaveProperty('flagImg', 'australia.png');
 	expect(newCountry).toHaveProperty('currency', 'AUD');
 	expect(newCountry).toHaveProperty('population');
 	expect(newCountry.population).toEqual(expect.arrayContaining(
@@ -28,6 +30,7 @@ it('Cities schema & model', () => {
 
 	const newCountry = new Country({
 		name: 'Australia',
+		flagImg: 'australia.png',
 		currency: 'AUD',
 		population: [
 			{ populationNbr: 25400000, year: new Date('2015-08-24') },

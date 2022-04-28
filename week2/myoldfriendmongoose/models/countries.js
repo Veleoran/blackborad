@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const leaderSchema = mongoose.Schema({
-	firstName: String,
-	lastName:	String,
-	electionDate: Date,
+const populationSchema = mongoose.Schema({
+	populationNbr: Number,
+	year: Date,
 });
 
 const countrySchema = mongoose.Schema({
 	name: String,
+	flagImg: String,
 	currency: String,
-	leaders: [leaderSchema],
+	population: [populationSchema],
 });
 
 const Country = mongoose.model('countries', countrySchema);
