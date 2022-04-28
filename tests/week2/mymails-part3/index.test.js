@@ -15,38 +15,35 @@ script.textContent = js;
 documentJS.body.appendChild(script);
 
 it('Retrieves message in add-message input', () => {
-  const allMessages = documentJS.querySelectorAll('.row').length;
-  documentJS.querySelector('#add-message').value = 'Hello';
-  const element = documentJS.querySelector('#btn-add');
+  const newMessage = 'Hello world!'
+  documentJS.querySelector('#add-message').value = newMessage;
 
   const event = documentJS.createEvent('MouseEvents');
   event.initMouseEvent('click');
-  element.dispatchEvent(event);
+  documentJS.querySelector('#btn-add').dispatchEvent(event);
 
-  expect(documentJS.querySelectorAll('p')[allMessages].textContent).toBe('Hello');
+  const nbMessage = documentJS.querySelectorAll('.row').length;
+  expect(documentJS.querySelectorAll('p')[nbMessage - 1].textContent).toContain(newMessage);
 });
 
-it('Add message button + update counter + clean input', () => {
-  const allMessages = documentJS.querySelectorAll('.row').length;
-  const element = documentJS.querySelector('#btn-add');
+it('Add message button + counter update', () => {
+  const nbMessageBeforeAdd = documentJS.querySelectorAll('.row').length;
 
   const event = documentJS.createEvent('MouseEvents');
   event.initMouseEvent('click');
-  element.dispatchEvent(event);
+  documentJS.querySelector('#btn-add').dispatchEvent(event);
 
-  expect(documentJS.querySelectorAll('.row').length).toBe(allMessages + 1);
-  expect(documentJS.querySelector('#add-message').textContent).toBe('');
-  expect(documentJS.querySelector('#count').textContent).toBe(JSON.stringify(allMessages + 1));
+  expect(documentJS.querySelectorAll('.row').length).toBe(nbMessageBeforeAdd + 1);
+  expect(documentJS.querySelector('#count').textContent).toContain(String(nbMessageBeforeAdd + 1));
 });
 
-it('Search message button + retrieve messsage + search message + clean input', () => {
+it('Search message button + retrieve messsage + search message', () => {
   documentJS.querySelector('#search-message').value = 'Alexandra';
   const textToCompare = documentJS.querySelector('#search-message').value.toLowerCase();
-  const element = documentJS.querySelector('#btn-search');
 
   const event = documentJS.createEvent('MouseEvents');
   event.initMouseEvent('click');
-  element.dispatchEvent(event);
+  documentJS.querySelector('#btn-search').dispatchEvent(event);
 
   for (let i = 0; i < documentJS.querySelectorAll('h6').length; i++) {
     if (documentJS.querySelectorAll('h6')[i].textContent.toLowerCase().includes(textToCompare) === false) {
@@ -57,19 +54,16 @@ it('Search message button + retrieve messsage + search message + clean input', (
       expect(textToHide.style.display).toBe('flex');
     }
   }
-
-  documentJS.querySelector('#search-message').value = '';
 });
 
 it('Delete message button + update counter', () => {
-  const elems = documentJS.querySelectorAll('.delete');
-
-  for (let i = 0; i < elems.length; i++) {
-    const event = documentJS.createEvent('MouseEvents');
-    event.initMouseEvent('click');
-    elems[i].dispatchEvent(event);
+  const elements = documentJS.querySelectorAll('.delete');
+  const event = documentJS.createEvent('MouseEvents');
+  event.initMouseEvent('click');
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].dispatchEvent(event);
   }
 
   expect(documentJS.querySelectorAll('.delete').length).toBe(0);
-  expect(documentJS.querySelector('#count').textContent).toBe('0');
+  expect(Number(documentJS.querySelector('#count').textContent)).toBe(0);
 });

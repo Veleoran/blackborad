@@ -8,7 +8,7 @@ let weather = [
 ];
 
 router.post('/weather', (req, res) => {
-  if (!weather.some(element => element.cityName === req.body.cityName)) {
+  if (!weather.some(e => e.cityName === req.body.cityName)) {
     const newCity = {
       cityName: req.body.cityName,
       description: req.body.description,
@@ -28,7 +28,7 @@ router.get('/weather', (req, res) => {
 });
 
 router.get('/weather/:cityName', (req, res) => {
-  const searchedWeather = weather.find(element => element.cityName === req.params.cityName);
+  const searchedWeather = weather.find(e => e.cityName === req.params.cityName);
   if (searchedWeather) {
     res.json({ result: true, weather: searchedWeather });
   } else {
@@ -37,9 +37,9 @@ router.get('/weather/:cityName', (req, res) => {
 });
 
 router.delete('/weather/:cityName', (req, res) => {
-  const searchedWeather = weather.find(element => element.cityName === req.params.cityName);
+  const searchedWeather = weather.find(e => e.cityName === req.params.cityName);
   if (searchedWeather) {
-    weather = weather.filter(element => element.cityName !== req.params.cityName);
+    weather = weather.filter(e => e.cityName !== req.params.cityName);
     res.json({ result: true, weather });
   } else {
     res.json({ result: false, error: 'City not found' });

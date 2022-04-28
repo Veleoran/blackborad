@@ -40,7 +40,7 @@ it('Initial pokemon list', async () => {
 	// Wait 2s for the list to be updated
 	await new Promise((r) => setTimeout(r, 2000));
 
-	let pokemonListFromDom = [...document.querySelectorAll('.name')].map(li => li.textContent.toLowerCase());
+	let pokemonListFromDom = [...document.querySelectorAll('.name')].map(e => e.textContent.toLowerCase());
 	if (pokemonListFromDom[0] === 'clefairy') {
 		pokemonListFromDom.splice(0, 1);
 	}
@@ -58,7 +58,7 @@ it('Clicks next button (2 times)', async () => {
 	// Wait 2s for the list to be updated
 	await new Promise((r) => setTimeout(r, 2000));
 
-	let pokemonListFromDom = [...document.querySelectorAll('.name')].map(li => li.textContent.toLowerCase());
+	let pokemonListFromDom = [...document.querySelectorAll('.name')].map(e => e.textContent.toLowerCase());
 	if (pokemonListFromDom[0] === 'clefairy') {
 		pokemonListFromDom.splice(0, 1);
 	}
