@@ -5,9 +5,11 @@ const { JSDOM } = require('jsdom');
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const js = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf8');
 
-let virtualPage = new JSDOM(html, { runScripts: 'dangerously' });
+// Create virtual DOM
+const virtualPage = new JSDOM(html, { runScripts: 'dangerously' });
 const documentJS = virtualPage.window.document;
 
+// Insert script.js into virtual DOM
 const script = documentJS.createElement('script');
 script.textContent = js;
 documentJS.body.appendChild(script);
@@ -15,8 +17,8 @@ documentJS.body.appendChild(script);
 it('Retrieves message in add-message input', () => {
   const allMessages = documentJS.querySelectorAll('.row').length;
   documentJS.querySelector('#add-message').value = 'Hello';
-
   const element = documentJS.querySelector('#btn-add');
+
   const event = documentJS.createEvent('MouseEvents');
   event.initMouseEvent('click');
   element.dispatchEvent(event);
@@ -40,8 +42,8 @@ it('Add message button + update counter + clean input', () => {
 it('Search message button + retrieve messsage + search message + clean input', () => {
   documentJS.querySelector('#search-message').value = 'Alexandra';
   const textToCompare = documentJS.querySelector('#search-message').value.toLowerCase();
-
   const element = documentJS.querySelector('#btn-search');
+
   const event = documentJS.createEvent('MouseEvents');
   event.initMouseEvent('click');
   element.dispatchEvent(event);
@@ -67,6 +69,7 @@ it('Delete message button + update counter', () => {
     event.initMouseEvent('click');
     elems[i].dispatchEvent(event);
   }
+
   expect(documentJS.querySelectorAll('.delete').length).toBe(0);
   expect(documentJS.querySelector('#count').textContent).toBe('0');
 });

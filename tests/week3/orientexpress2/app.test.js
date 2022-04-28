@@ -1,8 +1,22 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('./app');
+const Trip = require('./models/trips');
 
 const newTrip = { departure: 'Montpellier', arrival: 'Paris' };
+
+it('Trips schema & model', () => {
+	expect(Trip).toBeDefined();
+
+	const newTrip = new Trip({
+		departure: 'City1',
+		arrival: 'City2',
+	});
+
+	expect(newTrip).toHaveProperty('_id');
+	expect(newTrip).toHaveProperty('departure', 'City1');
+	expect(newTrip).toHaveProperty('arrival', 'City2');
+});
 
 it('POST /trips', async () => {
 	const res = await request(app).post('/trips').send(newTrip);
