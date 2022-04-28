@@ -20,18 +20,22 @@ const dummyWeatherDataToAdd = [
 ];
 
 virtualPage.window.fetch = (url, options) => {
-	let res = {};
+	if (!url.includes('localhost:3000') && !url.includes('127.0.0.1:3000')) {
+		return fetch(url, options);
+	}
+
+	let mockedRes = {};
 
 	if (!options && url.endsWith('/weather')) {
-		res = { weather: initialDummyWeatherData };
-	} else if (options && options.method === 'POST') {
-		res = { result: true, weather: dummyWeatherDataToAdd.find(e => e.cityName === JSON.parse(options.body).cityName) };
-	} else if (options && options.method === 'DELETE') {
-		res = { result: true, weather: initialDummyWeatherData };
+		mockedRes = { weather: initialDummyWeatherData };
+	} else if (options && options.method === 'POST' && url.endsWith('/weather')) {
+		mockedRes = { result: true, weather: dummyWeatherDataToAdd.find(e => e.cityName === JSON.parse(options.body).cityName) };
+	} else if (options && options.method === 'DELETE' && url.includes('/weather')) {
+		mockedRes = { result: true, weather: initialDummyWeatherData };
 	}
 
 	return Promise.resolve({
-		json: () => Promise.resolve(res),
+		json: () => Promise.resolve(mockedRes),
 	});
 };
 
