@@ -60,10 +60,7 @@ it('Initial city list', () => {
 it('Adds a new city', async () => {
 	const newCity = 'City3_TEST';;
 	document.querySelector('#cityNameInput').value = newCity;
-
-	const event = document.createEvent('MouseEvents');
-	event.initMouseEvent('click');
-	document.querySelector('#addCity').dispatchEvent(event);
+	document.querySelector('#addCity').click();
 
 	// Wait 100ms for the new city to be added
 	await new Promise((r) => setTimeout(r, 100));
@@ -80,10 +77,7 @@ it('Adds a new city', async () => {
 it('Deletes a city', async () => {
 	const newCity = 'City4_TEST';
 	document.querySelector('#cityNameInput').value = newCity;
-
-	const event = document.createEvent('MouseEvents');
-	event.initMouseEvent('click');
-	document.querySelector('#addCity').dispatchEvent(event);
+	document.querySelector('#addCity').click();
 
 	// Wait 100ms for the new city to be added
 	await new Promise((r) => setTimeout(r, 100));
@@ -98,7 +92,7 @@ it('Deletes a city', async () => {
 
 	// Click on last city delete button (if there is one)
 	expect(document.querySelectorAll('.deleteCity').length).toBe(nbCity);
-	document.querySelectorAll('.deleteCity')[nbCity - 1].dispatchEvent(event);
+	document.querySelectorAll('.deleteCity')[nbCity - 1].click();
 
 	// Wait 100ms for the city to be deleted
 	await new Promise((r) => setTimeout(r, 100));

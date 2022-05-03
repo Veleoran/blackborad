@@ -8,14 +8,14 @@ const newTrip = { departure: 'Montpellier', arrival: 'Paris' };
 it('Trips schema & model', () => {
 	expect(Trip).toBeDefined();
 
-	const newTrip = new Trip({
+	const newFakeTrip = new Trip({
 		departure: 'City1',
 		arrival: 'City2',
 	});
 
-	expect(newTrip).toHaveProperty('_id');
-	expect(newTrip).toHaveProperty('departure', 'City1');
-	expect(newTrip).toHaveProperty('arrival', 'City2');
+	expect(newFakeTrip).toHaveProperty('_id');
+	expect(newFakeTrip).toHaveProperty('departure', 'City1');
+	expect(newFakeTrip).toHaveProperty('arrival', 'City2');
 });
 
 it('POST /trips', async () => {

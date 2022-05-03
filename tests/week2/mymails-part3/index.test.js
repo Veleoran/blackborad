@@ -17,10 +17,7 @@ documentJS.body.appendChild(script);
 it('Retrieves message in add-message input', () => {
   const newMessage = 'Hello world!'
   documentJS.querySelector('#add-message').value = newMessage;
-
-  const event = documentJS.createEvent('MouseEvents');
-  event.initMouseEvent('click');
-  documentJS.querySelector('#btn-add').dispatchEvent(event);
+  documentJS.querySelector('#btn-add').click();
 
   const nbMessage = documentJS.querySelectorAll('.row').length;
   expect(documentJS.querySelectorAll('p')[nbMessage - 1].textContent).toContain(newMessage);
@@ -28,10 +25,7 @@ it('Retrieves message in add-message input', () => {
 
 it('Add message button + counter update', () => {
   const nbMessageBeforeAdd = documentJS.querySelectorAll('.row').length;
-
-  const event = documentJS.createEvent('MouseEvents');
-  event.initMouseEvent('click');
-  documentJS.querySelector('#btn-add').dispatchEvent(event);
+  documentJS.querySelector('#btn-add').click();
 
   expect(documentJS.querySelectorAll('.row').length).toBe(nbMessageBeforeAdd + 1);
   expect(documentJS.querySelector('#count').textContent).toContain(String(nbMessageBeforeAdd + 1));
@@ -40,10 +34,7 @@ it('Add message button + counter update', () => {
 it('Search message', () => {
   documentJS.querySelector('#search-message').value = 'Alexandra';
   const textToCompare = documentJS.querySelector('#search-message').value.toLowerCase();
-
-  const event = documentJS.createEvent('MouseEvents');
-  event.initMouseEvent('click');
-  documentJS.querySelector('#btn-search').dispatchEvent(event);
+  documentJS.querySelector('#btn-search').click();
 
   for (let i = 0; i < documentJS.querySelectorAll('h6').length; i++) {
     if (documentJS.querySelectorAll('h6')[i].textContent.toLowerCase().includes(textToCompare) === false) {
@@ -58,10 +49,8 @@ it('Search message', () => {
 
 it('Delete message button + update counter', () => {
   const elements = documentJS.querySelectorAll('.delete');
-  const event = documentJS.createEvent('MouseEvents');
-  event.initMouseEvent('click');
   for (let i = 0; i < elements.length; i++) {
-    elements[i].dispatchEvent(event);
+    elements[i].click();
   }
 
   expect(documentJS.querySelectorAll('.delete').length).toBe(0);

@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-require('../models/connection');
 const City = require('../models/cities');
 
-const owmApiKey = 'INSERT_YOUR_API_KEY';
+const owmApiKey = 'ce7418650c86eae6629dfcfdda141c14';
 
-router.post('/weather', (req, res) => {
+router.post('/', (req, res) => {
 	// Checks if the city has not already been added
 	City.findOne({ cityName: req.body.cityName }).then(dbData => {
 		if (dbData === null) {
@@ -34,13 +33,13 @@ router.post('/weather', (req, res) => {
 	});
 });
 
-router.get('/weather', (req, res) => {
+router.get('/', (req, res) => {
 	City.find().then(data => {
 		res.json({ weather: data });
 	});
 });
 
-router.get('/weather/:cityName', (req, res) => {
+router.get('/:cityName', (req, res) => {
 	City.findOne({ cityName: req.params.cityName }).then(data => {
 		if (data) {
 			res.json({ result: true, weather: data });
@@ -50,7 +49,7 @@ router.get('/weather/:cityName', (req, res) => {
 	});
 });
 
-router.delete('/weather/:cityName', (req, res) => {
+router.delete('/:cityName', (req, res) => {
   City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
 		if (deletedDoc.deletedCount >= 1) {
 			City.find().then(data => {

@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const { createTodo, completeTodo, deleteTodo } = require('./app');
 const db = require('./database/setup');
 
+const todoName = 'Awesome task';
+const todoPriority = 3;
+
 beforeAll(() => {
 	// TODO Antoine: Mock real return values
 	jest.spyOn(db.prototype, 'save').mockResolvedValue({});
@@ -10,9 +13,6 @@ beforeAll(() => {
 	jest.spyOn(db, 'updateOne').mockResolvedValue({});
 	jest.spyOn(db, 'deleteOne').mockResolvedValue({});
 });
-
-const todoName = 'Awesome task';
-const todoPriority = 3;
 
 it('Creates todo', () => {
 	createTodo(todoName, todoPriority);

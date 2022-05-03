@@ -9,6 +9,9 @@ const {
 	resetStocks,
 } = require('./app');
 
+const articleName = 'Awesome article';
+const articleId = '625efd3ce35bb06b64abe923';
+
 beforeAll(() => {
 	// TODO Antoine: Mock real return values
 	jest.spyOn(db, 'find').mockResolvedValue([]);
@@ -17,9 +20,6 @@ beforeAll(() => {
 	jest.spyOn(db, 'updateOne').mockResolvedValue({});
 	jest.spyOn(db, 'updateMany').mockResolvedValue({});
 });
-
-const articleName = 'Awesome article';
-const articleId = '625efd3ce35bb06b64abe923';
 
 it('Finds all articles', () => {
 	displayAllArticles();

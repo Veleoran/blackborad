@@ -3,27 +3,27 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const City = require('./models/cities');
 
+const newCity = 'Las Vegas';
+
 beforeEach(async () => {
 	await City.deleteOne({ cityName: newCity });
 });
 
-const newCity = 'Las Vegas';
-
 it('Cities schema & model', () => {
 	expect(City).toBeDefined();
 
-	const newCity = new City({
+	const newFakeCity = new City({
 		cityName: 'City1_TEST',
 		description: 'rainy',
 		tempMin: 5.2,
 		tempMax: 25.9,
 	});
 
-	expect(newCity).toHaveProperty('_id');
-	expect(newCity).toHaveProperty('cityName', 'City1_TEST');
-	expect(newCity).toHaveProperty('description', 'rainy');
-	expect(newCity).toHaveProperty('tempMin', 5.2);
-	expect(newCity).toHaveProperty('tempMax', 25.9);
+	expect(newFakeCity).toHaveProperty('_id');
+	expect(newFakeCity).toHaveProperty('cityName', 'City1_TEST');
+	expect(newFakeCity).toHaveProperty('description', 'rainy');
+	expect(newFakeCity).toHaveProperty('tempMin', 5.2);
+	expect(newFakeCity).toHaveProperty('tempMax', 25.9);
 });
 
 it('POST /weather - New city', async () => {

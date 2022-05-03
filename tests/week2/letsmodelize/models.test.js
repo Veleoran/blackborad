@@ -28,7 +28,7 @@ it('Countries schema & model', () => {
 it('Cities schema & model', () => {
 	expect(City).toBeDefined();
 
-	const newCountry = new Country({
+	const newFakeCountry = new Country({
 		name: 'Australia',
 		flagImg: 'australia.png',
 		currency: 'AUD',
@@ -38,14 +38,14 @@ it('Cities schema & model', () => {
 		],
 	});
 
-	const newCity = new City({
+	const newFakeCity = new City({
 		name: 'Sydney',
 		currentPopulation: 5312163,
-		country: newCountry._id,
+		country: newFakeCountry._id,
 	});
 
-	expect(newCity).toHaveProperty('_id');
-	expect(newCity).toHaveProperty('name', 'Sydney');
-	expect(newCity).toHaveProperty('currentPopulation', 5312163);
-	expect(newCity).toHaveProperty('country', newCountry._id);
+	expect(newFakeCity).toHaveProperty('_id');
+	expect(newFakeCity).toHaveProperty('name', 'Sydney');
+	expect(newFakeCity).toHaveProperty('currentPopulation', 5312163);
+	expect(newFakeCity).toHaveProperty('country', newFakeCountry._id);
 });

@@ -10,6 +10,9 @@ const {
 	deleteOrder,
 } = require('./app');
 
+const userId = '625efd3ce35bb06b64abe924';
+const orderId = '625efd3ce35bb06b64abe925';
+
 beforeAll(() => {
 	// TODO Antoine: Mock real return values
 	jest.spyOn(User, 'find').mockResolvedValue([]);
@@ -18,9 +21,6 @@ beforeAll(() => {
 	jest.spyOn(Order, 'updateOne').mockResolvedValue({});
 	jest.spyOn(Order, 'deleteOne').mockResolvedValue({});
 });
-
-const userId = '625efd3ce35bb06b64abe924';
-const orderId = '625efd3ce35bb06b64abe925';
 
 it('Articles schema & model', () => {
 	expect(Article).toBeDefined();

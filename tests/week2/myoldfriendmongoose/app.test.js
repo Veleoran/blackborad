@@ -3,14 +3,6 @@ const Country = require('./models/countries');
 const City = require('./models/cities');
 const { createCountry, createCity, displayCountryPopulation, displayCountryFromCityName } = require('./app');
 
-beforeAll(() => {
-	// TODO Antoine: Mock real return values
-	jest.spyOn(Country.prototype, 'save').mockResolvedValue({});
-	jest.spyOn(City.prototype, 'save').mockResolvedValue({});
-	jest.spyOn(Country, 'findOne').mockResolvedValue({});
-	jest.spyOn(City, 'findOne').mockReturnValue({ populate: jest.fn((field) => Promise.resolve({ field })), then: jest.fn() });
-});
-
 const countryName = 'France';
 const countryFlag = 'france.png';
 const countryCurrency = 'EUR';
@@ -20,6 +12,14 @@ const countryPopulation = [
 ];
 const cityName = 'Paris';
 const cityCurrentPopulation = 2165423;
+
+beforeAll(() => {
+	// TODO Antoine: Mock real return values
+	jest.spyOn(Country.prototype, 'save').mockResolvedValue({});
+	jest.spyOn(City.prototype, 'save').mockResolvedValue({});
+	jest.spyOn(Country, 'findOne').mockResolvedValue({});
+	jest.spyOn(City, 'findOne').mockReturnValue({ populate: jest.fn((field) => Promise.resolve({ field })), then: jest.fn() });
+});
 
 it('Creates country', () => {
 	createCountry(countryName, countryFlag, countryCurrency, countryPopulation);

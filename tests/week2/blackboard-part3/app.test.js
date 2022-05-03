@@ -7,18 +7,18 @@ const {
 	displayUserOrders,
 } = require('./app');
 
-beforeAll(() => {
-	// TODO Antoine: Mock real return values
-	jest.spyOn(Order, 'findById').mockReturnValue({ populate: jest.fn((field) => Promise.resolve({ field })), then: jest.fn() });
-	jest.spyOn(Order, 'find').mockResolvedValue({});
-});
-
 const userId = '625efd3ce35bb06b64abe924';
 const orderId = '625efd3ce35bb06b64abe925';
 const userAddresses = [
 	{ street: 'STREET', city: 'CITY', zipCode: 'ZIPCODE', isFavourite: true },
 	{ street: 'STREET 2', city: 'CITY 2', zipCode: 'ZIPCODE 2', isFavourite: false },			
 ];
+
+beforeAll(() => {
+	// TODO Antoine: Mock real return values
+	jest.spyOn(Order, 'findById').mockReturnValue({ populate: jest.fn((field) => Promise.resolve({ field })), then: jest.fn() });
+	jest.spyOn(Order, 'find').mockResolvedValue({});
+});
 
 it('User schema & model', () => {
 	expect(User).toBeDefined();

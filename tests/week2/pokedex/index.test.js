@@ -50,10 +50,8 @@ it('Initial pokemon list', async () => {
 });
 
 it('Clicks next button (2 times)', async () => {
-	const event = document.createEvent('MouseEvents');
-	event.initMouseEvent('click');
-	document.querySelector('#next').dispatchEvent(event);
-	document.querySelector('#next').dispatchEvent(event);
+	document.querySelector('#next').click();
+	document.querySelector('#next').click();
 
 	// Wait 2s for the list to be updated
 	await new Promise((r) => setTimeout(r, 2000));
