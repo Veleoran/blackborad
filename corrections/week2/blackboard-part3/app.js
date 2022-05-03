@@ -2,6 +2,10 @@ require('./models/connection');
 const Article = require('./models/articles');
 const User = require('./models/users');
 const Order = require('./models/orders');
+const ervy = require('ervy')
+const { bar, pie, bullet, donut, gauge, scatter } = ervy
+const { bg, fg } = require('ervy')
+
 
 
 /*
@@ -11,8 +15,20 @@ const Order = require('./models/orders');
 function displayAllArticles() {
 	Article.find().then(data => {
 		console.log('ARTICLES =>', data);
+		let dataTable = []
+		for (const e of data) {
+			if (e.stock > 5) {
+				dataTable.push({ key: e.name, value: e.stock, style: bg('blue'), height: 30 })
+			} else {
+				dataTable.push({ key: e.name, value: e.stock, style: bg('red'), height: 30 })
+			}
+		}
+		console.log(bullet(dataTable))
 	});
+
 }
+displayAllArticles()
+
 
 function displayArticleByName(articleName) {
 	Article.findOne({ name: articleName }).then(data => {
@@ -21,7 +37,7 @@ function displayArticleByName(articleName) {
 }
 
 function displayArticleByID(articleId) {
-	Article.findById(articleId).then(data => {
+	Article.finArticleyId(articleId).then(data => {
 		console.log('ARTICLE =>', data);
 	});
 }
@@ -85,6 +101,7 @@ function deleteOrder(orderId) {
 }
 
 
+
 /*
 ** Query population
 */
@@ -102,6 +119,17 @@ function displayUserOrders(userId) {
 		console.log('ORDERS =>', data);
 	})
 }
+
+// Prepare data to render chart
+const data = [
+	{ key: 'D', value: 1, style: bg('red') },
+	{ key: 'E', value: 5, style: bg('green') },
+	{ key: 'F', value: 7, style: bg('blue'), padding: 1 },
+	{ key: 'G', value: 0, style: bg('yellow') }
+]
+
+// Then use any chartType you like, for example:
+//console.log(bar(data))
 
 
 // Do not edit/remove code under this line
