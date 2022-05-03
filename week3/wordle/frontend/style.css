@@ -1,0 +1,20 @@
+#wordToGuess {
+	display: flex;
+	gap: 10px;
+}
+
+.correctLetter {
+	color: green;
+}
+
+.won {
+	color: green;
+	font-weight: bold;
+}
+
+.loose {
+	color: red;
+	font-weight: bold;
+}
+
+/* TODO Julie */

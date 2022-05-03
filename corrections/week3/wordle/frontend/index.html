@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Wordle</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<h1>Wordle</h1>
+	<h4>Game ID: <span id="gameId">FAKE_GAME</span></h4>
+
+	<button id="newGame">New game</button>
+
+	<div id="wordToGuess">
+		<p class="correctLetter">W</p>
+		<p class="correctLetter">A</p>
+		<p class="correctLetter">I</p>
+		<p class="correctLetter">T</p>
+		<p class="correctLetter">I</p>
+		<p class="correctLetter">N</p>
+		<p class="correctLetter">G</p>
+	</div>
+
+	<div>
+		<input disabled id="guess1" type="text" value="HOUSING" />
+	</div>
+	<div>
+		<input disabled id="guess2" type="text" value="WORKING" />
+	</div>
+	<div>
+		<input disabled id="guess3" type="text" value="WASHING" />
+	</div>
+	<div>
+		<input disabled id="guess4" type="text" value="WAITING" />
+	</div>
+	<div>
+		<input disabled id="guess5" type="text" />
+	</div>
+	<div>
+		<input disabled id="guess6" type="text" />
+	</div>
+
+	<div id="result">
+		<p class="won">YOU WON! 🤩</p>
+	</div>
+
+	<script src='script.js'></script>
+</body>
+
+</html>

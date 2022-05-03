@@ -7,10 +7,10 @@ const City = require('../models/cities');
 const owmApiKey = 'INSERT_YOUR_API_KEY';
 
 router.post('/weather', (req, res) => {
-	// Checks if the city has not already been added
+	// Check if the city has not already been added
 	City.findOne({ cityName: req.body.cityName }).then(dbData => {
 		if (dbData === null) {
-			// Requests OpenWeatherMap API for weather data
+			// Request OpenWeatherMap API for weather data
 			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=${owmApiKey}&units=metric`)
 				.then(response => response.json())
 				.then(apiData => {
@@ -22,7 +22,7 @@ router.post('/weather', (req, res) => {
 						tempMax: apiData.main.temp_max,
 					});
 
-					// Finally saves in database
+					// Finally save in database
 					newCity.save().then(newDoc => {
 						res.json({ result: true, weather: newDoc });
 					});
