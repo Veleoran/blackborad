@@ -4,7 +4,7 @@ var router = express.Router();
 require('../models/connection');
 const Game = require('../models/games');
 
-const words = ['WAITING'];
+const words = ['HOUSE', 'LAPTOP', 'TELEVISION'];
 
 router.get('/new', (req, res) => {
 	const word = words[Math.floor(Math.random() * words.length)].toUpperCase();
