@@ -12,6 +12,7 @@ beforeEach(async () => {
 	await User.deleteOne({ email: newUser.email });
 });
 
+// Existing /weather routes
 it('POST /weather', async () => {
 	const res = await request(app).post('/weather').send({ cityName: newCity });
 
@@ -74,7 +75,8 @@ it('Users schema & model', () => {
 	expect(newFakeUser).toHaveProperty('password', newUser.password);
 });
 
-it('POST /users/signup - Valid body', async () => {
+// Sign-up
+it('POST /users/signup', async () => {
 	const res = await request(app).post('/users/signup').send(newUser);
 
 	expect(res.statusCode).toBe(200);
@@ -89,7 +91,7 @@ it('POST /users/signup - Invalid body with missing field', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
-	expect(res.body.error).toContain('Missing or empty fields');
+	expect(res.body.error.toLowerCase()).toContain('missing or empty fields');
 });
 
 it('POST /users/signup - Invalid body with empty field', async () => {
@@ -101,9 +103,21 @@ it('POST /users/signup - Invalid body with empty field', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
-	expect(res.body.error).toContain('Missing or empty fields');
+	expect(res.body.error.toLowerCase()).toContain('missing or empty fields');
 });
 
+it('POST /users/signup - Already existing user', async () => {
+	const res = await request(app).post('/users/signup').send(newUser);
+	expect(res.statusCode).toBe(200);
+	expect(res.body.result).toBe(true);
+
+	const res2 = await request(app).post('/users/signup').send(newUser);
+	expect(res2.statusCode).toBe(200);
+	expect(res2.body.result).toBe(false);
+	expect(res2.body.error.toLowerCase()).toContain('user already exists');
+});
+
+// Sign-in
 it('POST /users/signin - Valid body', async () => {
 	const res = await request(app).post('/users/signup').send(newUser);
 	expect(res.statusCode).toBe(200);
@@ -124,7 +138,7 @@ it('POST /users/signin - Invalid body with missing field', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
-	expect(res.body.error).toContain('Missing or empty fields');
+	expect(res.body.error.toLowerCase()).toContain('missing or empty fields');
 });
 
 it('POST /users/signin - Invalid body with empty field', async () => {
@@ -135,7 +149,18 @@ it('POST /users/signin - Invalid body with empty field', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
-	expect(res.body.error).toContain('Missing or empty fields');
+	expect(res.body.error.toLowerCase()).toContain('missing or empty fields');
+});
+
+it('POST /users/signup - Not existing user', async () => {
+	const res = await request(app).post('/users/signin').send({
+		email: newUser.email,
+		password: newUser.password,
+	});
+
+	expect(res.statusCode).toBe(200);
+	expect(res.body.result).toBe(false);
+	expect(res.body.error.toLowerCase()).toContain('user not found');
 });
 
 it('BONUS - checkBody module - Valid body', () => {

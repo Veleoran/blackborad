@@ -21,7 +21,7 @@ it('POST /weather - Duplicate city', async () => {
 	const res2 = await request(app).post('/weather').send(newCity);
 	expect(res2.statusCode).toBe(200);
 	expect(res2.body.result).toBe(false);
-	expect(res2.body.error).toBe('City already saved');
+	expect(res2.body.error.toLowerCase()).toContain('city already saved');
 });
 
 it('GET /weather', async () => {
@@ -52,7 +52,7 @@ it('GET /weather/:cityName - Not existing city', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
-	expect(res.body.error).toBe('City not found');
+	expect(res.body.error.toLowerCase()).toBe('city not found');
 });
 
 it('DELETE /weather/:cityName - Existing city', async () => {
@@ -71,5 +71,5 @@ it('DELETE /weather/:cityName - Not existing city', async () => {
 
 	expect(res.statusCode).toBe(200);
 	expect(res.body.result).toBe(false);
-	expect(res.body.error).toBe('City not found');
+	expect(res.body.error.toLowerCase()).toBe('city not found');
 });

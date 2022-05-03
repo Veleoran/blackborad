@@ -24,7 +24,7 @@ router.post('/signup', (req, res) => {
       });
     } else {
       // User already exists in database
-      res.json({ result: false, error: 'User already registered' });
+      res.json({ result: false, error: 'User already exists' });
     }
   });
 });
@@ -39,7 +39,7 @@ router.post('/signin', (req, res) => {
     if (data) {
       res.json({ result: true });
     } else {
-      res.json({ result: false, error: 'User not registered' });
+      res.json({ result: false, error: 'User not found' });
     }
   });
 });
