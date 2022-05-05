@@ -9,7 +9,7 @@ const owmApiKey = 'ce7418650c86eae6629dfcfdda141c14';
 
 router.post('/', (req, res) => {
 	// Check if the city has not already been added
-	City.findOne({ cityName: req.body.cityName }).then(dbData => {
+	City.findOne({ cityName: { $regex: new RegExp(req.body.cityName, 'i') } }).then(dbData => {
 		if (dbData === null) {
 			// Request OpenWeatherMap API for weather data
 			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=${owmApiKey}&units=metric`)

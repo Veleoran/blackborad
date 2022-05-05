@@ -9,7 +9,7 @@ const owmApiKey = 'INSERT_YOUR_API_KEY';
 
 router.post('/weather', (req, res) => {
 	// Check if the city has not already been added
-	City.findOne({ cityName: req.body.cityName }).then(dbData => {
+	City.findOne({ cityName: { $regex: new RegExp(req.body.cityName, 'i') } }).then(dbData => {
 		if (dbData === null) {
 			// Request OpenWeatherMap API for weather data
 			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=${owmApiKey}&units=metric`)
@@ -52,7 +52,7 @@ router.get('/weather/:cityName', (req, res) => {
 });
 
 router.delete('/weather/:cityName', (req, res) => {
-  City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
+	City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
 		if (deletedDoc.deletedCount >= 1) {
 			City.find().then(data => {
 				res.json({ result: true, weather: data });
