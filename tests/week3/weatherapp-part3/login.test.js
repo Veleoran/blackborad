@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
+const fetch = require('node-fetch');
 
 const html = fs.readFileSync(path.resolve(__dirname, './login.html'), 'utf8');
 const js = fs.readFileSync(path.resolve(__dirname, './login.js'), 'utf8');

@@ -6,6 +6,7 @@ it('Backend deployment', async () => {
 	const res = await fetch(BACKEND_URL + '/year');
 	const data = await res.json();
 
+	expect(res.status).toBe(200);
 	expect(data.year).toBe(new Date().getFullYear());
 });
 
@@ -15,11 +16,14 @@ it('Frontend deployment', async () => {
 	const html = await res.text();
 	const js = await res2.text();
 
+	expect(res.statusCode).toBe(200);
+	expect(res2.statusCode).toBe(200);
+
 	// Create virtual DOM
 	let virtualPage = new JSDOM(html, { runScripts: 'dangerously' });
 	const document = virtualPage.window.document;
 
-	// Mock 
+	// Mock fetch
 	virtualPage.window.fetch = (url, options) => {
 		let mockedRes = {};
 
@@ -37,7 +41,7 @@ it('Frontend deployment', async () => {
 	script.textContent = js;
 	document.body.appendChild(script);
 
-	// Wait 2s for the date to be
+	// Wait 2s for the date to be loaded
 	await new Promise((r) => setTimeout(r, 2000));
 
 	expect(document.querySelector('#year').textContent.toUpperCase()).toContain('FAKE_YEAR_FOR_TEST');

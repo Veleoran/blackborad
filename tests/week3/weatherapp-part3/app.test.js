@@ -177,6 +177,8 @@ it('BONUS - checkBody module - Invalid body', () => {
 	expect(isValid).toBe(false);
 });
 
-afterAll(() => {
+afterAll(async () => {
+	await City.deleteOne({ cityName: newCity });
+	await User.deleteOne({ email: newUser.email });
 	mongoose.connection.close();
 });

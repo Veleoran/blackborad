@@ -109,6 +109,7 @@ it('DELETE /weather/:cityName - Not existing city', async () => {
 	expect(res.body.error.toLowerCase()).toContain('city not found');
 });
 
-afterAll(() => {
-	mongoose.connection.close();
+afterAll(async () => {
+	await City.deleteOne({ cityName: newCity });
+	// mongoose.connection.close();
 });

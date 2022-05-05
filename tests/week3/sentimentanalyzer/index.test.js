@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
+const fetch = require('node-fetch');
 const Sentiment = require('sentiment');
 const sentiment = new Sentiment();
-
-const fetch = require('node-fetch');
 
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 const js = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf8');

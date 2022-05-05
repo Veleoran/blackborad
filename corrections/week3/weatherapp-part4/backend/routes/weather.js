@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-require('../models/connection');
 const fetch = require('node-fetch');
+const geoip = require('geoip-lite');
 const City = require('../models/cities');
 
-const owmApiKey = 'INSERT_YOUR_API_KEY';
+const owmApiKey = 'ce7418650c86eae6629dfcfdda141c14';
 
-router.post('/weather', (req, res) => {
+router.post('/', (req, res) => {
 	// Check if the city has not already been added
 	City.findOne({ cityName: req.body.cityName }).then(dbData => {
 		if (dbData === null) {
@@ -35,13 +35,33 @@ router.post('/weather', (req, res) => {
 	});
 });
 
-router.get('/weather', (req, res) => {
-	City.find().then(data => {
-		res.json({ weather: data });
+router.get('/', (req, res) => {
+	let ip = '185.146.221.142' // La Capsule Paris
+	if (req.headers['x-real-ip']) {
+		ip = req.headers['x-real-ip']; // Real client IP
+	}
+
+	const geo = geoip.lookup(ip);
+	const lat = geo.ll[0];
+	const lon = geo.ll[1];
+
+	City.find().then(dbData => {
+		fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${owmApiKey}&units=metric`)
+			.then(response => response.json())
+			.then(apiData => {
+				const currentPosWeather = {
+					cityName: apiData.name,
+					description: apiData.weather[0].description,
+					tempMin: apiData.main.temp_min,
+					tempMax: apiData.main.temp_max,
+				};
+
+				res.json({ weather: dbData, currentPosWeather });
+			});
 	});
 });
 
-router.get('/weather/:cityName', (req, res) => {
+router.get('/:cityName', (req, res) => {
 	City.findOne({ cityName: req.params.cityName }).then(data => {
 		if (data) {
 			res.json({ result: true, weather: data });
@@ -51,8 +71,8 @@ router.get('/weather/:cityName', (req, res) => {
 	});
 });
 
-router.delete('/weather/:cityName', (req, res) => {
-  City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
+router.delete('/:cityName', (req, res) => {
+	City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
 		if (deletedDoc.deletedCount >= 1) {
 			City.find().then(data => {
 				res.json({ result: true, weather: data });
