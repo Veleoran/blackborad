@@ -1,14 +1,6 @@
 const fetch = require('node-fetch');
 const { JSDOM } = require('jsdom');
-const { BACKEND_URL, FRONTEND_URL } = require('./urls');
-
-it('Backend deployment', async () => {
-	const res = await fetch(BACKEND_URL + '/year');
-	const data = await res.json();
-
-	expect(res.status).toBe(200);
-	expect(data.year).toBe(new Date().getFullYear());
-});
+const { FRONTEND_URL } = require('./urls');
 
 it('Frontend deployment', async () => {
 	const res = await fetch(FRONTEND_URL);
