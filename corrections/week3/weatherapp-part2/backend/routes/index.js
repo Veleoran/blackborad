@@ -42,7 +42,7 @@ router.get('/weather', (req, res) => {
 });
 
 router.get('/weather/:cityName', (req, res) => {
-	City.findOne({ cityName: req.params.cityName }).then(data => {
+	City.findOne({ cityName: { $regex: new RegExp(req.params.cityName, 'i') } }).then(data => {
 		if (data) {
 			res.json({ result: true, weather: data });
 		} else {
@@ -52,7 +52,7 @@ router.get('/weather/:cityName', (req, res) => {
 });
 
 router.delete('/weather/:cityName', (req, res) => {
-	City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
+	City.deleteOne({ cityName: { $regex: new RegExp(req.params.cityName, 'i') } }).then(deletedDoc => {
 		if (deletedDoc.deletedCount >= 1) {
 			City.find().then(data => {
 				res.json({ result: true, weather: data });
