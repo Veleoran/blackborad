@@ -8,8 +8,8 @@ const newCity = 'Las Vegas';
 const newUser = { name: 'Test', email: 'test@lacapsule.academy', password: 'test123' };
 
 beforeEach(async () => {
-	await City.deleteOne({ cityName: newCity });
-	await User.deleteOne({ email: newUser.email });
+	await City.deleteOne({ cityName: new RegExp(newCity, 'i') });
+	await User.deleteOne({ email: new RegExp(newUser.email, 'i') });
 });
 
 // Existing /weather routes
@@ -178,7 +178,7 @@ it('BONUS - checkBody module - Invalid body', () => {
 });
 
 afterAll(async () => {
-	await City.deleteOne({ cityName: newCity });
-	await User.deleteOne({ email: newUser.email });
+	await City.deleteOne({ cityName: new RegExp(newCity, 'i') });
+	await User.deleteOne({ email: new RegExp(newUser.email, 'i') });
 	mongoose.connection.close();
 });

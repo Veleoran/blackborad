@@ -6,7 +6,7 @@ const City = require('./models/cities');
 const newCity = 'Las Vegas';
 
 beforeEach(async () => {
-	await City.deleteOne({ cityName: newCity });
+	await City.deleteOne({ cityName: new RegExp(newCity, 'i') });
 });
 
 it('Cities schema & model', () => {
@@ -60,13 +60,14 @@ it('POST /weather - Duplicate city', async () => {
 
 it('GET /weather', async () => {
 	const newCity2 = 'New York';
-	await City.deleteOne({ cityName: newCity2 });
+	await City.deleteOne({ cityName: new RegExp(newCity2, 'i') });
 
 	await request(app).post('/weather').send({ cityName: newCity });
 	await request(app).post('/weather').send({ cityName: newCity2 });
 	const res = await request(app).get('/weather');
 
 	expect(res.statusCode).toBe(200);
+	console.log(res.body.weather);
 	expect(res.body.weather).toEqual(expect.arrayContaining([
 		expect.objectContaining({ cityName: newCity, main: expect.any(String), description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }),
 		expect.objectContaining({ cityName: newCity2, main: expect.any(String), description: expect.any(String), tempMin: expect.any(Number), tempMax: expect.any(Number) }),
@@ -115,6 +116,6 @@ it('DELETE /weather/:cityName - Not existing city', async () => {
 });
 
 afterAll(async () => {
-	await City.deleteOne({ cityName: newCity });
-	// mongoose.connection.close();
+	await City.deleteOne({ cityName: new RegExp(newCity, 'i') });
+	mongoose.connection.close();
 });
