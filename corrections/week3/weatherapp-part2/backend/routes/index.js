@@ -5,7 +5,7 @@ require('../models/connection');
 const fetch = require('node-fetch');
 const City = require('../models/cities');
 
-const owmApiKey = 'INSERT_YOUR_API_KEY';
+const owmApiKey = 'ce7418650c86eae6629dfcfdda141c14';
 
 router.post('/weather', (req, res) => {
 	// Check if the city has not already been added
@@ -19,6 +19,7 @@ router.post('/weather', (req, res) => {
 					const newCity = new City({
 						cityName: req.body.cityName,
 						description: apiData.weather[0].description,
+						main: apiData.weather[0].main,
 						tempMin: apiData.main.temp_min,
 						tempMax: apiData.main.temp_max,
 					});
