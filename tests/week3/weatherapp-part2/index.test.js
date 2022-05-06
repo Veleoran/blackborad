@@ -12,12 +12,12 @@ const document = virtualPage.window.document;
 
 // Mock fetch
 const initialDummyWeatherData = [
-	{ cityName: 'City1_TEST', description: 'rainy', tempMin: '5.2', tempMax: '25.9' },
-	{ cityName: 'City2_TEST', description: 'sunny', tempMin: '32.32', tempMax: '42.8' },
+	{ cityName: 'City1_TEST', main: 'Rain', description: 'rainy', tempMin: '5.2', tempMax: '25.9' },
+	{ cityName: 'City2_TEST', main: 'Clear', description: 'sunny', tempMin: '32.32', tempMax: '42.8' },
 ];
 const dummyWeatherDataToAdd = [
-	{ cityName: 'City3_TEST', description: 'cloudy', tempMin: '8', tempMax: '20.02' },
-	{ cityName: 'City4_TEST', description: 'rainy', tempMin: '14.23', tempMax: '21.8' },
+	{ cityName: 'City3_TEST', main: 'Clouds', description: 'cloudy', tempMin: '8', tempMax: '20.02' },
+	{ cityName: 'City4_TEST', main: 'Rain', description: 'rainy', tempMin: '14.23', tempMax: '21.8' },
 ];
 
 virtualPage.window.fetch = (url, options) => {

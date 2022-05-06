@@ -6,23 +6,22 @@
 </head>
 
 <body>
-	<h1>WeatherApp</h1>
-	<div>
-		<input id="cityNameInput" type="text" placeholder="Add new city" />
-		<button id="addCity">Add</button>
+	<div id="header">
+		<img id="logo" src="./images/logo.svg"/>
+		<div class="headerDiv">
+			<input id="cityNameInput" type="text" placeholder="Add new city" />
+			<button id="addCity"><img id="glass" src="./images/glass.png"/></button>
+		</div>
+		<div id="info">
+			<span>EN</span>
+			<div class="divider"></div>
+			<span>°C</span>
+		</div>
 	</div>
-	<div>
-		<h2>City list</h2>
-		<ul id="cityList">
-			<li class="city">
-				<p class="name">Fake city</p>
-				<p class="description">Fake description</p>
-				<p class="tempMin">-15°C</p>
-				<p class="tempMax">42°C</p />
-				<button class="deleteCity" id="${data.weather[i].cityName}">X</button>
-			</li>
-		</ul>
+	
+	<div id="cityList">
 	</div>
+		
 	<script src="script.js"></script>
 </body>
 
