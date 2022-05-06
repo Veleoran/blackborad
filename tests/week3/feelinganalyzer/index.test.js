@@ -49,7 +49,7 @@ it('Positive message', async () => {
 
 	const score = sentiment.analyze(message).score;
 	expect(document.querySelector('#score').textContent).toContain(String(score));
-	expect(document.querySelector('#sentiment').src).toContain('positive.png');
+	expect(document.querySelector('#sentiment').src).toContain('happy.png');
 });
 
 it('Negative message', async () => {
@@ -67,7 +67,7 @@ it('Negative message', async () => {
 
 	const score = sentiment.analyze(message).score;
 	expect(document.querySelector('#score').textContent).toContain(String(score));
-	expect(document.querySelector('#sentiment').src).toContain('negative.png');
+	expect(document.querySelector('#sentiment').src).toContain('angry.png');
 });
 
 it('Neutral message', async () => {
@@ -100,5 +100,5 @@ it('Empty input', async () => {
 	await new Promise((r) => setTimeout(r, 100));
 
 	expect(document.querySelector('#score').textContent).toContain(String(0));
-	expect(document.querySelector('#sentiment').src).toContain('neutral.png');
+	expect(document.querySelector('#sentiment').src).toContain('question-mark.png');
 });
