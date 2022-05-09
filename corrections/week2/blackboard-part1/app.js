@@ -9,6 +9,7 @@ function displayAllArticles() {
 // Sample call:
 // displayAllArticles();
 
+
 function displayArticleByName(articleName) {
 	db.findOne({ name: articleName }).then(data => {
 		console.log('ARTICLE =>', data);
@@ -16,6 +17,7 @@ function displayArticleByName(articleName) {
 }
 // Sample call:
 // displayArticleByName('Weebot');
+
 
 function displayArticleByID(articleId) {
 	db.findById(articleId).then(data => {
@@ -25,6 +27,7 @@ function displayArticleByID(articleId) {
 // Sample call:
 // displayArticleByID('625ea9ca38d6a3776994651f');
 
+
 function updateArticlePrice(articleId, newPrice) {
 	db.updateOne({ _id: articleId }, { price: newPrice }).then(() => {
 		console.log(`Price updated for ${articleId}`);
@@ -33,6 +36,7 @@ function updateArticlePrice(articleId, newPrice) {
 // Sample call:
 // updateArticlePrice('625ea9ca38d6a3776994651e', 149);
 
+
 function updateArticleStock(articleId, newStock) {
 	db.updateOne({ _id: articleId }, { stock: newStock }).then(() => {
 		console.log(`Stock updated for ${articleId}`);
@@ -40,6 +44,7 @@ function updateArticleStock(articleId, newStock) {
 }
 // Sample call:
 // updateArticleStock('625ea9ca38d6a3776994651e', 14);
+
 
 function resetStocks() {
 	db.updateMany({}, { stock: 0 }).then(() => {
