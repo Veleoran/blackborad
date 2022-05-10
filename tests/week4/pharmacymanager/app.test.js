@@ -3,7 +3,6 @@ const {
 	getDrugTypeByName,
 	getDrugNamesByGroup
 } = require('./app');
-const drugs = require('./drugs');
 
 it('Get drug description by name - Codeine', () => {
 	const drugDescription = getDrugDescriptionByName('Codeine');

@@ -1,4 +1,4 @@
-const drugs = require('./drugs');
+const drugs = require('./data');
 
 function drugExists(name) {
 	let boolean;

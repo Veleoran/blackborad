@@ -1,4 +1,4 @@
-const drugs = require('./drugs');
+const drugs = require('./data');
 
 function getDrugDescriptionByName(name) {
 	return drugs.find(drug => drug.name === name).description;

@@ -1,0 +1,11 @@
+{
+	"name": "cleanmycode",
+	"version": "1.0.0",
+	"private": true,
+	"devDependencies": {
+		"jest": "^28.0.1"
+	},
+	"dependencies": {
+		"moment": "^2.29.3"
+	}
+}

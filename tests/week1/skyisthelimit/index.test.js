@@ -13,6 +13,7 @@ document.head.innerHTML = `<style>${css}</style>`;
 function getSelector(selector) {
   const cssRules = document.styleSheets.item(0).cssRules;
   const result = { isExist: false, style: null };
+
   for (let i = 0; i < cssRules.length; i++) {
     if (cssRules[i].selectorText == selector) {
       result.isExist = true;
@@ -24,10 +25,11 @@ function getSelector(selector) {
 
 it('Header composition', () => {
   expect(document.querySelector('#header')).toBeTruthy();
+
   const elements = document.querySelector('#header').children;
-  console.log(getSelector('#header'))
   const elementsArray = [];
   let imageSrc = '';
+
   for (const e of elements) {
     elementsArray.push(e.tagName);
 
@@ -35,6 +37,7 @@ it('Header composition', () => {
       imageSrc = e.src;
     }
   }
+
   expect(getSelector('#header').style).toEqual(expect.objectContaining({ 'background-image': "url('../assets/background.jpg')" }));
   expect(imageSrc).toBe('./assets/logo.png');
   expect(elementsArray.includes('IMG')).toBe(true);
@@ -42,10 +45,12 @@ it('Header composition', () => {
 
 it('Container composition', () => {
   expect(document.querySelector('#container')).toBeTruthy();
+
   const elements = document.querySelector('#container').children;
   const row = document.querySelector('.row').children;
   const containerElements = [];
   const rowElements = [];
+
   for (const e of elements) {
     if (e.className === 'row') {
       containerElements.push(e);
@@ -54,6 +59,7 @@ it('Container composition', () => {
   for (const e of row) {
     rowElements.push(e.tagName);
   }
+
   expect(rowElements.includes('IMG')).toBe(true);
   expect(rowElements.includes('DIV')).toBe(true);
   expect(containerElements.length).toBe(3);
