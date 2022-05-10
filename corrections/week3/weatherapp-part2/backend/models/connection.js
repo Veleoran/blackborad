@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb+srv://juliebrck:admin@cluster0.lbibn.mongodb.net/lacapsule';
+const connectionString = 'mongodb+srv://.../weatherapp';
 
 mongoose.connect(connectionString, { connectTimeoutMS: 2000 })
   .catch(error => console.error(error))
