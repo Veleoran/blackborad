@@ -26,7 +26,7 @@ it('Header composition', () => {
   expect(document.querySelector('#header')).toBeTruthy();
   const elements = document.querySelector('#header').children;
   console.log(getSelector('#header'))
-  let elementsArray = [];
+  const elementsArray = [];
   let imageSrc = '';
   for (const e of elements) {
     elementsArray.push(e.tagName);
@@ -44,8 +44,8 @@ it('Container composition', () => {
   expect(document.querySelector('#container')).toBeTruthy();
   const elements = document.querySelector('#container').children;
   const row = document.querySelector('.row').children;
-  let containerElements = [];
-  let rowElements = [];
+  const containerElements = [];
+  const rowElements = [];
   for (const e of elements) {
     if (e.className === 'row') {
       containerElements.push(e);

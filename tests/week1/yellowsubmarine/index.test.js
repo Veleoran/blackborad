@@ -26,7 +26,7 @@ function getSelector(selector) {
 it('Header contains image', () => {
   expect(document.querySelector('#header')).toBeTruthy();
   const elements = document.querySelector('#header').children;
-  let elementsArray = [];
+  const elementsArray = [];
   let imageSrc = '';
   for (const e of elements) {
     elementsArray.push(e.tagName);
@@ -43,7 +43,7 @@ it('Header contains image', () => {
 it('Number of singer_container and children', () => {
   expect(document.querySelectorAll('.singer_container').length).toBe(4);
   const elements = document.querySelector('.singer_container').children;
-  let elementsArray = [];
+  const elementsArray = [];
   for (const e of elements) {
     elementsArray.push(e.tagName);
   }

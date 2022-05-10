@@ -34,7 +34,7 @@ router.get('/guess/:gameId/:word', (req, res) => {
 			return;
 		}
 
-		let guessResult = [];
+		const guessResult = [];
 		for (let i = 0; i < guess.length; i++) {
 			guessResult.push(guess[i] === data.word[i] ? data.word[i] : null);
 		}

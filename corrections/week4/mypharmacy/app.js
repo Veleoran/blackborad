@@ -4,11 +4,9 @@ function getDrugDescriptionByName(name) {
 	return drugs.find(drug => drug.name === name).description;
 }
 
-
 function getDrugTypeByName(name) {
 	return drugs.find(drug => drug.name === name).type;
 }
-
 
 function getDrugNamesByGroup(groupName) {
 	const drugsByGroup = drugs.filter(drug => drug.groups.includes(groupName));

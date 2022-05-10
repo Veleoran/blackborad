@@ -35,7 +35,7 @@ it('Counter message', () => {
 
 it('Today date in footer', () => {
   const elements = documentJS.querySelector('#footer').children;
-  let elementsArray = [];
+  const elementsArray = [];
   for (const e of elements) {
     if (e.tagName === 'SPAN') {
       elementsArray.push(e.tagName);

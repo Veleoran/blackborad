@@ -57,7 +57,7 @@ it('Header and footer grid-row and grid-column settings', () => {
 // UI Kit
 it('Typography section children element and style', () => {
   const elements = documentUikit.querySelector('#typography').children;
-  let elementsArray = [];
+  const elementsArray = [];
   for (const e of elements) {
     elementsArray.push(e.tagName);
   }
@@ -71,7 +71,7 @@ it('Typography section children element and style', () => {
 
 it('Images section children element and style', () => {
   const elements = documentUikit.querySelector('#images').children;
-  let elementsArray = [];
+  const elementsArray = [];
   for (const e of elements) {
     if (e.tagName === 'IMG') {
       elementsArray.push(e.tagName);
@@ -87,7 +87,7 @@ it('Images section children element and style', () => {
 
 it('Buttons & inputs section children element and style', () => {
   const elements = documentUikit.querySelector('#buttonsandinputs').children;
-  let elementsArray = [];
+  const elementsArray = [];
   for (const e of elements) {
     elementsArray.push(e.tagName);
   }

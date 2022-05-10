@@ -6,7 +6,7 @@ function playUno(cards, lastPlay) {
 	const gameLength = cards.length;
 
 	for (let i = 0; i < gameLength; i++) {
-		let cardsToPlay = [];
+		const cardsToPlay = [];
 
 		for (let i = 0; i < cards.length; i++) {
 			if (cards[i].color === lastCard.color || cards[i].number === lastCard.number) {

@@ -15,15 +15,15 @@ const { bg, fg } = require('ervy')
 function displayAllArticles() {
 	Article.find().then(data => {
 		console.log('ARTICLES =>', data);
-		let dataTable = []
+		const dataTable = [];
 		for (const e of data) {
 			if (e.stock > 5) {
-				dataTable.push({ key: e.name, value: e.stock, style: bg('blue'), height: 30 })
+				dataTable.push({ key: e.name, value: e.stock, style: bg('blue'), height: 30 });
 			} else {
-				dataTable.push({ key: e.name, value: e.stock, style: bg('red'), height: 30 })
+				dataTable.push({ key: e.name, value: e.stock, style: bg('red'), height: 30 });
 			}
 		}
-		console.log(bullet(dataTable))
+		console.log(bullet(dataTable));
 	});
 
 }
