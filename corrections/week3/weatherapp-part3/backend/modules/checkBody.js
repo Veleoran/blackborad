@@ -1,7 +1,7 @@
-function checkBody(body, fields) {
+function checkBody(body, keys) {
 	let isValid = true;
 
-	fields.forEach(field => {
+	keys.forEach(field => {
 		if (!body[field] || body[field] === '') {
 			isValid = false;
 		}

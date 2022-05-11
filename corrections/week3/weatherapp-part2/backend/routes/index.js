@@ -54,7 +54,7 @@ router.get('/weather/:cityName', (req, res) => {
 
 router.delete('/weather/:cityName', (req, res) => {
 	City.deleteOne({ cityName: { $regex: new RegExp(req.params.cityName, 'i') } }).then(deletedDoc => {
-		if (deletedDoc.deletedCount >= 1) {
+		if (deletedDoc.deletedCount > 0) {
 			City.find().then(data => {
 				res.json({ result: true, weather: data });
 			});
