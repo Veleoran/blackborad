@@ -6,15 +6,18 @@
 </head>
 
 <body>
-	<h1>WeatherApp</h1>
-	<div>
-		<input id="cityNameInput" type="text" placeholder="Add new city" />
-		<button id="addCity">Add</button>
+	<div id="header">
+		<img id="logo" src="./images/logo.svg"/>
+		<div class="headerDiv">
+			<input id="cityNameInput" type="text" placeholder="Add new city" />
+			<button id="addCity"><img id="glass" src="./images/glass.png"/></button>
+		</div>
+		<img id="userIcon" src="./images/user.png">
 	</div>
-	<div>
-		<h2>City list</h2>
-		<ul id="cityList"></ul>
+	
+	<div id="cityList">
 	</div>
+		
 	<script src="script.js"></script>
 </body>
 

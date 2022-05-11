@@ -6,18 +6,26 @@
 </head>
 
 <body>
-	<h1>WeatherApp - Login</h1>
-	<div>
-		<input id="registerName" type="text" placeholder="Name" />
-		<input id="registerEmail" type="email" placeholder="E-mail" />
-		<input id="registerPassword" type="password" placeholder="Password" />
-		<button id="register">Register me</button>
+	<div id="header">
+		<img id="logo" src="./images/logo.svg"/>
+		<h2>CONNECTION</h2>
 	</div>
-	<div>
-		<input id="connectionEmail" type="email" placeholder="E-mail" />
-		<input id="connectionPassword" type="password" placeholder="Password" />
-		<button id="connection">Connect me</button>
+	<div id="container">
+		<div class="connexionCard">
+			<p>SIGN UP</p>
+			<input id="registerName" type="text" placeholder="Name" />
+			<input id="registerEmail" type="email" placeholder="E-mail" />
+			<input id="registerPassword" type="password" placeholder="Password" />
+			<button id="register">Register</button>
+		</div>
+		<div class="connexionCard">
+			<p>SIGN IN</p>
+			<input id="connectionEmail" type="email" placeholder="E-mail" />
+			<input id="connectionPassword" type="password" placeholder="Password" />
+			<button id="connection">Connect</button>
+		</div>
 	</div>
+	
 	<script src="login.js"></script>
 </body>
 

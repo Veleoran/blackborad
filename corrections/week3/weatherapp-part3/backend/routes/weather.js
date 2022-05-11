@@ -17,6 +17,7 @@ router.post('/', (req, res) => {
 					// Creates new document with weather data
 					const newCity = new City({
 						cityName: req.body.cityName,
+						main: apiData.weather[0].main,
 						description: apiData.weather[0].description,
 						tempMin: apiData.main.temp_min,
 						tempMax: apiData.main.temp_max,
@@ -51,7 +52,7 @@ router.get('/:cityName', (req, res) => {
 });
 
 router.delete('/:cityName', (req, res) => {
-  City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
+	City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
 		if (deletedDoc.deletedCount >= 1) {
 			City.find().then(data => {
 				res.json({ result: true, weather: data });
