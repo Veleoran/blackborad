@@ -78,3 +78,8 @@ button {
 	cursor: pointer;
 	font-weight: bold;
 }
+
+#homeButton {
+	background-color: transparent !important;
+	border: none;
+}

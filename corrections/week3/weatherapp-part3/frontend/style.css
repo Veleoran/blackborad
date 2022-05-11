@@ -19,6 +19,7 @@ body {
 #logo {
 	width: 100px;
 	margin-right: 25px;
+	cursor: pointer;
 }
 
 #userIcon {
@@ -152,4 +153,9 @@ input:focus {
 
 .weatherIcon {
 	width: 80px;
+}
+
+button {
+	background-color: transparent !important;
+	border: none;
 }
