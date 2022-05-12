@@ -13,7 +13,7 @@ document.querySelector('#newGame').addEventListener('click', function () {
 			document.querySelector('#gameId').textContent = data.gameId;
 
 			// Reset word to guess
-			document.querySelector('#wordToGuess').innerHTML = ``;
+			document.querySelector('#wordToGuess').innerHTML = '';
 			for (let i = 0; i < data.wordLength; i++) {
 				document.querySelector('#wordToGuess').innerHTML += `<p>?</p>`;
 			}

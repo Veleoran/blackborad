@@ -52,8 +52,13 @@ router.get('/:cityName', (req, res) => {
 });
 
 router.delete('/:cityName', (req, res) => {
+<<<<<<< HEAD
 	City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
 		if (deletedDoc.deletedCount >= 1) {
+=======
+  City.deleteOne({ cityName: req.params.cityName }).then(deletedDoc => {
+		if (deletedDoc.deletedCount > 0) {
+>>>>>>> 0073e991f3edc90bbaed4c88ca20d22efb01e5f2
 			City.find().then(data => {
 				res.json({ result: true, weather: data });
 			});
