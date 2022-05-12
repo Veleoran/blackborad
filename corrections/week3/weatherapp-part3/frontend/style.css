@@ -155,7 +155,12 @@ input:focus {
 	width: 80px;
 }
 
-button {
+#userButton {
+	background-color: transparent !important;
+	border: none;
+}
+
+#logoButton {
 	background-color: transparent !important;
 	border: none;
 }

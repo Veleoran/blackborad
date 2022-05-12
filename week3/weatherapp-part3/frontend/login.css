@@ -10,7 +10,7 @@ body {
 #header {
 	display: flex;
 	align-items: center;
-	height: 10vh;
+	height: 80px;
 	padding: 25px 30px 25px 30px;
 	color: white;
 	background-color: #225A86;
@@ -77,4 +77,15 @@ button {
 	border: none;
 	cursor: pointer;
 	font-weight: bold;
+}
+
+#homeButton {
+	background-color: transparent !important;
+	border: none;
+}
+
+.divider {
+	height: 1px;
+	width: 100%;
+	background-color: lightgray;
 }

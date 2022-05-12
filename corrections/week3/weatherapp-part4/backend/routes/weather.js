@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
 					// Creates new document with weather data
 					const newCity = new City({
 						cityName: req.body.cityName,
+						main: apiData.weather[0].main,
 						description: apiData.weather[0].description,
 						tempMin: apiData.main.temp_min,
 						tempMax: apiData.main.temp_max,
@@ -51,6 +52,7 @@ router.get('/', (req, res) => {
 			.then(apiData => {
 				const currentPosWeather = {
 					cityName: apiData.name,
+					main: apiData.weather[0].main,
 					description: apiData.weather[0].description,
 					tempMin: apiData.main.temp_min,
 					tempMax: apiData.main.temp_max,
