@@ -1,12 +1,8 @@
 require('./models/connection');
+const { bg, bullet } = require('ervy');
 const Article = require('./models/articles');
 const User = require('./models/users');
 const Order = require('./models/orders');
-const ervy = require('ervy')
-const { bar, pie, bullet, donut, gauge, scatter } = ervy
-const { bg, fg } = require('ervy')
-
-
 
 /*
 ** Articles
@@ -26,9 +22,7 @@ function displayAllArticles() {
 		console.log(bullet(dataTable));
 	});
 
-}
-displayAllArticles()
-
+} displayAllArticles();
 
 function displayArticleByName(articleName) {
 	Article.findOne({ name: articleName }).then(data => {
@@ -119,17 +113,6 @@ function displayUserOrders(userId) {
 		console.log('ORDERS =>', data);
 	})
 }
-
-// Prepare data to render chart
-const data = [
-	{ key: 'D', value: 1, style: bg('red') },
-	{ key: 'E', value: 5, style: bg('green') },
-	{ key: 'F', value: 7, style: bg('blue'), padding: 1 },
-	{ key: 'G', value: 0, style: bg('yellow') }
-]
-
-// Then use any chartType you like, for example:
-//console.log(bar(data))
 
 
 // Do not edit/remove code under this line
