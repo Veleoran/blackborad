@@ -1,88 +1,150 @@
-let guessNumber = 1;
-let gameId = null;
+let nbrGuesses = 6;
+let guessesRemaining = nbrGuesses;
+let currentGuess = [];
+let nextLetter = 0;
+let rightGuessString = "";
 
-// New game
-document.querySelector('#newGame').addEventListener('click', function () {
+function initBoard() {
+	let board = document.querySelector("#game-board");
+
 	fetch('http://localhost:3000/game/new')
 		.then(response => response.json())
 		.then(data => {
 			if (!data.result) return;
-
-			// Replace game ID
 			gameId = data.gameId;
 			document.querySelector('#gameId').textContent = data.gameId;
 
-			// Reset word to guess
-			document.querySelector('#wordToGuess').innerHTML = '';
-			for (let i = 0; i < data.wordLength; i++) {
-				document.querySelector('#wordToGuess').innerHTML += `<p>?</p>`;
-			}
-
-			// Reset guess inputs, result message and focus
-			document.querySelector('#guess1').disabled = false;
-			document.querySelector('#guess1').value = '';
-			for (let i = 2; i <= 6; i++) {
-				document.querySelector(`#guess${i}`).disabled = true;
-				document.querySelector(`#guess${i}`).value = '';
-			}
-			document.querySelector('#result').innerHTML = '';
-			document.querySelector('#guess1').focus();
-
-			// Reset guess number
-			guessNumber = 1;
-		})
-});
-
-// Guess
-document.addEventListener('keypress', function (event) {
-	if (event.key !== 'Enter') return;
-
-	const guess = document.querySelector(`#guess${guessNumber}`).value.toUpperCase();
-
-	fetch(`http://localhost:3000/game/guess/${gameId}/${guess}`)
-		.then(response => response.json())
-		.then(data => {
-			if (!data.result) return;
-
-			// Update word to guess
-			document.querySelector('#wordToGuess').innerHTML = '';
-			for (let i = 0; i < data.guessResult.length; i++) {
-				if (data.guessResult[i]) {
-					document.querySelector('#wordToGuess').innerHTML += `<p class="correctLetter">${data.guessResult[i]}</p>`;
-				} else {
-					document.querySelector('#wordToGuess').innerHTML += `<p>?</p>`;
+			rightGuessString = data.word.toLowerCase();
+			for (let i = 0; i < nbrGuesses; i++) {
+				board.innerHTML += `<div class="letter-row"></div>`;
+				for (let j = 0; j < rightGuessString.length; j++) {
+					document.querySelectorAll(".letter-row")[i].innerHTML += `
+						<div class= "letter-box" ></div > `;
 				}
 			}
+		})
+}
+initBoard();
 
-			// Check correct guess or game over
-			if (!data.guessResult.includes(null)) {
-				document.querySelector('#result').innerHTML = `<p class="won">YOU WON! 🤩</p>`;
-				document.querySelector(`#guess${guessNumber}`).value = guess;
-				for (let i = guessNumber; i <= 6; i++) {
-					document.querySelector(`#guess${i}`).disabled = true;
-				}
-				return;
-			} else if (guessNumber === 6) {
-				document.querySelector('#guess6').disabled = true;
-				document.querySelector('#guess6').value = guess;
-				fetch(`http://localhost:3000/game/solution/${gameId}`)
-					.then(response => response.json())
-					.then(solution => {
-						document.querySelector('#result').innerHTML = `
-							<p class="loose">YOU LOOSE 😢</p>
-							<p class="solution">The solution was: ${solution.word}</p>
-						`;
-					});
-				return;
+document.addEventListener("keyup", (e) => {
+
+	console.log(e)
+
+	if (guessesRemaining === 0) {
+		return
+	}
+
+	let pressedKey = String(e.key)
+	const found = pressedKey.match(/[a-z]/gi)
+
+	if (pressedKey === "Backspace" && nextLetter !== 0) {
+		deleteLetter()
+		return
+	} else if (pressedKey === "Enter") {
+		checkGuess()
+		return
+	} else if (!found || found.length > 1) {
+		return
+	} else {
+		insertLetter(pressedKey)
+	}
+})
+
+function insertLetter(pressedKey) {
+
+	if (nextLetter === rightGuessString.length) {
+		return
+	}
+	pressedKey = pressedKey.toLowerCase()
+
+	let row = document.querySelectorAll(".letter-row")[6 - guessesRemaining]
+	let box = row.children[nextLetter]
+	box.textContent = pressedKey
+	box.classList.add("filled-box")
+	currentGuess.push(pressedKey)
+	nextLetter += 1
+}
+
+function deleteLetter() {
+	let row = document.querySelectorAll(".letter-row")[6 - guessesRemaining]
+	let box = row.children[nextLetter - 1]
+	box.textContent = ""
+	box.classList.remove("filled-box")
+	currentGuess.pop()
+	nextLetter -= 1
+}
+
+function checkGuess() {
+
+	let row = document.querySelectorAll(".letter-row")[6 - guessesRemaining]
+	let guessString = ''
+	let rightGuess = Array.from(rightGuessString)
+
+	for (const val of currentGuess) {
+		guessString += val
+	}
+
+	if (guessString.length != rightGuessString.length) {
+		document.querySelector('#result').innerHTML = `<p>Not enough letters !</p>`;
+		return
+	}
+
+	for (let i = 0; i < rightGuessString.length; i++) {
+		let letterColor = ''
+		let box = row.children[i]
+
+		let letterPosition = rightGuess.indexOf(currentGuess[i])
+
+		// is letter in the correct guess
+		if (letterPosition === -1) {
+			letterColor = '#787C7E'
+		} else {
+			if (currentGuess[i] === rightGuess[i]) {
+				letterColor = '#6AAA64'
+			} else {
+				letterColor = '#C9B458'
 			}
 
-			// Update guess inputs and focus
-			document.querySelector(`#guess${guessNumber}`).disabled = true;
-			document.querySelector(`#guess${guessNumber}`).value = guess;
-			document.querySelector(`#guess${guessNumber + 1}`).disabled = false;
-			document.querySelector(`#guess${guessNumber + 1}`).focus();
+			rightGuess[letterPosition] = "#"
+		}
 
-			// Update guess number
-			guessNumber++;
-		})
+		let delay = 250 * i
+		setTimeout(() => {
+			box.style.backgroundColor = letterColor
+			box.style.color = "white"
+		}, delay)
+	}
+
+	if (guessString === rightGuessString) {
+		document.querySelector('#result').innerHTML = `<p class="won">YOU WON !</p>`;
+		guessesRemaining = 0
+		guessString = "";
+		return
+	} else {
+		guessesRemaining -= 1;
+		currentGuess = [];
+		nextLetter = 0;
+		guessString = "";
+
+		if (guessesRemaining === 0) {
+			document.querySelector('#result').innerHTML = `
+			<div id="divResult">
+			<p class="loose">GAME OVER</p>
+			<p>The answer is "${rightGuessString.toUpperCase()}"</p>
+			</div>
+			`;
+		}
+	}
+}
+
+document.querySelector('#newGame').addEventListener('click', function () {
+	document.querySelector('#result').innerHTML = "";
+	document.querySelector("#game-board").innerHTML = "";
+	nbrGuesses = 6;
+	guessesRemaining = nbrGuesses;
+	nextLetter = 0;
+	currentGuess = [];
+	rightGuessString = "";
+	initBoard()
+	document.activeElement.blur();
 });
