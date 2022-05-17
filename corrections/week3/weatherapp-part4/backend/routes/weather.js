@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const geoip = require('geoip-lite');
 const City = require('../models/cities');
 
-const OWM_API_KEY = 'ce7418650c86eae6629dfcfdda141c14';
+const OWM_API_KEY = process.env.OWM_API_KEY;
 
 router.post('/', (req, res) => {
 	// Check if the city has not already been added
@@ -66,6 +66,7 @@ router.get('/', (req, res) => {
 router.get('/:cityName', (req, res) => {
 	City.findOne({ cityName: req.params.cityName }).then(data => {
 		if (data) {
+			console.log(data);
 			res.json({ result: true, weather: data });
 		} else {
 			res.json({ result: false, error: 'City not found' });
