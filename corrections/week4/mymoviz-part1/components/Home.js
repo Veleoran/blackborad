@@ -4,16 +4,16 @@ import styles from '../styles/Home.module.css';
 const NB_MOVIES = 10;
 
 function Home() {
-  const movieList = [];
+  const movies = [];
   for (let i = 0; i < NB_MOVIES; i++) {
-    movieList.push(<Movie key={i} />);
+    movies.push(<Movie key={i} />);
   }
 
   return (
     <div>
       <img src="logo.png" alt="Logo" />
       <button>4 movies</button>
-      {movieList}
+      {movies}
     </div>
   );
 }
