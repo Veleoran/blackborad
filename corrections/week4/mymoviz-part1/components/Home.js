@@ -1,9 +1,9 @@
 import Movie from './Movie';
 import styles from '../styles/Home.module.css';
 
-const NB_MOVIES = 10;
-
 function Home() {
+  const NB_MOVIES = 10;
+
   const movies = [];
   for (let i = 0; i < NB_MOVIES; i++) {
     movies.push(<Movie key={i} />);
