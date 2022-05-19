@@ -1,0 +1,95 @@
+#!/usr/bin/env node
+// const { execSync } = require('child_process');
+
+// //INSTALL NODE-FETCH
+// execSync ("yarn install")
+// const fetch = require("node-fetch")
+// const fs = require("fs")
+// const path = require("path")
+
+// //ANALYZE CODE CHANGES
+// const changedFiles = execSync('git diff --name-only origin/main').toString().trim().split('\n');
+// //const changedFiles = [ 'week1/makeyouruikit/index.html' ]
+// console.log('Changed files', changedFiles);
+
+// //SYNTHESIZE CHANGED PROJECTS
+// let steps = []
+// for (let file of changedFiles) {
+//   const [week, project] = file.split("/")
+
+//   if (week.includes("week") && !steps.find(step => step.week === week && step.project === project)) steps.push({ week, title: project })
+// }
+// console.log("Changed resources", steps)
+// //GET TESTS FOR MODIFIED PROJECTS
+//   fetch(`http://localhost:3000/tests/`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ steps })
+//   })
+//   .then(res => res.json())
+//   .then(({ result, steps = [] }) => {
+//     if (result) {
+
+//       for (let step of steps) {
+//         let stepPath = path.resolve(__dirname, `../${step.week}/${step.title}`)
+//         execSync("yarn install", { cwd: stepPath })
+//         // execSync("mkdir tests", { cwd: stepPath })
+  
+//         for (let test of step.tests) {
+//           fs.writeFileSync(path.resolve(stepPath, test.path), test.data)
+//         }
+  
+//         //TDD
+//         try {
+  
+//           execSync("yarn jest --noStackTrace", { cwd: stepPath }).toString()
+  
+//         } catch (error) {
+  
+//           console.log({ error: error.toString() })
+//           console.log("tests échoué")
+  
+//           process.exitCode = 1
+  
+//         } finally {
+  
+//           for (let test of step.tests) {
+//             fs.unlinkSync(path.resolve(stepPath, test.path), test.data)
+//           }
+  
+//         }
+  
+//         //LINTER
+//         try {
+  
+//           execSync(`npx eslint --ext .js,.jsx --config ${path.resolve(stepPath, '.eslintrc.json')}`, { cwd: stepPath, encoding: "utf8" }).toString()
+        
+//         } catch(error) {
+  
+//           console.error(error)
+//           console.log("lint non validé")
+  
+//           process.exitCode = 1
+  
+//         }
+//       }
+      
+//       console.log("exitCode", process.exitCode)
+//       if (process.exitCode && process.exitCode !== 0) {
+//         process.kill(process.pid, "SIGTERM")
+//       }
+
+//     } else {
+//       console.log("Validation échoué")
+//       process.exitCode = 1
+
+//       process.kill(process.pid, "SIGTERM")
+//     }
+//   })
+
+// Se déplacer dans le dossier de projet
+// Copier les fichier de tests
+// yarn install
+
+// yarn jest --silent --noStackTrace + préciser uniquement nos fichiers de test
+// Output en JSON ?
