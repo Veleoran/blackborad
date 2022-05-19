@@ -1,8 +1,0 @@
-{
-  "name": "miniuno2",
-  "version": "1.0.0",
-  "private": true,
-  "devDependencies": {
-    "jest": "^27.5.1"
-  }
-}
