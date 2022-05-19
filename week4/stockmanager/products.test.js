@@ -1,7 +1,6 @@
 const request = require('supertest');
 const app = require('./app');
 
-// GET /products
 it('GET /products/byId/:id', async () => {
 	const res = await request(app).get('/products/byId/1737');
 
@@ -93,66 +92,4 @@ it('GET /products/byBrand/:brand', async () => {
 			]
 		}
 	]);
-});
-
-// GET /recalls
-it('GET /recalls/byId/:id', async () => {
-	const res = await request(app).get('/recalls/byBrand/Alvalle');
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.products).toEqual([4800]);
-});
-
-it('GET /recalls/byTimestamp/:timestamp', async () => {
-	const timestamp = new Date('2042-07-25').getTime();
-	const res = await request(app).get(`/recalls/byTimestamp/${timestamp}`);
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.products).toEqual([2022, 2044]);
-});
-
-// GET /prices
-it('GET /prices/average/:brand ', async () => {
-	const res = await request(app).get('/prices/average/Lipton');
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.average).toBe(1.61);
-});
-
-it('GET /prices/averageUnit/:brand ', async () => {
-	const res = await request(app).get('/prices/averageUnit/Lipton');
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.average).toBe(1.28);
-});
-
-it('GET /prices/median/:brand ', async () => {
-	const res = await request(app).get('/prices/median/Amora');
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.median).toBe(1.95);
-});
-
-it('GET /prices/medianUnit/:brand ', async () => {
-	const res = await request(app).get('/prices/medianUnit/Amora');
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.median).toBe(5.62);
-});
-
-// GET /stocks
-it('GET /stocks', async () => {
-	const res = await request(app).get('/stocks/byProductId/1311');
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.stocks).toBe(54500);
-});
-
-it('GET /byTimestamp', async () => {
-	const start = new Date('2043-07-05').getTime();
-	const end = new Date('2043-10-01').getTime();
-	const res = await request(app).get(`/stocks/byTimestamp?productId=1490&start=${start}&end=${end}`);
-
-	expect(res.statusCode).toBe(200);
-	expect(res.body.stocks).toBe(5000);
 });
