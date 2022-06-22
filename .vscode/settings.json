@@ -3,6 +3,7 @@
     "**/.ariane": true,
     ".vscode": true,
     ".githooks": true,
-    "**/.gitkeep": true
+    "**/.gitkeep": true,
+    "test-output-lc.json": true
   }
 }
