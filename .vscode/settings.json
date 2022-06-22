@@ -1,8 +1,8 @@
 {
   "files.exclude": {
-    //"**/.ariane": true,
-    //".vscode": true,
-    //".githooks": true.
+    "**/.ariane": false,
+    ".vscode": true,
+    ".githooks": true,
     "**/.gitkeep": true
   }
 }
