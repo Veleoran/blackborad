@@ -5,3 +5,4 @@ yarn.lock
 notes.txt
 /tests
 /corrections
+test-output-lc.json
