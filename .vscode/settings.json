@@ -1,9 +1,9 @@
 {
   "files.exclude": {
-    "**/.ariane": true,
-    ".vscode": true,
-    ".githooks": true,
-    "**/.gitkeep": true,
-    "test-output-lc.json": true
+    // "**/.ariane": true,
+    // ".vscode": true,
+    // ".githooks": true,
+    // "**/.gitkeep": true,
+    // "test-output-lc.json": true
   }
 }
