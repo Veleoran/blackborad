@@ -6,5 +6,6 @@
     ".githooks": true,
     "**/.gitkeep": true,
     "test-output-lc.json": true
-  }
+  },
+  "git.mergeEditor": false
 }
