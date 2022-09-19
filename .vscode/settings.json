@@ -5,7 +5,8 @@
     "**/.vscode": true,
     ".githooks": true,
     "**/.gitkeep": true,
-    "test-output-lc.json": true
+    "test-output-lc.json": true,
+    "ariane-config.json": true,
   },
   "git.mergeEditor": false
 }
