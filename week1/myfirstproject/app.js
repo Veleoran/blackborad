@@ -1,6 +1,7 @@
 function getPerfectNumber() {
   // Change this variable with the number given in the instructions to validate the project
-  const perfectNumber = 2302;
+  const perfectNumber = 1407
+;
 
   return perfectNumber;
 }
