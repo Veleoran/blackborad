@@ -1,76 +1,79 @@
-/* Global styles */
-
-* {
-    box-sizing: border-box;
-}
+/* styles.css */
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url('/assets/background.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-/* Header styles */
-
-#header {
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+header {
+    position: relative;
+    text-align: center;
+    padding: 100px 0;
 }
 
-#header img {
-    width: 50px;
-    height: auto;
+header h1 {
+    font-size: 150%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Ajouter une couleur de texte pour une meilleure lisibilité */
 }
+
+
+
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
 }
 
-nav li {
-    margin-left: 20px;
+nav ul li {
+    margin: 0 10px;
 }
 
-nav a {
-    color: white;
+nav ul li a {
     text-decoration: none;
+    color: #333;
 }
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Main styles */
 
 .galaxies-section {
-    background-color: #f9f9f9;
-    padding: 50px 0;
     text-align: center;
-}
-
-.galaxies-section h2 {
-    font-size: 2em;
-    margin-bottom: 40px;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
+    padding: 20px;
 }
 
 .galaxy-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.galaxy-row img {
-    width: 25%;
-    height: auto;
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-content h3 {
+    font-size: 150%;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
 }

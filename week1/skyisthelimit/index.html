@@ -5,51 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Galaxies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            position: relative;
+            text-align: center;
+            background-image: url('/assets/background.jpg');
+            background-position: center;
+            background-size: cover;
+            padding: 100px 0;
+        }
+        
+        header h1 {
+            font-size: 150%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .galaxies-section {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .galaxy-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .text-content h3 {
+            font-size: 150%;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <header id="header">
-        <img src="logo.png" alt="Logo de la page">
+    <header>
         <h1>Titre principal</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Galaxies</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
     </header>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Galaxies</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section class="galaxies-section">
             <h2>Galaxies</h2>
-            <div class="container">
-                <div class="galaxy-row">
-                    <img src="image1.jpg" alt="Image de la galaxie 1">
-                    <div class="text-content">
-                        <h3>Titre 1</h3>
-                        <p>Paragraphe 1</p>
-                    </div>
-                </div>
-                <div class="galaxy-row">
-                    <img src="image2.jpg" alt="Image de la galaxie 2">
-                    <div class="text-content">
-                        <h3>Titre 2</h3>
-                        <p>Paragraphe 2</p>
-                    </div>
-                </div>
-                <div class="galaxy-row">
-                    <img src="image3.jpg" alt="Image de la galaxie 3">
-                    <div class="text-content">
-                        <h3>Titre 3</h3>
-                        <p>Paragraphe 3</p>
-                    </div>
+            <div class="galaxy-row">
+                <img src="/assets/m82_cigar.jpg" alt="m82_cigar">
+                <div class="text-content">
+                    <h3>Titre 1</h3>
+                    <p>Paragraphe 1</p>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Galaxies</p>
-    </footer>
-</body>
-</html>
+            <div class="galaxy-row">
+                <img src="/assets/m101_pinwheel.jpg" alt="m101_pinwheel">
+                <div class="text-content">
+                    <h3>Titre 2</h3>
+                    <p>Paragraphe 2</p>
+                </div>
+            </div>
+            <div class="galaxy-row">
+                <img src="/assets/m104_sombrero.jpg" alt="m104_sombrero">
+                <div class="text-content">
+                    <h3>Tit
