@@ -1,13 +1,14 @@
 function objectsToStrings(data) {
     let result = []
     // Insert your code here
-    data.forEach(contact => {
-    if (contact.firstName !== '') {
-    result.push(contact.firstName)
+   for(let i = 0 ; i < data.length ; i++){
+    if (data[i].firstName.length > 0){
+        console.log(data[i].firstName);
     }
-    })
+
+   }
     
-    kotlin
+    
     
     return result
     
