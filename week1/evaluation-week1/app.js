@@ -3,12 +3,9 @@ function objectsToStrings(data) {
     // Insert your code here
    for(let i = 0 ; i < data.length ; i++){
     if (data[i].firstName.length > 0){
-        console.log(data[i].firstName);
+        result.push(data[i].firstName)
     }
-
    }
-    
-    
     
     return result
     
