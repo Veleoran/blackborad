@@ -12,7 +12,7 @@ document.querySelector('#msg-container').innerHTML += `<div class ="row rew-row"
 
 const messagesCount = document.querySelectorAll('p').length
 
-document.querySelector('#count') . textContent = messagesCount
+document.querySelector('#count').textContent = messagesCount
 
 
 const date = new Date();
