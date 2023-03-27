@@ -15,11 +15,10 @@ const messagesCount = document.querySelectorAll('p').length
 document.querySelector('#count').textContent = messagesCount
 
 
-const date = year + '-' + month + '-' + day;
-
-new Date(documentJS.querySelector('#date').textContent).getDate() === new Date().getDate()
-
+const date = new Date()
+document.querySelector('#footer').innerHTML += `<span>${date}<span>`
 
 
- console.log(new Date(documentJS.querySelector('#date').textContent).getDate() === new Date().getDate());
+
+
 
