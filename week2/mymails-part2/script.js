@@ -22,7 +22,7 @@ let day = date.getDate()
 if (day<=9) {day="0"+ day}
 let month = date.getMonth()+ 1
 if (month<=9) {month="0"+ month}
-date= (year+"-"+month+"-"+day+" "+hours);
+date= (year+"-"+month+"-"+day);
 document.querySelector('#footer').innerHTML += `<span>${date}<span>`
 console.log(hours)
 
