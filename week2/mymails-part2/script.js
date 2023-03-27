@@ -15,9 +15,15 @@ const messagesCount = document.querySelectorAll('p').length
 document.querySelector('#count').textContent = messagesCount
 
 
-const date = new Date()
+let date = new Date()
+let year = date.getFullYear()
+let day = date.getDate()
+if (day<=9) {day="0"+ day}
+let month = date.getMonth()+ 1
+if (month<=9) {month="0"+ month}
+date= 'date.getFullYear' - 'date.getDate' - 'date.getMonth'
 document.querySelector('#footer').innerHTML += `<span>${date}<span>`
-
+console.log(year)
 
 
 
