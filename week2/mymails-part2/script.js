@@ -15,9 +15,11 @@ const messagesCount = document.querySelectorAll('p').length
 document.querySelector('#count').textContent = messagesCount
 
 
-const date = new Date();
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
-const formattedDate = date.toLocaleString('fr-FR', options);
+const date = year + '-' + month + '-' + day;
 
-document.querySelector('#footer').innerHTML = formattedDate;
+new Date(documentJS.querySelector('#date').textContent).getDate() === new Date().getDate()
+
+
+
+ console.log(new Date(documentJS.querySelector('#date').textContent).getDate() === new Date().getDate());
 
