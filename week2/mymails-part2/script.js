@@ -15,7 +15,7 @@ document.querySelector('#count') . textContent = messagesCount
 
 
 const date = new Date();
-const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric' };
 const formattedDate = date.toLocaleString('fr-FR', options);
 
 document.querySelector('#footer').innerHTML = formattedDate;
