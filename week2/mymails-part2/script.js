@@ -15,7 +15,7 @@ const messagesCount = document.querySelectorAll('p').length
 document.querySelector('#count').textContent = messagesCount
 
 
-var date = new Date()
+let date = new Date()
 let hours = date.getHours()+"h"
 let year = date.getFullYear()
 let day = date.getDate()
