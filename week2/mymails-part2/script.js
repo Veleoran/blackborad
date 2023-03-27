@@ -21,9 +21,9 @@ let day = date.getDate()
 if (day<=9) {day="0"+ day}
 let month = date.getMonth()+ 1
 if (month<=9) {month="0"+ month}
-date= (date.getFullYear+"-"date.getMonth+"-"date.getDate);
+date= (year+"-"+month+"-"+day);
 document.querySelector('#footer').innerHTML += `<span>${date}<span>`
-console.log(year)
+console.log(date)
 
 
 
