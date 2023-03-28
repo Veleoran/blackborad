@@ -49,7 +49,7 @@ for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
 
 document.querySelector("#btn-add").addEventListener("click", function () {
   console.log("Click detected!");
-  const message = document.querySelector("add-message").value;
+  const messageInput = document.querySelector("text-container");
   const message = messageInput.value;
   document.querySelector('#msg-container').innerHTML += `
  <div class="row new-row">
@@ -61,8 +61,9 @@ document.querySelector("#btn-add").addEventListener("click", function () {
    <span class="delete">&#x2716;</span>
  </div>
 `;
+
 const NewmessagesCount = document.querySelectorAll('p').length;
-document.querySelector('#count').textContent = NewmessagesCount;
+document.querySelector('#count').textContent = messagesCount;
 
 
 });
