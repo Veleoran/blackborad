@@ -40,12 +40,14 @@ document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
  for (let i = 0; i< ListX.length; i++){
   ListX[i].addEventListener('click',
   fonction() {
-    this.parentNode.remove();
-    const messageCount = document.querySelectorAll('p').length;
-    document.querySelector('#count').textContent = messagesCount
+    this.parentNode.remove() 
+    
     
 
-  }
-  );
+  
+  )
+  ;
 
 }
+const messagesCount = document.querySelectorAll('p').length;
+     document.querySelector('#count').textContent = messagesCount;
