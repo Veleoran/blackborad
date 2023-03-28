@@ -1,4 +1,4 @@
-const newMessage = ` 
+const newMessage = `
   <div class="row new-row">
     <img class="avatar" src="images/avatar-1.jpg" />
     <div class="text-container">
@@ -70,7 +70,6 @@ document.querySelector("#btn-add").addEventListener("click", function () {
     });
   }
 });
-
 
 
 
