@@ -33,17 +33,18 @@ if (new Date().getDate() < 9) {
 const date = year + "-" + month + "-" + day;
 document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
 
-for (let i = 0; i< document.querySelectorAll('.delete').length; i++)
-{
-  document.querySelectorAll('.delete')[i].addEventListener('click' ,
-  function() {
-    this.parentNode.remove();
-     const messagesCount = document.querySelectorAll('p').length;
-     document.querySelector('#count').textContent = messagesCount;
 
-  }
-  );
+
+function addDeleteListener() {
+  const deleteButtons = document.querySelectorAll('.delete');
+  deleteButtons.forEach(function(deleteButton) {
+    deleteButton.addEventListener('click', function() {
+      this.parentNode.remove();
+      updateMessagesCountAndDate();
+    });
+  });
 }
+
 document.querySelector('#btn-add').addEventListener('click', function() {
   const inputMessage = document.querySelector('#add-message').value;
 
@@ -59,8 +60,7 @@ document.querySelector('#btn-add').addEventListener('click', function() {
       </div>
     `;
 
-    document.querySelector('#msg-container').innerHTML += newMessage;
-    updateMessagesCountAndDate();
+  
 
     // Réinitialiser le champ de saisie
     document.querySelector('#add-message').value = '';
