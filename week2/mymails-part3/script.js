@@ -35,12 +35,16 @@ document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
 
 
 
- const ListX = document.querySelectorAll('.delete')
 
- for (let i = 0; i< ListX.length; i++){
-  ListX[i].addEventListener('click',
+
+ for (let i = 0; i< document.querySelectorAll('.delete').length; i++){
+  document.querySelectorAll('.delete')[i].addEventListener('click',
   fonction() {
     this.parentNode.remove() 
+    const messagesCount = document.querySelectorAll('p').length;
+     document.querySelector('#count').textContent = messagesCount;
+  }
+
     
     
 
