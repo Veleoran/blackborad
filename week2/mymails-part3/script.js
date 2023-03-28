@@ -40,25 +40,31 @@ for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
     
 
  this.parentNode.remove();
- const messageCount = document.querySelectorAll('p').length;
- document.querySelector('#count').textContent = messageCount;
+ const NewmessageCount = document.querySelectorAll('p').length;
+ document.querySelector('#count').textContent = NewmessageCount;
    
   }
 );
 }
 
-// Mettez à jour le compteur une fois au chargement initial
-updateCount();
-
 document.querySelector("#btn-add").addEventListener("click", function () {
   console.log("Click detected!");
+  const message = document.querySelector("add-message").value;
+  const message = messageInput.value;
+  document.querySelector('#msg-container').innerHTML += `
+ <div class="row new-row">
+   <img class="avatar" src="avatar-1.jpg" />
+   <div class="text-container">
+     <h6>John Doe</h6>
+     <p>${message}</p>
+   </div>
+   <span class="delete">&#x2716;</span>
+ </div>
+`;
+const NewmessagesCount = document.querySelectorAll('p').length;
+document.querySelector('#count').textContent = NewmessagesCount;
 
-  // Récupérer le message saisi par l'utilisateur
-  const addMessage = document.querySelector("#add-message");
-  const messageText = addMessage.value;
 
-  // Afficher le message dans la console
-  console.log("Message:", messageText);
 });
 
 
