@@ -60,5 +60,9 @@ document.querySelector('#btn-add').addEventListener('click', function() {
     `;
 
     document.querySelector('#msg-container').innerHTML += newMessage;
+    updateMessagesCountAndDate();
+
+    // Réinitialiser le champ de saisie
+    document.querySelector('#add-message').value = '';
   }
 });
