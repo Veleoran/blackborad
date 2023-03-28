@@ -41,19 +41,14 @@ const updateCount = () => {
 
 for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
   document.querySelectorAll(".delete")[i].addEventListener("click", function () {
-    console.log("Click detected!");
+    
 
-    // Trouver l'élément de message parent
-    let messageElement = this.closest(".message");
-
-    // Supprimer l'élément de message du DOM
-    if (messageElement) {
-      messageElement.parentNode.removeChild(messageElement);
-    }
-
-    // Mettre à jour le compteur
-    updateCount();
-  });
+ this.parentNode.remove();
+ const messageCount = document.querySelectorAll('p').length;
+ document.querySelector('#count').textContent = messageCount;
+   
+  }
+);
 }
 
 // Mettez à jour le compteur une fois au chargement initial
