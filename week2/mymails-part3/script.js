@@ -44,18 +44,21 @@ for (let i = 0; i< document.querySelectorAll('.delete').length; i++)
   }
   );
 }
-document.querySelector('#btn-add').addEventListener('click',
-function(){
-  
-const NewMessage = document.querySelector('#msg-container').innerHTML += 
- document.querySelector('#msg-container').innerHTML += `
- <div class="row new-row">
-   <img class="avatar" src="avatar-1.jpg" />
-   <div class="text-container">
-     <h6>John Doe</h6>
-     <p>${message}</p>
-   </div>
-   <span class="delete">&#x2716;</span>
- </div>
-`});
- 
+document.querySelector('#btn-add').addEventListener('click', function() {
+  const inputMessage = document.querySelector('#add-message').value;
+
+  if (inputMessage) {
+    const newMessage = `
+      <div class="row new-row">
+        <img class="avatar" src="images/avatar-1.jpg" />
+        <div class="text-container">
+          <h6>John Doe</h6>
+          <p>${inputMessage}</p>
+        </div>
+        <span class="delete">✖</span>
+      </div>
+    `;
+
+    document.querySelector('#msg-container').innerHTML += newMessage;
+  }
+});
