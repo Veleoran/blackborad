@@ -33,25 +33,16 @@ if (new Date().getDate() < 9) {
 const date = year + "-" + month + "-" + day;
 document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
 
-
-
-
-
- for (let i = 0; i< document.querySelectorAll('.delete').length; i++){
-  document.querySelectorAll('.delete')[i].addEventListener('click',
-  fonction() {
-    this.parentNode.remove() 
-    const messagesCount = document.querySelectorAll('p').length;
+for (let i = 0; i< document.querySelectorAll('.delete').length; i++)
+{
+  document.querySelectorAll('.delete')[i].addEventListener('click' ,
+  function() {
+    this.parentNode.remove();
+     const messagesCount = document.querySelectorAll('p').length;
      document.querySelector('#count').textContent = messagesCount;
+
   }
-
-    
-    
-
-  
-  )
-  ;
-
+  );
 }
-const messagesCount = document.querySelectorAll('p').length;
-     document.querySelector('#count').textContent = messagesCount;
+ 
+ 
