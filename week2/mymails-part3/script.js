@@ -34,9 +34,9 @@ const date = year + "-" + month + "-" + day;
 document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
 
 const updateCount = () => {
-  const counter = document.querySelector("#counter");
+  const count = document.querySelector("#count");
   const messageCount = document.querySelectorAll(".message").length;
-  counter.textContent = messageCount;
+  count.textContent = messageCount;
 };
 
 for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
@@ -58,6 +58,19 @@ for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
 
 // Mettez à jour le compteur une fois au chargement initial
 updateCount();
+
+document.querySelector("#btn-add").addEventListener("click", function () {
+  console.log("Click detected!");
+
+  // Récupérer le message saisi par l'utilisateur
+  const addMessage = document.querySelector("#add-message");
+  const messageText = addMessage.value;
+
+  // Afficher le message dans la console
+  console.log("Message:", messageText);
+});
+
+
 
 
 
