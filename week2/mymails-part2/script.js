@@ -15,9 +15,9 @@ const messagesCount = document.querySelectorAll('p').length
 document.querySelector('#count').textContent = messagesCount
 
 
-let date = new Date()
+const date = new Date()
 let hours = date.getHours()+"h"
-let year = date.getFullYear()
+const year = date.getFullYear()
 let day = date.getDate()
 if (day<=9) {day="0"+ day}
 let month = date.getMonth()+ 1
