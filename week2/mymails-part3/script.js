@@ -32,3 +32,20 @@ if (new Date().getDate() < 9) {
 
 const date = year + "-" + month + "-" + day;
 document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
+
+
+
+ const ListX = document.querySelectorAll('.delete')
+
+ for (let i = 0; i< ListX.length; i++){
+  ListX[i].addEventListener('click',
+  fonction() {
+    this.parentNode.remove();
+    const messageCount = document.querySelectorAll('p').length;
+    document.querySelector('#count').textContent = messagesCount
+    
+
+  }
+  );
+
+}
