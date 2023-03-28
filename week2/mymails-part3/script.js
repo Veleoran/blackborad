@@ -33,11 +33,7 @@ if (new Date().getDate() < 9) {
 const date = year + "-" + month + "-" + day;
 document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
 
-const updateCount = () => {
-  const count = document.querySelector("#count");
-  const messageCount = document.querySelectorAll(".message").length;
-  count.textContent = messageCount;
-};
+
 
 for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
   document.querySelectorAll(".delete")[i].addEventListener("click", function () {
