@@ -33,36 +33,33 @@ if (new Date().getDate() < 9) {
 const date = year + "-" + month + "-" + day;
 document.querySelector('#footer').innerHTML += `<span id="date">${date}</span>`;
 
+const updateCount = () => {
+  const counter = document.querySelector("#counter");
+  const messageCount = document.querySelectorAll(".message").length;
+  counter.textContent = messageCount;
+};
 
+for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
+  document.querySelectorAll(".delete")[i].addEventListener("click", function () {
+    console.log("Click detected!");
 
-function addDeleteListener() {
-  const deleteButtons = document.querySelectorAll('.delete');
-  deleteButtons.forEach(function(deleteButton) {
-    deleteButton.addEventListener('click', function() {
-      this.parentNode.remove();
-      updateMessagesCountAndDate();
-    });
+    // Trouver l'élément de message parent
+    let messageElement = this.closest(".message");
+
+    // Supprimer l'élément de message du DOM
+    if (messageElement) {
+      messageElement.parentNode.removeChild(messageElement);
+    }
+
+    // Mettre à jour le compteur
+    updateCount();
   });
 }
 
-document.querySelector('#btn-add').addEventListener('click', function() {
-  const inputMessage = document.querySelector('#add-message').value;
+// Mettez à jour le compteur une fois au chargement initial
+updateCount();
 
-  if (inputMessage) {
-    const newMessage = `
-      <div class="row new-row">
-        <img class="avatar" src="images/avatar-1.jpg" />
-        <div class="text-container">
-          <h6>John Doe</h6>
-          <p>${inputMessage}</p>
-        </div>
-        <span class="delete">✖</span>
-      </div>
-    `;
+
+
 
   
-
-    // Réinitialiser le champ de saisie
-    document.querySelector('#add-message').value = '';
-  }
-});
