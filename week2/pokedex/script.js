@@ -28,5 +28,10 @@ function fetchPokemons() {
  }
 }
 
-// Initial fetch
+
 fetchPokemons();
+document.querySelector('#next').addEventListener('click', function(){
+  startIndex += 15;
+  fetchPokemons();
+});
+
