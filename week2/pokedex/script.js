@@ -32,6 +32,6 @@ function fetchPokemons() {
 fetchPokemons();
 document.querySelector('#next').addEventListener('click', function(){
   startIndex += 15;
+  pokemonsNumber += 15;
   fetchPokemons();
 });
-
