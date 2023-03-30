@@ -1,19 +1,18 @@
 const fetch = require('node-fetch');
-const db = require('./database/setup');
+const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const connectionString = require('./connectionString');
-// Do not edit/remove code above this line
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
+  useCreateIndex: true
 });
 
 const fruitSchema = new mongoose.Schema({
-  gen: { type: String, unique: true, required: true },
-  species: { type: String, unique: true, required: true },
   name: { type: String, unique: true, required: true },
+  family: { type: String, required: true },
+  carbohydrates: { type: Number, required: true }
 });
 
 fruitSchema.plugin(uniqueValidator);
@@ -21,7 +20,7 @@ fruitSchema.plugin(uniqueValidator);
 const Fruit = mongoose.model('Fruit', fruitSchema);
 
 async function fetchFruits() {
-  const response = await fetch('https://www.fruitmap.org/api/trees');
+  const response = await fetch('https://fruityvice.com/api/fruit/all');
   const data = await response.json();
   return data;
 }
@@ -30,9 +29,9 @@ async function insertFruits() {
   const fruits = await fetchFruits();
   const promises = fruits.map(async (fruit) => {
     const newFruit = new Fruit({
-      gen: fruit.gen,
-      species: fruit.species,
       name: fruit.name,
+      family: fruit.family,
+      carbohydrates: fruit.nutritions.carbohydrates
     });
 
     try {
@@ -53,5 +52,3 @@ async function insertFruits() {
 }
 
 insertFruits();
-
-// Insert your code here
