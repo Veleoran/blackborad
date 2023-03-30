@@ -1,23 +1,19 @@
 const fetch = require('node-fetch');
 const db = require('./database/setup');
-// Do not edit/remove code above this line
-
-// Insert your code here
-const fetch = require('node-fetch');
-const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const connectionString = require('./connectionString');
+// Do not edit/remove code above this line
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
 });
 
 const fruitSchema = new mongoose.Schema({
   gen: { type: String, unique: true, required: true },
   species: { type: String, unique: true, required: true },
-  name: { type: String, unique: true, required: true }
+  name: { type: String, unique: true, required: true },
 });
 
 fruitSchema.plugin(uniqueValidator);
@@ -36,7 +32,7 @@ async function insertFruits() {
     const newFruit = new Fruit({
       gen: fruit.gen,
       species: fruit.species,
-      name: fruit.name
+      name: fruit.name,
     });
 
     try {
@@ -57,3 +53,5 @@ async function insertFruits() {
 }
 
 insertFruits();
+
+// Insert your code here
