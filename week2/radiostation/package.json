@@ -2,8 +2,10 @@
   "name": "radiostation",
   "version": "1.0.0",
   "private": true,
+  
+   
   "dependencies": {
-    "mongoose": "^6.3.0"
+    "mongoose": "^7.0.3"
   },
   "devDependencies": {
     "jest": "^27.5.1"
