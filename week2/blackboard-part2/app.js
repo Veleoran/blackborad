@@ -52,38 +52,43 @@ function displayAllUsers() {
 //c est ok au dessus
 
 function deleteUser(userId) {
-	User.deleteOne({_id: userId}).then(data => {
-		console.log(`User ${userId} deleted`);
-	   });
- }
-
-
+	User.deleteOne({ _id: '6426e1660a5435fff043f99e' })
+	  .then(() => {
+		User.find().then((data) => {
+		  console.log(data);
+		});
+	  })
+	  .catch((error) => {
+		console.error('Erreur lors de la suppression de l\'utilisateur:', error);
+	  });
+  }
+  
+  // Pour utiliser la fonction deleteUser avec un ID spécifique :
+//   const userId = '6426e1660a5435fff043f99e';
+//   deleteUser(userId);
+  
 /*
 ** Orders
 */
+function displayAllOrders() {
+	Order.find().then((data) => {
+	  console.log('Orders =>', data);
+	});
+  }
+  
+  function updateOrderPaymentStatus(orderId, isPaid) {
+	// Ajoutez ici la logique pour mettre à jour le statut de paiement de la commande
+  }
+  function deleteOrder(orderId) {
+	Order.deleteOne({ _id: orderId })
+	  .then(() => {
+		console.log('Order deleted successfully');
+	  })
+	  .catch((error) => {
+		console.error('Erreur lors de la suppression de la commande:', error);
+	  });
 
-function displayAllOrders() { 
-	
-		Order.find().then(data => {
-			console.log('Orders =>', data);
-		});
 	}
-	
-	
-
-function updateOrderPaymentStatus(orderId, isPaid) {
-	function updateArticlePrice(articleId, newPrice) {
-		Article.updateOne({ _id: articleId }, { price: newPrice }).then(() => {
-			console.log(`Price updated for ${articleId}`);
-		});
-	}
-	
-
-function deleteOrder(orderId) {
-	Order.deleteOne({_id: orderId}).then
- }
-
-
 // Do not edit/remove code under this line
 module.exports = {
 	displayAllArticles,
