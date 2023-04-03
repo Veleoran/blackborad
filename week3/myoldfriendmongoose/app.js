@@ -1,13 +1,14 @@
+const mongoose = require('mongoose');
 require('./models/connection');
 const Country = require('./models/countries');
 const City = require('./models/cities');
 
 
  //Create country with name, flag image, currency and population
-function createCountry(name, flagImg, currency, population) { 
+function createCountry(name, flagimage, currency, population) { 
   const newCountry = new Country({
     name: name,
-    flagImg: flagImg,
+    flagimage: flagimage,
     currency: currency,
     population: population,
   });
