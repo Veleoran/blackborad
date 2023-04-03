@@ -6,7 +6,7 @@ const populationSchema = mongoose.Schema({
  year: Date,
 });
 
-const countriesSchema = mongoose.Schema({
+const countrySchema = mongoose.Schema({
  name: String,
  flagmg: String,
  currency: String,
