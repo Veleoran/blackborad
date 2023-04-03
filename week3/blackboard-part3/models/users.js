@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const addressSchema = mongoose.Schema({
 street: String,
 city: String,
-zipcode: String,
+zipCode: String,
 isFavorite: Boolean,
 
 
