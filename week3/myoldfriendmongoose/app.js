@@ -12,7 +12,7 @@ function createCountry(name, flagimage, currency, population) {
     currency: currency,
     population: population,
   });
-  return newCountry.save();
+  newCountry.save();
 }
 // Sample call:
 createCountry('Australia', 'australia.png', 'AUD', [
