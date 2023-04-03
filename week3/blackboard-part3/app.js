@@ -89,10 +89,19 @@ function deleteOrder(orderId) {
 ** Query population
 */
 
-function displayOrderArticles(orderId) { }
+function displayOrderArticles(orderId) { 
+	Order.findById(orderId)
+	.populate("articles")
+	.then(data => console.log("ORDER =>", data));
+}
+//  displayOrderArticles("625ea9ca38d6a37769946511")
 
-function displayUserOrders(userId) { }
-
+function displayUserOrders(userId) { 
+	Order.find({user: userId }).then(data => {
+	console.log("ORDERS =>", data);	
+	});
+}
+displayUserOrders("635fd26df0f6e522704fd6f5");
 
 // Do not edit/remove code under this line
 module.exports = {
