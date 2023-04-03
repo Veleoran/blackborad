@@ -8,3 +8,5 @@ const citySchema = mongoose.Schema({
     country : { type: mongoose.Schema.Types.ObjectId, ref: 'countries'},
 });
 const City = mongoose.model('cities', citySchema);
+
+module.exports = City;
