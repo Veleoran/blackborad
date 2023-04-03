@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const adressSchema = mongoose.Schema({
+const addressSchema = mongoose.Schema({
 street: String,
 city: String,
 zipcode: String,
@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema({
 	lastName: String,
 	email: String,
 	inscriptionDate: Date,
-	addresses: [adressSchema],
+	addresses: [addressSchema],
 	
 });
 
