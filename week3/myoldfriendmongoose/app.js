@@ -24,7 +24,7 @@ function createCity(name, currentPopulation, countryId) {
     const newCity = new City({
     name: name,
     currentPopulation: currentPopulation,
-    countryId: { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } ,
+    countryId: countryId,
  });
  return newCity.save();
 }
