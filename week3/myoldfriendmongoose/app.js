@@ -25,7 +25,7 @@ function createCity(name, currentPopulation, countryId) {
     currentPopulation: currentPopulation,
     countryId: countryId,
  });
- returnnewCity.save();
+ return newCity.save();
 }
 // Sample call:
  createCity('Sydney', 5312163, 'COUNTRY_ID_TO_REPLACE');
