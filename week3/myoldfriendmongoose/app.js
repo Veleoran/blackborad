@@ -12,12 +12,14 @@ function createCountry(name, flagimage, currency, population) {
     currency: currency,
     population: population,
   });
-  newCountry.save();
+  newCountry.save().then(() => {
+    console.log('country saved')
+  });
 }
 // // Sample call:
-createCountry( 'Australia',  'australia.png', 'AUD', [
-{ populationNbr: 25400000, year: new Date('2015-08-24') },
-]);
+// createCountry( 'Australia',  'australia.png', 'AUD', [
+// { populationNbr: 25400000, year: new Date('2015-08-24') },
+// ]);
 
 //  Create city with name, population and country foreign key
 function createCity(name, currentPopulation, countryId) {
@@ -26,41 +28,34 @@ function createCity(name, currentPopulation, countryId) {
     currentPopulation: currentPopulation,
     countryId: countryId,
  });
- 
+ newCity.save().then(() => {
+    console.log('city saved')
+  });
 }
 // Sample call:
-//  createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
-createCity('Sydney', 5312163, { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
+//createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
 
 
 // Display country population from country name
 function displayCountryPopulation(countryName) {
-    Country.findOne({ name: 'countryName'})
-    .populate('city')
+    Country.findOne({ name: countryName})
     .then(data => {
-        console.log(data.population);
+        console.log(data.population[0].populationNbr);
     })
-    .catch(err => {
-    console.log('Error', err);
-
- });
 }
-
+//displayCountryPopulation("Australia");
 
 
 // Display country informations from city name (with populate)
 function displayCountryFromCityName(cityName) {
     City.findOne({name: cityName})
-    .populate('countryId')
-     then(data => {
-        console.log(data.countryId);
+    .populate('country')
+    .then((data) => 
+        console.log(data.country.name))
      
-     })
-     .catch(err => {
-        console.log('Error', err);
-     });
-    }
-
+     }
+    
+//displayCountryFromCityName("Sydney");
 
 
 module.exports = { createCountry, createCity, displayCountryPopulation, displayCountryFromCityName }; // Do not edit/remove this line
