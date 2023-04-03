@@ -23,12 +23,12 @@ function createCity(name, currentPopulation, countryId) {
     const newCity = new City({
     name: name,
     currentPopulation: currentPopulation,
-    countryId: { type: mongoose.Schema.Types.ObjectId, ref: 'countries' },
+    countryId: { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } ,
  });
  return newCity.save();
 }
 // Sample call:
- createCity('Sydney', 5312163, { type: mongoose.Schema.Types.ObjectId, ref: 'countries' });
+ createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
 
 
 
