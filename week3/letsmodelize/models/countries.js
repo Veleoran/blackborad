@@ -8,7 +8,7 @@ const populationSchema = mongoose.Schema({
 
 const countrySchema = mongoose.Schema({
  name: String,
- flagmg: String,
+ flagImg: String,
  currency: String,
  population :populationSchema,
  image:String
