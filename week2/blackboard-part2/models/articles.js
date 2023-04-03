@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const usersSchema = mongoose.Schema({
+const articleSchema = mongoose.Schema({
  name: String,
  price: Number,
  stock: Number,
- weight :Number,
- image:String
+ weight: Number,
+ image: String,
 });
 
 const Article = mongoose.model('articles', articleSchema);

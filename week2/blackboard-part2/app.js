@@ -1,4 +1,10 @@
 // Add your own requires here 😉
+require('./models/connection');
+
+const Article = require("./models/articles");
+const User = require('./models/users');
+const Order = require('./models/orders');
+
 
 /*
 ** Articles
@@ -15,12 +21,14 @@ function displayArticleByName(articleName) {
 		console.log('ARTICLE =>', data);
 	});
 }
+// displayArticleByName("Templar");
 
 function displayArticleByID(articleId) {
 	Article.findById(articleId).then(data => {
 		console.log('ARTICLE =>', data);
 	});
 }
+// displayArticleByID("625ea9ca38d6a3776994651f");
 
 function updateArticlePrice(articleId, newPrice) {
 	Article.updateOne({ _id: articleId }, { price: newPrice }).then(() => {
@@ -45,21 +53,54 @@ function resetStocks() {
 ** Users
 */
 
-function displayAllUsers() { }
 
-function deleteUser(userId) { }
 
+function displayAllUsers() {
+	User.find ().then(data => {
+		console.log("USERS =>", data)
+	});
+ }
+//  displayAllUsers();
+
+function deleteUser(userId) { 
+	User.deleteOne({_id: userId }).then(() => {
+		console.log('User ${userId} succesfully deleted')
+	})
+
+}
+
+// deleteUser('625ea9ca38d6a3776994651f')
 
 /*
 ** Orders
 */
 
-function displayAllOrders() { }
 
-function updateOrderPaymentStatus(orderId, isPaid) { }
+function displayAllOrders() { 
+	Order.find().then(data => {
+console.log("ORDERS =>", data)
+	});
+}
+// displayAllOrders()
 
-function deleteOrder(orderId) { }
+function updateOrderPaymentStatus(orderId, isPaid) {
+	Order.updateOne({ _id: orderId }, { isPaid}).then(() => {
+		console.log(`Order ${orderId} successfully updated`);
 
+
+	});
+		
+	
+ }
+//  updateOrderPaymentStatus('625ea9ca38d6a37769946512', true );
+
+function deleteOrder(orderId) {
+	Order.deleteOne({ _id: orderId}).then(() => {
+	console.log('Order ${orderId} sucessfully deleted');
+	 });
+ }
+
+//  deleteOrder('625ea9ca38d6a37769946512')
 
 // Do not edit/remove code under this line
 module.exports = {

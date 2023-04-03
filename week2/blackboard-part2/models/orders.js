@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const usersSchema = mongoose.Schema({
+const orderSchema = mongoose.Schema({
  total: Number,
  shippingFees: Number,
  isPaid: Boolean,
- purchaseDate :Date
+ purchaseDate: Date,
 });
 
 const Order = mongoose.model('orders', orderSchema);
