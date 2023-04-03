@@ -10,52 +10,55 @@ function createCountry(name, flagImg, currency, population) {
     flagImg: flagImg,
     currency: currency,
     population: population,
-  })
+  });
+  return newCountry.save();
 }
 // Sample call:
-createCountry('Australia', 'autralia.png', 'AUD', [
+createCountry('Australia', 'australia.png', 'AUD', [
   { populationNbr: 25400000, year: new Date('2015-08-24') },
  ]);
-const newCountry = new countries({
-    name:'Australia'
-    flagImg: 'australia.png',
-    currency: 'AUD',
-    population: [{ populationNbr: 25400000, year: new Date('2015-08-24')
-    }]);
 
-
-}
-
- Create city with name, population and country foreign key
+//  Create city with name, population and country foreign key
 function createCity(name, currentPopulation, countryId) {
     const newCity = new City({
     name: name,
     currentPopulation: currentPopulation,
     countryId: countryId,
- })
+ });
+ returnnewCity.save();
 }
 // Sample call:
  createCity('Sydney', 5312163, 'COUNTRY_ID_TO_REPLACE');
 
- const newCity = new City({
-    name: 'Sydney',
-    currentPopulation: '5312163',
-    countryId: 'COUNTRY_ID_TO_REPLACE'
- });
 
 
 // Display country population from country name
 function displayCountryPopulation(countryName) {
-    Population.findOne({ countryName: 'Australia'})
+    Country.findOne({ name: 'countryName'})
     .then(data => {
-        console.log(data);
+        console.log(data.population);
     })
+    .catch(err => {
+    console.log('error', err);
 
- }
+ });
+}
+
 
 
 // Display country informations from city name (with populate)
-function displayCountryFromCityName(cityName) { }
+function displayCountryFromCityName(cityName) {
+    City.findOne({name: cityName})
+    .populate('countryId')
+     then(data => {
+        console.log(data.countryId);
+     
+     })
+     .catch(er => {
+        console.log('Error', err);
+     });
+    }
+
 
 
 module.exports = { createCountry, createCity, displayCountryPopulation, displayCountryFromCityName }; // Do not edit/remove this line
