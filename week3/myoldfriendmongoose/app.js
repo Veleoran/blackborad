@@ -15,7 +15,7 @@ function createCountry(name, flagimage, currency, population) {
   newCountry.save();
 }
 // // Sample call:
-createCountry('Australia', 'australia.png', 'AUD', [
+createCountry( 'Australia',  'australia.png', 'AUD', [
 { populationNbr: 25400000, year: new Date('2015-08-24') },
 ]);
 
@@ -26,11 +26,11 @@ function createCity(name, currentPopulation, countryId) {
     currentPopulation: currentPopulation,
     countryId: countryId,
  });
- return newCity.save(); 
+ 
 }
 // Sample call:
 //  createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
-
+createCity('Sydney', 5312163, { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
 
 
 // Display country population from country name
