@@ -1,4 +1,7 @@
 
+const mongoose = require('mongoose');
+
+
 const citySchema = mongoose.Schema({
     name: String,
     currentPopulation: Number,
