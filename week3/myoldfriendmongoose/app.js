@@ -26,7 +26,7 @@ function createCity(name, currentPopulation, countryId) {
     currentPopulation: currentPopulation,
     countryId: countryId,
  });
- return newCity.save();
+ return newCity.save(); 
 }
 // Sample call:
  createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
@@ -36,11 +36,12 @@ function createCity(name, currentPopulation, countryId) {
 // Display country population from country name
 function displayCountryPopulation(countryName) {
     Country.findOne({ name: 'countryName'})
+    .populate('city')
     .then(data => {
         console.log(data.population);
     })
     .catch(err => {
-    console.log('error', err);
+    console.log('Error', err);
 
  });
 }
@@ -55,7 +56,7 @@ function displayCountryFromCityName(cityName) {
         console.log(data.countryId);
      
      })
-     .catch(er => {
+     .catch(err => {
         console.log('Error', err);
      });
     }
