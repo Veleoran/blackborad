@@ -4,7 +4,7 @@ const Country = require('./models/countries');
 const City = require('./models/cities');
 
 
- //Create country with name, flag image, currency and population
+ //Create country with name, flag image, currency and populatio
 function createCountry(name, flagimage, currency, population) { 
   const newCountry = new Country({
     name: name,
@@ -29,7 +29,7 @@ function createCity(name, currentPopulation, countryId) {
  return newCity.save(); 
 }
 // Sample call:
- createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
+//  createCity('Sydney', 5312163,  { type: mongoose.Schema.Types.ObjectId, ref: 'countries' } );
 
 
 
