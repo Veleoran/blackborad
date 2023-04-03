@@ -14,10 +14,10 @@ function createCountry(name, flagimage, currency, population) {
   });
   newCountry.save();
 }
-// Sample call:
+// // Sample call:
 createCountry('Australia', 'australia.png', 'AUD', [
-  { populationNbr: 25400000, year: new Date('2015-08-24') },
- ]);
+{ populationNbr: 25400000, year: new Date('2015-08-24') },
+]);
 
 //  Create city with name, population and country foreign key
 function createCity(name, currentPopulation, countryId) {
