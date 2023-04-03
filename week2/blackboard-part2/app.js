@@ -1,8 +1,4 @@
-require('./models/connection');
-const Article = require('./models/articles');
-const User = require('./models/users');
-const Order = require('./models/orders');
-
+// Add your own requires here 😉
 
 /*
 ** Articles
@@ -49,49 +45,20 @@ function resetStocks() {
 ** Users
 */
 
-function displayAllUsers() {
-	User.find().then(data => {
-		console.log('USERS =>', data);
-	});
-}
+function displayAllUsers() { }
 
-function deleteUser(userId) {
-	User.deleteOne({ _id: userId }).then(() => {
-		console.log(`User ${userId} deleted`);
-	});
-}
+function deleteUser(userId) { }
 
 
 /*
 ** Orders
 */
 
-function displayAllOrders() {
-	Order.find().then(data => {
-		console.log('ORDERS =>', data);
-	});
-}
+function displayAllOrders() { }
 
-function updateOrderPaymentStatus(orderId, isPaid) {
-	Order.updateOne({ _id: orderId }, { isPaid }).then(() => {
-		console.log(`Order ${orderId} updated`);
-	});
-}
+function updateOrderPaymentStatus(orderId, isPaid) { }
 
-function deleteOrder(orderId) {
-	Order.deleteOne({ _id: orderId }).then(() => {
-		console.log(`Order ${orderId} deleted`);
-	});
-}
-
-
-/*
-** Query population
-*/
-
-function displayOrderArticles(orderId) { }
-
-function displayUserOrders(userId) { }
+function deleteOrder(orderId) { }
 
 
 // Do not edit/remove code under this line
@@ -107,6 +74,4 @@ module.exports = {
 	displayAllOrders,
 	updateOrderPaymentStatus,
 	deleteOrder,
-	displayOrderArticles,
-	displayUserOrders,
 };
