@@ -1,4 +1,21 @@
+require('../models/connection');
+
+const fetch = require('node-fetch');
+
+router.get('/openweathermap', (req, res) => {
+
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=c8c6d4401bf32bb786af86b17f48d75c&units=metric`)
+.then(response => response.json())
+.then(data => {
+  res.json({ CurrentWeatherData : data});
+});
+
+})
+;
+
 var express = require('express');
+const { response } = require('../app');
 var router = express.Router();
 
 let weather = [
