@@ -4,15 +4,31 @@ const fetch = require('node-fetch');
 
 router.get('/openweathermap', (req, res) => {
 
+  
 
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=c8c6d4401bf32bb786af86b17f48d75c&units=metric`)
-.then(response => response.json())
-.then(data => {
-  res.json({ CurrentWeatherData : data});
-});
-
-})
-;
+  router.post('/weather', async (req, res) => {
+    if (!weather.some(e => e.cityName.toLowerCase() === req.body.cityName.toLowerCase())) {
+      try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=c8c6d4401bf32bb786af86b17f48d75c&units=metric`);
+        const apiData = await response.json();
+  
+        const newCity = {
+          cityName: apiData.name,
+          description: apiData.weather[0].description,
+          main: apiData.weather[0].main,
+          tempMin: apiData.main.temp_min,
+          tempMax: apiData.main.temp_max,
+        };
+  
+        weather.push(newCity);
+        res.json({ result: true, weather: newCity });
+      } catch (error) {
+        res.status(500).json({ result: false, error: 'Error fetching data from the API' });
+      }
+    } else {
+      res.json({ result: false, error: 'City already saved' });
+    }
+  });
 
 var express = require('express');
 const { response } = require('../app');
@@ -37,21 +53,21 @@ let weather = [
 ];
 
 
-router.post('/weather', (req, res) => {
-  if (!weather.some(e => e.cityName.toLowerCase() === req.body.cityName.toLowerCase())) {
-    const newCity = {
-      cityName: req.body.cityName,
-      description: req.body.description,
-      tempMin: req.body.tempMin,
-      tempMax: req.body.tempMax,
-    };
+// router.post('/weather', (req, res) => {
+//   if (!weather.some(e => e.cityName.toLowerCase() === req.body.cityName.toLowerCase())) {
+//     // const newCity = {
+    //   cityName: req.body.cityName,
+    //   description: req.body.description,
+    //   tempMin: req.body.tempMin,
+    //   tempMax: req.body.tempMax,
+    // };
 
-    weather.push(newCity);
-    res.json({ result: true, weather: newCity });
-  } else {
-    res.json({ result: false, error: 'City already saved' });
-  }
-});
+//     weather.push(newCity);
+//     res.json({ result: true, weather: newCity });
+//   } else {
+//     res.json({ result: false, error: 'City already saved' });
+//   }
+// });
 
 router.get('/weather', (req, res) => {
   res.json({ weather });
@@ -78,4 +94,4 @@ router.delete('/weather/:cityName', (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router;})
