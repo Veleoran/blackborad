@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 
 var adminRouter = require('./routes/admin')
+var moderatorRouter = require('./routes/moderator')
 var indexRouter = require('./routes/index');
 
 var app = express();
@@ -20,5 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/moderator', moderatorRouter);
 
 module.exports = app;

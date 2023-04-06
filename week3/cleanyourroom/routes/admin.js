@@ -1,9 +1,10 @@
 var express = require('express');
+const { checkAdminPassword } = require('../modules/checkPasswords');
 var router = express.Router();
 
 router.post('/login', (req, res) => {
-    const password = 'adminazerty123';
-    if (req.body.password === password) {
+   
+    if (checkAdminrPassword(req.body.password)) {
       res.json({ result: true });
     }
     else {
@@ -12,8 +13,8 @@ router.post('/login', (req, res) => {
   });
   
   router.post('/supersecretaction', (req, res) => {
-    const password = 'adminazerty123';
-    if (req.body.password === password) {
+   
+    if  (checkModeratorPassword(req.body.password)) {
       res.json({ result: true });
     }
     else {
