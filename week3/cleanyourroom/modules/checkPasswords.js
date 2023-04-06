@@ -1,6 +1,3 @@
-var express = require('express');
-const { route } = require('../routes');
-var router = express.Router();
 
 function checkModeratorPassword(password) {
     if (password === 'modpwd123') {
