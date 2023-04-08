@@ -7,20 +7,22 @@ require('./models/connection');
 
 require('./models/connection');
 const Todo = require('./models/todos');
+const indexRouter = require('./routes/index');
+const todosRouter = require('./routes/todos'); 
 
-Todo.find().then(data => { console.log(data); });
+// Todo.find().then(data => { console.log(data); });
 
-const newTodo = new Todo({
- name: 'Walk the dog',
- assignedTo: ['John', 'Jane'],
- priority: 1,
- done: false,
- dateDue: new Date(),
-});
+// const newTodo = new Todo({
+//  name: 'Walk the dog',
+//  assignedTo: ['John', 'Jane'],
+//  priority: 1,
+//  done: false,
+//  dateDue: new Date(),
+// });
 
-newTodo.save().then(newDoc => {
- console.log(newDoc);
-});
+// newTodo.save().then(newDoc => {
+//  console.log(newDoc);
+// });
 
 
 var indexRouter = require('./routes/index');
@@ -34,5 +36,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/todos', todosRouter); 
 
 module.exports = app;

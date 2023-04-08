@@ -1,31 +1,29 @@
-// Write your code here
-const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const Todo = require('../models/todos');
 
-const todoSchema = mongoose.Schema({
- title: String,
- priority: Number,
- 
+// GET /todos
+router.get('/', async (req, res) => {
+  try {
+    const todos = await Todo.find();
+    res.status(200).json({ todos });
+  } catch (err) {
+    res.status(500).json({ message: 'Error getting todos' });
+  }
 });
 
+// POST /todos
+router.post('/', async (req, res) => {
+  try {
+    const todo = new Todo({
+      title: req.body.title,
+      priority: req.body.priority,
+    });
+    await todo.save();
+    res.status(200).json({ result: true });
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating todo' });
+  }
+});
 
-
-const Todo = mongoose.model('todos', todoSchema);
-
-module.exports = Todo;
-// ROUTE GET /todos
-//EXEMPLE DE RÉPONSE :
-// {
-//   "todos": [
-//     {"title": "Aller faire les courses", "priority": 2},
-//     {"title": "Faire mes flashcards", "priority": 1},
-//     {"title": "Faire une sieste", "priority": 3}
-//   ]
-// }
-
-
-
-// ROUTE POST /todos
-//EXEMPLE DE RÉPONSE :
-// {
-//   "result": true
-// }
+module.exports = router;
