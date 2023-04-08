@@ -8,6 +8,7 @@ require('./models/connection');
 require('./models/connection');
 const Todo = require('./models/todos');
 
+
 Todo.find().then(data => { console.log(data); });
 
 const newTodo = new Todo({
@@ -34,5 +35,5 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-
+ 
 module.exports = app;
