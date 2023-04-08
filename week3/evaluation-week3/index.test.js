@@ -4,7 +4,8 @@ const app = require('./app');
 const Todo = require('./models/todos');
 
 const newTodo = {title: "Aller faire les courses", priority:2}
-
+var express = require('express');
+var router = express.Router();
 
 beforeEach(async () => {
 	await Todo.deleteOne({ title: new RegExp(newTodo.title, 'i') });

@@ -1,7 +1,15 @@
 var express = require('express');
 var router = express.Router();
 // DO NOT EDIT OVER THIS LINE //
+const Todo = require('../models/todos')
 
+
+
+let todos = ["Aller faire les courses","Faire mes flashcards","Faire une sieste" ];
+
+router.get('/todos', (req, res) => {
+ res.json({ todosList: todos });
+});
 
 // ROUTE GET /todos
 //EXEMPLE DE RÉPONSE :
@@ -14,6 +22,22 @@ var router = express.Router();
 // }
 
 
+// router.post('/todos', (req, res) => {
+//     const newTodo = new Todo({
+       
+       
+//        newUser.save()
+//        .then(() => {
+//         res.json({ result : true });
+//        });
+   
+//    });
+// });
+
+
+
+
+ // todos.push(req.body.newtodos);
 
 // ROUTE POST /todos
 //EXEMPLE DE RÉPONSE :
