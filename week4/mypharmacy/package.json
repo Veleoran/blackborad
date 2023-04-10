@@ -6,6 +6,6 @@
 		"start": "node app.js"
 	},
 	"devDependencies": {
-		"jest": "^28.0.1"
+		"jest": "^29.5.0"
 	}
 }

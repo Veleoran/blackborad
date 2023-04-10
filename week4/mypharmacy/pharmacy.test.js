@@ -17,3 +17,13 @@ it('Get drug names by group - Investigational', () => {
 
 	expect(drugs).toEqual(['Morphin', 'Trastuzumab']);
 });
+// Trastuzumab
+
+
+
+
+
+
+
+
+
