@@ -13,10 +13,7 @@ const Home = () => {
       <p>Movie 4</p>
     </div>
   );
-  const movies = [];
-  for (let i = 0; i < 10; i++) {
-    movies.push(<Movie key={i} title={`Movie ${i + 1}`} image="/path/to/image.jpg" />);
-  }
+  const moviesList = new Array(10).fill({});
 
 
   return (
