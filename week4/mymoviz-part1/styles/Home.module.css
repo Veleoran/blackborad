@@ -39,3 +39,10 @@
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
 }
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
