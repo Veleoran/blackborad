@@ -14,7 +14,7 @@ const Movie = ({ title, image, vote }) => {
 
   return (
     <div className={styles.card}>
-      <img className={styles.image} src={image} alt="Poster" />
+      <img className={styles.image} src="poster.jpg"alt="Poster" />
       <div className={styles.Container}>
         <span className={styles.name}>{title}</span>
         <p className={styles.description}>
