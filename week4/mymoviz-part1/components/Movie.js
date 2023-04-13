@@ -7,7 +7,11 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Movie = ({ title, image, vote }) => {
 
- 
+  const stars = [];
+  for (let i = 0; i < 10; i++) {
+    stars.push(<FontAwesomeIcon key={i} icon={faStar} />);
+  }
+
   return (
     <div className={styles.card}>
       <img className={styles.image} src={image} alt="Poster" />
