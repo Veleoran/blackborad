@@ -6,6 +6,25 @@
   min-height: 100vh;
   padding: 4rem 0;
 }
+.header {
+  background-color: #021334;
+  height: px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ajouté ici */
+  padding: 0 20px;
+}
+
+
+
+.logocontainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-left: 10px;
+}
 
 .title {
   line-height: 1.15;

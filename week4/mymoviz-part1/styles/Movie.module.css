@@ -1,0 +1,12 @@
+.movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .movie img {
+    width: 200px;
+    height: auto;
+  }
+  
