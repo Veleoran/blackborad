@@ -13,11 +13,11 @@ const Home = () => {
       <p>Movie 4</p>
     </div>
   );
+
   const movies = [];
   for (let i = 0; i < 10; i++) {
-    movies.push(<Movie key={i} title={`Movie ${i + 1}`} image="/path/to/image.jpg" />);
+    movies.push(<Movie key={i} title={`Movie ${i + 1}`} image={`/placeholder.png`} />);
   }
-
 
   return (
     <div>
@@ -26,18 +26,18 @@ const Home = () => {
           <img src="/logo.png" alt="Logo" />
           <img className={styles.logo} src="/logoletter.png" alt="Letter logo" />
         </div>
-        <div className={styles.buttoncontainer}> {/* Ajouté ici */}
-          <Popover className={styles.Popover} content={content} title="Liked movies">
-            <Button type="primary">♥ 4 movies</Button>
-          </Popover>
-        </div>
+        <Popover className={styles.Popover} content={content} title="Liked movies">
+          <Button type="primary">♥ 4 movies</Button>
+        </Popover>
       </header>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <h2 className={styles.subtitle}>Last releases</h2>
-        {/* Ici, vous ajouterez la liste des films */}
+        <div className={styles.moviesContainer}>
+          {movies}
+        </div>
       </main>
     </div>
   );

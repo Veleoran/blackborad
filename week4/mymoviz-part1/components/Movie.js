@@ -5,7 +5,7 @@ import styles from '../styles/Movie.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Movie = ({ title, image, vote }) => {
+const Movie = ({ title, image, }) => {
 
   const stars = [];
   for (let i = 0; i < 10; i++) {
