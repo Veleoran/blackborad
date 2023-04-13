@@ -26,11 +26,9 @@ const Home = () => {
           <img src="/logo.png" alt="Logo" />
           <img className={styles.logo} src="/logoletter.png" alt="Letter logo" />
         </div>
-        <div className={styles.buttoncontainer}> {/* Ajouté ici */}
         <Popover className={styles.Popover} content={content} title="Liked movies">
           <Button type="primary">♥ 4 movies</Button>
         </Popover>
-        </div>
       </header>
       <main className={styles.main}>
         <h1 className={styles.title}>
