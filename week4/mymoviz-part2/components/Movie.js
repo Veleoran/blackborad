@@ -5,8 +5,8 @@ import styles from '../styles/Movie.module.css';
 function Movie(props) {
   const stars = [];
 
-  function getStarColor(index, voteAverage) {
-    const fullStars = Math.floor(voteAverage);
+  function getStarColor(index,) {
+    const fullStars = Math.floor(props.voteAverage);
     if (index < fullStars) {
       return '#f1c40f';
     }
@@ -18,7 +18,7 @@ function Movie(props) {
       <FontAwesomeIcon
         key={i}
         icon={faStar}
-        style={{ color: getStarColor(i, voteAverage) }}
+        style={{ color: getStarColor(i)  }}
       />
     );
   }
