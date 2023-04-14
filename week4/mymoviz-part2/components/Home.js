@@ -16,10 +16,7 @@ function Home() {
    });
   
 
-  // const movies = [];
-  // for (let i = 0; i < 10; i++) {
-  //   movies.push(<Movie key={i} />);
-  // }
+  
 
   const popoverContent = (
     <div className={styles.popoverContent}>

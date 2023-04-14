@@ -38,3 +38,7 @@ function Movie({ poster, title, overview, voteAverage, voteCount }) {
 }
 
 export default Movie;
+
+
+
+
