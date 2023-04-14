@@ -10,7 +10,7 @@ function Movie({ poster, title, overview, voteAverage, voteCount }) {
     if (index < fullStars) {
       return '#f1c40f';
     }
-    return null;
+    return   null;
   }
 
   for (let i = 0; i < 10; i++) {
