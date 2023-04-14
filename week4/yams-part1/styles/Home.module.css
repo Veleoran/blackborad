@@ -20,3 +20,16 @@
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
 }
+
+.diceContainer { /* Mise à jour du nom de classe */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+}
+
