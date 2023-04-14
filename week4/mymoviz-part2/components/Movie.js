@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
 
-function Movie({ poster, title, overview, voteAverage, voteCount }) {
+function Movie(props) {
   const stars = [];
 
   function getStarColor(index, voteAverage) {
@@ -25,12 +25,12 @@ function Movie({ poster, title, overview, voteAverage, voteCount }) {
 
   return (
     <div className={styles.card}>
-      <img className={styles.image} src={poster} alt={`${title} Poster`} />
+      <img className={styles.image} src={props.poster} alt={props.title} Poster />
       <div className={styles.textContainer}>
-        <span className={styles.name}>{title}</span>
-        <p className={styles.description}>{overview}</p>
+        <span className={styles.name}>{props.title}</span>
+        <p className={styles.description}>{props.overview}</p>
         <span className={styles.vote}>
-          {stars} ({voteCount} votes)
+          {stars} ({props.voteCount} votes)
         </span>
       </div>
     </div>
