@@ -5,6 +5,10 @@ import styles from '../styles/Movie.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+
+// function Movie({ poster, title, overview, voteAverage, voteCount }) {
+
+
 const Movie = ({ title, image, vote}) => {
 
   const stars = [];
@@ -25,5 +29,10 @@ const Movie = ({ title, image, vote}) => {
     </div>
   );
 };
+
+// function Movie({ poster, title, overview, voteAverage, voteCount }) {
+//   // ...
+// }
+
 
 export default Movie;
