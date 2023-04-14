@@ -11,11 +11,15 @@ function Home() {
     { title: 'Iron Man', poster: 'ironman.jpg', voteAverage: 7.6, voteCount: 22_7726, overview: 'After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.' },
     { title: 'Inception', poster: 'inception.jpg', voteAverage: 8.4, voteCount: 31_546, overview: 'Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life.' },
   ];
+  const movies = moviesData.map((data, i) => {
+    return <Movie key={i} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} />;
+   });
+  
 
-  const movies = [];
-  for (let i = 0; i < 10; i++) {
-    movies.push(<Movie key={i} />);
-  }
+  // const movies = [];
+  // for (let i = 0; i < 10; i++) {
+  //   movies.push(<Movie key={i} />);
+  // }
 
   const popoverContent = (
     <div className={styles.popoverContent}>
@@ -36,7 +40,9 @@ function Home() {
         <Popover title="Liked movies" content={popoverContent} className={styles.popover} trigger="click">
           <Button>♥ 4 movie(s)</Button>
         </Popover>
+        
       </div>
+      
       <div className={styles.title}>LAST RELEASES</div>
       <div className={styles.moviesContainer}>
         {movies}
