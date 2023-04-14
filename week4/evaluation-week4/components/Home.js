@@ -13,7 +13,7 @@ function Home() {
     <Gift
       key={index}
       name={gift.name}
-      imageUrl={`/images/${gift.picture}`}
+      picture={`/images/${gift.picture}`}
       price={gift.price}
     />
   ));
