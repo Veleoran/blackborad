@@ -8,44 +8,39 @@ let weather = [
 ];
 
 router.post('/weather', (req, res) => {
-  const cityName = req.body.cityName.toLowerCase();
-  const description = req.body.description;
-  const tempMin = req.body.tempMin;
-  const tempMax = req.body.tempMax;
+  if (!weather.some(e => e.cityName.toLowerCase() === req.body.cityName.toLowerCase())) {
+    const newCity = {
+      cityName: req.body.cityName,
+      description: req.body.description,
+      tempMin: req.body.tempMin,
+      tempMax: req.body.tempMax,
+    };
 
-  const cityExists = weather.find(city => city.cityName.toLowerCase() === cityName);
-
-  if (cityExists) {
-    res.json({ result: false, error: 'City already saved' });
-  } else {
-    const newCity = { cityName, description, tempMin, tempMax };
     weather.push(newCity);
     res.json({ result: true, weather: newCity });
+  } else {
+    res.json({ result: false, error: 'City already saved' });
   }
 });
 
 router.get('/weather', (req, res) => {
-  res.json({ weather: weather });
+  res.json({ weather });
 });
 
 router.get('/weather/:cityName', (req, res) => {
-  const cityName = req.params.cityName.toLowerCase();
-  const city = weather.find(city => city.cityName.toLowerCase() === cityName);
-
-  if (city) {
-    res.json({ result: true, weather: city });
+  const searchedWeather = weather.find(e => e.cityName.toLowerCase() === req.params.cityName.toLowerCase());
+  if (searchedWeather) {
+    res.json({ result: true, weather: searchedWeather });
   } else {
     res.json({ result: false, error: 'City not found' });
   }
 });
 
 router.delete('/weather/:cityName', (req, res) => {
-  const cityName = req.params.cityName.toLowerCase();
-  const cityIndex = weather.findIndex(city => city.cityName.toLowerCase() === cityName);
-
-  if (cityIndex !== -1) {
-    weather.splice(cityIndex, 1);
-    res.json({ result: true, weather: weather });
+  const searchedWeather = weather.find(e => e.cityName.toLowerCase() === req.params.cityName.toLowerCase());
+  if (searchedWeather) {
+    weather = weather.filter(e => e.cityName.toLowerCase() !== req.params.cityName.toLowerCase());
+    res.json({ result: true, weather });
   } else {
     res.json({ result: false, error: 'City not found' });
   }
