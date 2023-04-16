@@ -21,7 +21,7 @@
   text-decoration: underline;
 }
 
-.diceContainer { /* Mise à jour du nom de classe */
+.diceContainer { 
   display: flex;
   justify-content: space-between;
   align-items: center;
