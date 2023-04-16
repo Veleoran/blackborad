@@ -23,9 +23,11 @@ router.post('/weather', (req, res) => {
     res.json({ result: true, weather: newCity });
   }
 });
+
 router.get('/weather', (req, res) => {
   res.json({ weather: weather });
 });
+
 router.get('/weather/:cityName', (req, res) => {
   const cityName = req.params.cityName.toLowerCase();
   const city = weather.find(city => city.cityName.toLowerCase() === cityName);
@@ -36,6 +38,7 @@ router.get('/weather/:cityName', (req, res) => {
     res.json({ result: false, error: 'City not found' });
   }
 });
+
 router.delete('/weather/:cityName', (req, res) => {
   const cityName = req.params.cityName.toLowerCase();
   const cityIndex = weather.findIndex(city => city.cityName.toLowerCase() === cityName);
@@ -47,4 +50,5 @@ router.delete('/weather/:cityName', (req, res) => {
     res.json({ result: false, error: 'City not found' });
   }
 });
+
 module.exports = router;
