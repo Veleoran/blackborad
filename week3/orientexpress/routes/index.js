@@ -1,84 +1,30 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-let trips = [{ departure: 'Paris', arrival: 'Lyon' }, { departure: 'Lyon', arrival: 'Marseille' }];
+// Tableau global pour stocker les trajets
+const trips = [];
 
-
+// POST /trips : ajoute un nouveau trajet dans le tableau trips
 router.post('/trips', (req, res) => {
-trips.push ({departure : req.body.newdeparture, arrival : req.body.newarrival});
-res.json({ allTrips: trips });
+  trips.push({ departure: req.body.departure, arrival: req.body.arrival });
+  res.json({ allTrips: trips });
 });
 
-
-
-
-
-// POST /trips - Sample result: 
-// "allTrips": [
-//   {
-//     "departure": "Paris",
-//     "arrival": "Lyon"
-//   },
-//   {
-//     "departure": "Lyon",
-//     "arrival": "Marseille"
-//   },
-//   {
-//     "departure": "Grenoble",
-//     "arrival": "Strasbourg"
-//   }
-// ]
-
-
+// GET /trips : renvoie tous les trajets du tableau trips
 router.get('/trips', (req, res) => {
-    res.json({ allTrips: trips});
-
+  res.json({ allTrips: trips });
 });
 
-
-
-
-
-// GET /trips - Sample result:
-// "allTrips": [
-//   {
-//     "departure": "Paris",
-//     "arrival": "Lyon"
-//   },
-//   {
-//     "departure": "Lyon",
-//     "arrival": "Marseille"
-//   },
-//   {
-//     "departure": "Grenoble",
-//     "arrival": "Strasbourg"
-//   }
-// ]
-
+// GET /lastTrip : renvoie seulement le tout dernier trajet du tableau trips
 router.get('/lastTrip', (req, res) => {
-    
-    let lastTrip = trips[trips.length - 1];
-    res.json({lastTrip});
-})
-
-
-
-
-
-// GET /lastTrip - Sample result:
-// "lastTrip": {
-//   "departure": "Grenoble",
-//   "arrival": "Strasbourg"
-// }
-
-router.delete('/allTrips', (req, res) => {
-    trips = [];
-    res.json([]);
+  const lastTrip = trips.length > 0 ? trips[trips.length - 1] : null;
+  res.json({ lastTrip: lastTrip });
 });
 
-
-
-// DELETE /trips - Sample result:
-// "allTrips": []
+// DELETE /trips : vide tous les trajets
+router.delete('/trips', (req, res) => {
+  trips.length = 0;
+  res.json({ message: 'All trips deleted', allTrips: trips });
+});
 
 module.exports = router;
