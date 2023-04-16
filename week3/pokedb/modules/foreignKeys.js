@@ -1,22 +1,26 @@
-const { Pokemon_V2, Type } = require("../database/setup.js"); // Do not edit/remove this line !
+const PokemonWithForeignKey = require("./models/pokemonWithForeignKey");
+const Type = require("./models/type");
 
+// Create a new pokemon in database
 function createPokemon(pokemonName, typeId) {
-  const newPokemon = new Pokemon_V2({
+  const newPokemon = new PokemonWithForeignKey({
     name: pokemonName,
-    types: [typeId]
+    types: [typeId],
   });
 
   newPokemon.save().then(() => console.log("Pokemon created"));
 }
 
+// Display pokemons from database
 function displayPokemons() {
-  Pokemon_V2.find()
+  PokemonWithForeignKey.find()
     .populate("types")
-    .then(data => {
+    .then((data) => {
       console.log("ALL POKEMONS =>", data);
     });
 }
 
+// Update a type document/object in 'types' collection
 function updateType(typeName, typeColor) {
   Type.updateOne(
     { name: typeName },
@@ -24,43 +28,21 @@ function updateType(typeName, typeColor) {
   ).then(() => console.log("Type updated"));
 }
 
+// Delete a type document/object in 'types' collection
 function deleteType(typeName) {
   Type.deleteOne({ name: typeName }).then(() => console.log("Type deleted"));
 }
 
+// Execute functions
+displayPokemons();
+createPokemon("Pikachu", "60f2c2b1d91e34c7f5988a2b"); // Replace with a valid Type _id from the database
+updateType("Electric", "LightYellow");
+deleteType("Rock");
 
-
-
-
-// //! Create new pokemon document/object in 'pokemons' collection
-// function createPokemon(pokemonName, ObjectId) {
-//   // Write your code here
-// }
-// // createPokemon('pikachu', 'mongo _id value') you can get an _id from a type document in database
-
-// //! Display all pokemons from database
-// function displayPokemons() {
-// 	// Write your code here
-// }
-// // displayPokemons();
-
-// // //! Update a type document/object in 'types' collection
-// function updateType(typeName, typeColor) {
-//   // Write your code here
-// }
-// // updateType('rock', 'grey')
-
-// //! Delete a type document/object in 'types' collection
-// function deleteType(typeName) {
-//   // Write your code here
-// }
-// // deleteType('rock')
-
-// Do not edit/remove the code below this line !
+// Export functions
 module.exports = {
   displayPokemons,
   createPokemon,
-  addType,
   updateType,
   deleteType,
 };
