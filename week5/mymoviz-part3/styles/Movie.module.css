@@ -27,3 +27,10 @@
 .vote {
 	font-size: 12px;
 }
+.interactions {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 10px;
+  }
+  
