@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faVideo, faHeart, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
 import { useState } from 'react';
+import { ok } from 'assert';
 
 function Movie(props) {
   const stars = [];
@@ -85,5 +86,5 @@ function Movie(props) {
     </div>
   );
 }
-
+// ok
 export default Movie;
