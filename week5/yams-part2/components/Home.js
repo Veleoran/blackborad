@@ -38,7 +38,6 @@ const Home = () => {
       dices.map((die, index) => (
         <Dice
           key={index}
-          number={index + 1}
           value={die.value}
           count={die.count}
           onClick={() => handleDieClick(index)}

@@ -9,7 +9,8 @@ const Dice = ({ number, value, count, onClick }) => {
       <img
         className={styles.dice}
         src={`path/to/dice-images/dice-${value}.png`}
-        alt={`dice-${number}`} 
+        alt={value}
+        onClick={onClick}
       />
       <div className={styles.count}>{count}</div>
     </div>
