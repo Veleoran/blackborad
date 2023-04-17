@@ -5,39 +5,51 @@ import styles from "../styles/Home.module.css";
 const Home = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [dices, setDices] = useState(
-    Array.from({ length: 5 }, (_, i) => i + 1)
+    Array.from({ length: 5 }, (_, i) => ({ value: 1, count: 0 }))
   );
 
   const handleLaunch = () => {
     setGameStarted(true);
-    setDices(dices.map(() => Math.floor(Math.random() * 6) + 1));
+    setDices(
+      dices.map((die) => ({
+        value: Math.floor(Math.random() * 6) + 1,
+        count: die.count,
+      }))
+    );
+  };
+
+  const handleDieClick = (index) => {
+    setDices(
+      dices.map((die, i) =>
+        i === index
+          ? { value: Math.floor(Math.random() * 6) + 1, count: die.count + 1 }
+          : die
+      )
+    );
   };
 
   return (
     <div className={styles.container}>
-      <div>
-        <div className={styles.triangleLeft}></div>
-        <div className={styles.triangleLeftRed}></div>
-        <div className={styles.triangleLeft}></div>
-      </div>
+      {/* ... autres éléments ... */}
       <div className={styles.middleSection}>
-        <img src="logo.png" alt="Logo" className={styles.logo} />
+        {/* ... autres éléments ... */}
         <div className={styles.board}>
-          {dices.map((value, index) => (
-            <Dice key={index} value={value} />
+          {dices.map((die, index) => (
+            <Dice
+              key={index}
+              value={die.value}
+              count={die.count}
+              onClick={() => handleDieClick(index)}
+            />
           ))}
         </div>
       </div>
-      <div>
-        <div className={styles.triangleRight}></div>
-        <div className={styles.triangleRightRed}></div>
-        <div className={styles.triangleRight}></div>
-        {!gameStarted && (
-          <button className="launchBtn" onClick={handleLaunch}>
-            Launch
-          </button>
-        )}
-      </div>
+      {/* ... autres éléments ... */}
+      {!gameStarted && (
+        <button className="launchBtn" onClick={handleLaunch}>
+          Launch
+        </button>
+      )}
     </div>
   );
 };

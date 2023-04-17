@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../styles/Dice.module.css";
 
-const Dice = ({ value }) => {
-  const [dieValue, setDieValue] = useState(value);
-
-  const handleClick = () => {
-    setDieValue(Math.floor(Math.random() * 6) + 1);
-  };
-
+const Dice = ({ value, count, onClick }) => {
   return (
     <div>
       <img
         className={styles.dice}
-        src={`path/to/dice-images/dice-${dieValue}.png`}
-        alt={dieValue}
-        onClick={handleClick}
+        src={`path/to/dice-images/dice-${value}.png`}
+        alt={value}
+        onClick={onClick}
       />
+      <div className={styles.count}>{count}</div>
     </div>
   );
 };
