@@ -82,7 +82,8 @@ function Movie(props) {
           <div>{renderLikeIcon()}</div>
         </div>
       </div>
-    </div>
+    
+  </div>
   );
 }
 
