@@ -14,5 +14,4 @@ const Dice = ({ value, count, onClick }) => {
     </div>
   );
 };
-
 export default Dice;
