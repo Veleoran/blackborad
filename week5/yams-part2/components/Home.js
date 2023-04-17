@@ -13,17 +13,17 @@ const Home = () => {
     setDices(
       dices.map((die) => ({
         value: Math.floor(Math.random() * 6) + 1,
-        count: die.count,
+        count: dice.count,
       }))
     );
   };
 
   const handleDieClick = (index) => {
     setDices(
-      dices.map((die, i) =>
+      dices.map((dice, i) =>
         i === index
-          ? { value: Math.floor(Math.random() * 6) + 1, count: die.count + 1 }
-          : die
+          ? { value: Math.floor(Math.random() * 6) + 1, count: dice.count + 1 }
+          : dice
       )
     );
   };
@@ -35,11 +35,11 @@ const Home = () => {
        
         <div className={styles.board}>
     {gameStarted &&
-      dices.map((die, index) => (
+      dices.map((dice, index) => (
         <Dice
           key={index}
-          value={die.value}
-          count={die.count}
+          value={dice.value}
+          count={dice.count}
           onClick={() => handleDieClick(index)}
         />
           ))}
