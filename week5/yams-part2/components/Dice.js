@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../styles/Dice.module.css";
 
 const Dice = ({ value, count, onClick }) => {
+  if (value === null) return null;
+
   return (
     <div>
       <img
@@ -14,4 +16,6 @@ const Dice = ({ value, count, onClick }) => {
     </div>
   );
 };
+
 export default Dice;
+ 
