@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css";
 const Home = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [dices, setDices] = useState(
-    Array.from({ length: 5 }, (_, i) => ({ value: 1, count: 0 }))
+    Array.from({ length: 5 }, () => ({ value: null, count: 0 }))
   );
 
   const handleLaunch = () => {
@@ -34,13 +34,15 @@ const Home = () => {
       <div className={styles.middleSection}>
         {/* ... autres éléments ... */}
         <div className={styles.board}>
-          {dices.map((die, index) => (
-            <Dice
-              key={index}
-              value={die.value}
-              count={die.count}
-              onClick={() => handleDieClick(index)}
-            />
+    {gameStarted &&
+      dices.map((die, index) => (
+        <Dice
+          key={index}
+          number={index + 1}
+          value={die.value}
+          count={die.count}
+          onClick={() => handleDieClick(index)}
+        />
           ))}
         </div>
       </div>
