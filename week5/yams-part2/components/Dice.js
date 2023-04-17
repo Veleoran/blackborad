@@ -17,6 +17,8 @@ const Dice = ({ value, count, onClick }) => {
   );
 };
 
+
+
 export default Dice;
 
  
