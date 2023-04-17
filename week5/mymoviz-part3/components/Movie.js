@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faVideo, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faVideo, faHeart, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
 import { useState } from 'react';
 
@@ -16,11 +16,13 @@ function Movie(props) {
   const [personalNote, setPersonalNote] = useState(0);
   const [watchCount, setWatchCount] = useState(0);
   const [like, setLike] = useState(false);
+  const [dislike, setDislike] = useState(false);
+
 
   const rateMovie = (rating) => {
-    setPersonalNote(rating);
+    setPersonalNote(Number(rating));
   };
-
+  
   const incrementWatchCount = () => {
     setWatchCount(watchCount + 1);
   };
@@ -28,6 +30,10 @@ function Movie(props) {
   const toggleLike = () => {
     setLike(!like);
   };
+  const toggleDislike = () => {
+    setDislike(!dislike);
+  };
+  
 
   const renderPersonalRatingStars = () => {
     const stars = [];
@@ -67,6 +73,17 @@ function Movie(props) {
       />
     );
   };
+  const renderDislikeIcon = () => {
+    return (
+      <FontAwesomeIcon
+        className="dislike"
+        icon={faThumbsDown}
+        style={{ color: dislike ? '#e74c3c' : 'black', cursor: 'pointer' }}
+        onClick={toggleDislike}
+      />
+    );
+  };
+  
 
   return (
     <div className={styles.card}>
@@ -79,6 +96,13 @@ function Movie(props) {
           <div>{renderPersonalRatingStars()} ({personalNote})</div>
           <div>{renderWatchIcon()} ({watchCount})</div>
           <div>{renderLikeIcon()}</div>
+          <div>{renderDislikeIcon()}</div>
+          <input
+    className="personalNoteInput"
+    type="text"
+    value={personalNote}
+    onChange={(e) => rateMovie(e.target.value)} />
+  /
         </div>
       </div>
     </div>
