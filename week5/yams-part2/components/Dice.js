@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/Dice.module.css";
 
-const Dice = ({ number, value, count, onClick }) => {
+const Dice = ({ value, count, onClick }) => {
   if (value === null) return null;
 
   return (

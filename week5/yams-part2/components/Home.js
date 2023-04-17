@@ -30,9 +30,9 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      {/* ... autres éléments ... */}
+    
       <div className={styles.middleSection}>
-        {/* ... autres éléments ... */}
+       
         <div className={styles.board}>
     {gameStarted &&
       dices.map((die, index) => (
@@ -45,7 +45,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {/* ... autres éléments ... */}
+    
       {!gameStarted && (
         <button className="launchBtn" onClick={handleLaunch}>
           Launch
