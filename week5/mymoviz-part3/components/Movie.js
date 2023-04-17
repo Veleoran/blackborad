@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faVideo, faHeart, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faVideo, faHeart, } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
 import { useState } from 'react';
-import { ok } from 'assert';
 
 function Movie(props) {
   const stars = [];
@@ -33,7 +32,7 @@ function Movie(props) {
   const renderPersonalRatingStars = () => {
     const stars = [];
     for (let i = 1; i <= 10; i++) {
-      const color = i <= personalNote ? '#2196f3' : 'black';
+      const color = i <= personalNote ? '#2196f3' : '';
       stars.push(
         <FontAwesomeIcon
           key={i}
@@ -52,14 +51,14 @@ function Movie(props) {
       <FontAwesomeIcon
         className="watch"
         icon={faVideo}
-        style={{ color: watchCount > 0 ? '#e74c3c' : 'black', cursor: 'pointer' }}
+        style={{ color: watchCount > 0 ? '#e74c3c' : '', cursor: 'pointer' }}
         onClick={incrementWatchCount}
       />
     );
   };
 
   const renderLikeIcon = () => {
-    const color = like ? '#e74c3c' : 'black';
+    const color = like ? '#e74c3c' : '';
     return (
       <FontAwesomeIcon
         className="like"
@@ -86,5 +85,5 @@ function Movie(props) {
     </div>
   );
 }
-// ok
+
 export default Movie;
