@@ -11,7 +11,7 @@ const Home = () => {
   const handleLaunch = () => {
     setGameStarted(true);
     setDices(
-      dices.map((die) => ({
+      dices.map((dice) => ({
         value: Math.floor(Math.random() * 6) + 1,
         count: dice.count,
       }))
