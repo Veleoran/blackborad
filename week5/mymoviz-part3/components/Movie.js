@@ -16,8 +16,6 @@ function Movie(props) {
   const [personalNote, setPersonalNote] = useState(0);
   const [watchCount, setWatchCount] = useState(0);
   const [like, setLike] = useState(false);
-  const [dislike, setDislike] = useState(false);
-
 
   const rateMovie = (rating) => {
     setPersonalNote(Number(rating));
@@ -30,10 +28,6 @@ function Movie(props) {
   const toggleLike = () => {
     setLike(!like);
   };
-  const toggleDislike = () => {
-    setDislike(!dislike);
-  };
-  
 
   const renderPersonalRatingStars = () => {
     const stars = [];
@@ -64,26 +58,16 @@ function Movie(props) {
   };
 
   const renderLikeIcon = () => {
+    const color = like ? '#e74c3c' : 'black';
     return (
       <FontAwesomeIcon
         className="like"
         icon={faHeart}
-        style={{ color: like ? '#e74c3c' : 'black', cursor: 'pointer' }}
+        style={{ color, cursor: 'pointer' }}
         onClick={toggleLike}
       />
     );
   };
-  const renderDislikeIcon = () => {
-    return (
-      <FontAwesomeIcon
-        className="dislike"
-        icon={faThumbsDown}
-        style={{ color: dislike ? '#e74c3c' : 'black', cursor: 'pointer' }}
-        onClick={toggleDislike}
-      />
-    );
-  };
-  
 
   return (
     <div className={styles.card}>
@@ -96,13 +80,6 @@ function Movie(props) {
           <div>{renderPersonalRatingStars()} ({personalNote})</div>
           <div>{renderWatchIcon()} ({watchCount})</div>
           <div>{renderLikeIcon()}</div>
-          <div>{renderDislikeIcon()}</div>
-          <input
-    className="personalNoteInput"
-    type="text"
-    value={personalNote}
-    onChange={(e) => rateMovie(e.target.value)} />
-  /
         </div>
       </div>
     </div>
