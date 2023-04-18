@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
+
 import styles from '../styles/Movie.module.css';
 
 function Movie(props) {
@@ -30,7 +31,6 @@ function Movie(props) {
   <FontAwesomeIcon icon={faHeart} />
 </div>
           <span>
-            
             <FontAwesomeIcon
               icon={faHeart}
               onClick={() => handleLikeMovie()}
