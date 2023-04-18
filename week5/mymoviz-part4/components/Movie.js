@@ -34,7 +34,9 @@ setLike(!like);
 props.onLike(props.title, !like ? 'add' : 'remove');
 };
 useEffect(() => {
+  if (props.likedMovies) {
   setLike(props.likedMovies.includes(props.title));
+  }
 }, [props.likedMovies, props.title]);
 
 let heartIconStyle = { 'cursor': 'pointer' };
