@@ -22,6 +22,7 @@ function Movie(props) {
   const handleWatchMovie = () => {
     setWatchCount(watchCount + 1);
   };
+
   let videoIconStyle = { 'cursor': 'pointer' };
   if (watchCount > 0) {
     videoIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
@@ -37,8 +38,7 @@ function Movie(props) {
       props.onLike(props.title, 'remove');
     }
   };
-  
-  
+
   let heartIconStyle = { 'cursor': 'pointer' };
   if (like) {
     heartIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
@@ -72,7 +72,5 @@ function Movie(props) {
     </div>
   );
 }
-
-
 
 export default Movie;
