@@ -30,9 +30,10 @@ videoIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
 
 // Like movie
 const handleLikeMovie = () => {
-setLike(!like);
-props.onLike(props.title, !like ? 'add' : 'remove');
+  setLike(!like);
+  props.updateLikedMovies(props.title, !like ? 'add' : 'remove');
 };
+
 useEffect(() => {
   if (props.likedMovies) {
   setLike(props.likedMovies.includes(props.title));
