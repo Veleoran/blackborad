@@ -25,7 +25,7 @@ function Home() {
 
   const movies = moviesData.map((data, i) => {
     return <Movie key={i} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount}   likedMovies={likedMovies}
-    onLike={(title, action) => updateLikedMovies(title, action)}
+    updateLikedMovies={(title, action) => updateLikedMovies(title, action)}
   />
   });
 
