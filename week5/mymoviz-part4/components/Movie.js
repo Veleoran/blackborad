@@ -29,8 +29,16 @@ function Movie(props) {
 
   // Like movie
   const handleLikeMovie = () => {
-    setLike(!like);
+    const newState = !like;
+    setLike(newState);
+    if (newState) {
+      props.onLike(props.title, 'add');
+    } else {
+      props.onLike(props.title, 'remove');
+    }
   };
+  
+  
   let heartIconStyle = { 'cursor': 'pointer' };
   if (like) {
     heartIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };

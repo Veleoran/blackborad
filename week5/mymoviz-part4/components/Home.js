@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Movie from './Movie';
 import 'antd/dist/antd.css';
 import styles from '../styles/Home.module.css';
@@ -11,17 +12,39 @@ function Home() {
     { title: 'Iron Man', poster: 'ironman.jpg', voteAverage: 7.6, voteCount: 22_7726, overview: 'After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.' },
     { title: 'Inception', poster: 'inception.jpg', voteAverage: 8.4, voteCount: 31_546, overview: 'Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life.' },
   ];
+  const [likedMovies, setLikedMovies] = useState([]);
+
+  const handleLikedMovie = (movie, action) => {
+    if (action === 'add') {
+      setLikedMovies([...likedMovies, movie]);
+    } else if (action === 'remove') {
+      setLikedMovies(likedMovies.filter((likedMovie) => likedMovie.title !== movie.title));
+    }
+  };
+  // ...
+const updateLikedMovies = (movieTitle) => {
+  if (likedMovies.includes(movieTitle)) {
+    setLikedMovies(likedMovies.filter((title) => title !== movieTitle));
+  } else {
+    setLikedMovies([...likedMovies, movieTitle]);
+  }
+};
+// ...
+
+  
+
 
   const movies = moviesData.map((data, i) => {
-    return <Movie key={i} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} />;
+    return <Movie key={i} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} onLike={handleLikedMovie} />;
   });
 
   const popoverContent = (
     <div className={styles.popoverContent}>
-      <span>Movie 1</span>
-      <span>Movie 2</span>
-      <span>Movie 3</span>
-      <span>Movie 4</span>
+      {likedMovies.map((movie, index) => (
+        <span key={index}>
+          {movie} <button onClick={() => updateLikedMovies(movie)}>x</button>
+        </span>
+      ))}
     </div>
   );
 
@@ -33,7 +56,8 @@ function Home() {
           <img className={styles.logo} src="logoletter.png" alt="Letter logo" />
         </div>
         <Popover title="Liked movies" content={popoverContent} className={styles.popover} trigger="click">
-          <Button>♥ 4 movie(s)</Button>
+        <Button>♥ {likedMovies.length} movie(s)</Button>
+
         </Popover>
       </div>
       <div className={styles.title}>LAST RELEASES</div>
