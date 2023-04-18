@@ -12,4 +12,15 @@ function Burger(props) {
 	);
 }
 
+function Burger({ onSelect, onRemove }) {
+	const burgerName = "The Californian";
+  
+	return (
+	  <div>
+		<button className="selectBtn" onClick={() => onSelect(burgerName)}>Select</button>
+		<button className="removeBtn" onClick={() => onRemove(burgerName)}>Remove all</button>
+	  </div>
+	);
+  }
+  
 export default Burger;

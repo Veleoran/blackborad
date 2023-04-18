@@ -14,12 +14,24 @@ function Home() {
     return <Burger key={i} name={data.name} image={data.image} />;
   });
 
+  function selectBurger(newBurger) {
+    setSelectedBurgers([...selectedBurgers, newBurger]);
+  }
+  function removeBurger(burgerToDelete) {
+  setSelectedBurgers(selectedBurgers.filter(burger => burger !== burgerToDelete));
+}
+
+
   return (
     <div className={styles.container}>
       <img src="logo.png" className={styles.logo} />
       <h4 className={styles.text}>Number of burgers selected: <span id="counter"></span></h4>
       <div className={styles.burgerContainer}>
         {burgers}
+        <div>
+    <Burger onSelect={selectBurger} onRemove={removeBurger} />
+    <p>Number of burgers selected: {selectedBurgers.length}</p>
+  </div>
       </div>
     </div>
   );
