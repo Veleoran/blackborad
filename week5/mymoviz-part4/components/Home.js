@@ -15,29 +15,29 @@ function Home() {
   ];
   const [likedMovies, setLikedMovies] = useState([]);
 
-  const updateLikedMovies = (movieTitle, action) => {
-    if (action === 'add') {
+  const updateLikedMovies = (movieTitle) => {
+    if (!likedMovies.includes(movieTitle)) {
       setLikedMovies([...likedMovies, movieTitle]);
-    } else if (action === 'remove') {
+    } else {
       setLikedMovies(likedMovies.filter((title) => title !== movieTitle));
     }
   };
-
+  
   const movies = moviesData.map((data, i) => {
     return <Movie key={i} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount}   likedMovies={likedMovies}
-    updateLikedMovies={(title, action) => updateLikedMovies(title, action)}
+    updateLikedMovies={(title) => updateLikedMovies(title)}
   />
   });
-
   const popoverContent = (
     <div className={styles.popoverContent}>
       {likedMovies.map((movie, index) => (
         <span key={index}>
-          {movie} <button onClick={() => updateLikedMovies(movie, 'remove')}>x</button>
+          {movie} <button onClick={() => updateLikedMovies(movie)}>x</button>
         </span>
       ))}
     </div>
   );
+  
   
 
   return (
