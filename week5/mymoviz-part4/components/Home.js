@@ -28,11 +28,10 @@ function Home() {
         poster={data.poster}
         voteAverage={data.voteAverage}
         voteCount={data.voteCount}
-        onLike={handleLikedMovie}
+        onLike={updateLikedMovies}
       />
     );
   });
-  
 
   const popoverContent = (
     <div className={styles.popoverContent}>
@@ -62,6 +61,5 @@ function Home() {
     </div>
   );
 }
-
 
 export default Home;
