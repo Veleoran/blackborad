@@ -16,8 +16,7 @@ function Movie(props) {
     ? { color: '#e74c3c', cursor: 'pointer' }
     : { cursor: 'pointer' };
 
-    function Movie({ onUpdateLikes }) {
-    }
+    
 
   return (
     <div className={styles.card}>
