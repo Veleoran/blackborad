@@ -5,18 +5,22 @@ import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
 
 function Movie(props) {
-  // ...
+  // State to toggle movie description
+  const [showDescription, setShowDescription] = useState(false);
 
   // Like movie
   const handleLikeMovie = () => {
     props.onHeartClick(props.title);
   };
 
+  // Toggle movie description
+  const toggleDescription = () => {
+    setShowDescription(!showDescription);
+  };
+
   let heartIconStyle = props.isLiked
     ? { color: '#e74c3c', cursor: 'pointer' }
     : { cursor: 'pointer' };
-
-    
 
   return (
     <div className={styles.card}>
@@ -33,7 +37,15 @@ function Movie(props) {
               className="like"
             />
           </span>
+          {/* Add star and video icons */}
+          <span>
+            <FontAwesomeIcon icon={faStar} className={styles.starIcon} />
+          </span>
+          <span>
+            <FontAwesomeIcon icon={faVideo} className={styles.videoIcon} onClick={toggleDescription} />
+          </span>
         </div>
+        {showDescription && <p className={styles.description}>{props.overview}</p>}
       </div>
     </div>
   );
