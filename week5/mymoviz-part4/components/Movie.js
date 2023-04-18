@@ -31,7 +31,11 @@ videoIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
 // Like movie
 const handleLikeMovie = () => {
   setLike(!like);
-  props.updateLikedMovies(props.title, !like ? 'add' : 'remove');
+  if (!like) {
+    props.updateLikedMovies(props.title, "add");
+  } else {
+    props.updateLikedMovies(props.title);
+  }
 };
 
 useEffect(() => {
