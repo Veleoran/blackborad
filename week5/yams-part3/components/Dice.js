@@ -10,6 +10,7 @@ function Dice(props) {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
     setNumber(randomNumber);
     setNbClicks(nbClicks + 1);
+    props.onDiceClick(randomNumber);
   };
 
   return (
