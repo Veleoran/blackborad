@@ -30,6 +30,7 @@ function Movie(props) {
   <FontAwesomeIcon icon={faHeart} />
 </div>
           <span>
+            
             <FontAwesomeIcon
               icon={faHeart}
               onClick={() => handleLikeMovie()}
