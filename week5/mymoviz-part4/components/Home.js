@@ -20,8 +20,19 @@ function Home() {
   };
 
   const movies = moviesData.map((data, i) => {
-    return <Movie key={i} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} onLike={updateLikedMovies} />;
+    return (
+      <Movie
+        key={i}
+        title={data.title}
+        overview={data.overview}
+        poster={data.poster}
+        voteAverage={data.voteAverage}
+        voteCount={data.voteCount}
+        onLike={handleLikedMovie}
+      />
+    );
   });
+  
 
   const popoverContent = (
     <div className={styles.popoverContent}>
