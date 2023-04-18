@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
+import { useEffect } from 'react'
 
 function Movie(props) {
 const [watchCount, setWatchCount] = useState(0);
@@ -32,6 +33,10 @@ const handleLikeMovie = () => {
 setLike(!like);
 props.onLike(props.title, !like ? 'add' : 'remove');
 };
+useEffect(() => {
+  setLike(props.likedMovies.includes(props.title));
+}, [props.likedMovies, props.title]);
+
 let heartIconStyle = { 'cursor': 'pointer' };
 if (like) {
 heartIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
