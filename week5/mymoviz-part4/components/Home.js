@@ -4,10 +4,6 @@ import 'antd/dist/antd.css';
 import styles from '../styles/Home.module.css';
 import { Popover, Button } from 'antd';
 
-
-
-
-
 const moviesData = [
   { title: 'Forrest Gump', poster: 'forrestgump.jpg', voteAverage: 9.2, voteCount: 22_705, overview: 'A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case.' },
   { title: 'The Dark Knight', poster: 'thedarkknight.jpg', voteAverage: 8.5, voteCount: 27_547, overview: 'Batman raises the stakes in his war on crime and sets out to dismantle the remaining criminal organizations that plague the streets.' },
@@ -15,7 +11,6 @@ const moviesData = [
   { title: 'Iron Man', poster: 'ironman.jpg', voteAverage: 7.6, voteCount: 22_7726, overview: 'After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.' },
   { title: 'Inception', poster: 'inception.jpg', voteAverage: 8.4, voteCount: 31_546, overview: 'Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life.' },
 ];
-
 
 function Home() {
  
@@ -32,7 +27,6 @@ function Home() {
         voteCount={data.voteCount}
         onHeartClick={updateLikedMovies}
         isLiked={likedMovies.includes(data.title)}
-        onUpdateLikes={updateLikedMovies} 
       />
     );
   });
@@ -45,27 +39,19 @@ function Home() {
     }
   }
   
-
- 
-  // ...
   const popoverContent = (
     <div className={styles.popoverContent}>
       {likedMovies.map((movieTitle, index) => (
         <div key={index} className="liked-movie">
           {movieTitle}
-          {/* Bouton "x" et gestionnaire d'événements onClick ajoutés */}
           <button onClick={() => updateLikedMovies(movieTitle)}>x</button>
         </div>
       ))}
     </div>
   );
 
-  
-  // ...
-
   return (
     <div className={styles.main}>
-      {/* ... */}
       <Popover
         title="Liked movies"
         content={popoverContent}
@@ -73,12 +59,12 @@ function Home() {
         trigger="click"
       >
         <Button>
-          {/* Ligne mise à jour */}
           ♥ {likedMovies.length} film{likedMovies.length !== 1 ? 's' : ''} liked
         </Button>
       </Popover>
-      {/* ... */}
+      <div className={styles.moviesContainer}>{movies}</div>
     </div>
   );
 }
+
 export default Home;

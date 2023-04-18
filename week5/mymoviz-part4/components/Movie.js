@@ -26,10 +26,6 @@ function Movie(props) {
         {/* ... */}
         <div className={styles.iconContainer}>
           {/* ... */}
-          <div className="heart" onClick={() => props.onHeartClick(props.movie.title)}>
-          <span className="heart" onClick={() => onUpdateLikes(movieTitle)}>❤️</span>
-  <FontAwesomeIcon icon={faHeart} />
-</div>
           <span>
             <FontAwesomeIcon
               icon={faHeart}
