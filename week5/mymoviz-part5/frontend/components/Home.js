@@ -9,6 +9,16 @@ import styles from '../styles/Home.module.css';
 function Home() {
   const [likedMovies, setLikedMovies] = useState([]);
 
+  useEffect(() => {
+    fetch(`http://localhost:3000/movies`)
+    .then(response => response.json())
+    then(data => {
+      const formateddata = data.movies.map((movie) => {
+        const poste = 
+      }
+    }
+  }
+
   // Liked movies (inverse data flow)
   const updateLikedMovies = (movieTitle) => {
     if (likedMovies.find(movie => movie === movieTitle)) {
