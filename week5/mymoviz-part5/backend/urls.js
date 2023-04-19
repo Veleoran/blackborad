@@ -1,7 +1,7 @@
 // Insert the backend URL given by Vercel in this variable
-const BACKEND_URL = 'https://mymovies-backend-two.vercel.app/';
+const BACKEND_URL = '';
 
 // Insert the frontend URL given by Vercel in this variable
-const FRONTEND_URL = 'https://mymovies-frontend-three.vercel.app/';
+const FRONTEND_URL = '';
 
 module.exports = { BACKEND_URL, FRONTEND_URL }; // Do not edit/remove this line
