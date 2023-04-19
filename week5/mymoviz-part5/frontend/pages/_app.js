@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import Head from 'next/head';
+import { Movies } from '../components/Movie';
 
 function App({ Component, pageProps }) {
   return (
@@ -7,6 +8,7 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Next.js App</title>
       </Head>
+      <Movies />
       <Component {...pageProps} />
     </>
   );

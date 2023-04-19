@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Popover, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import Movie from './Movie';
+import { Movies } from './Movie';
 import 'antd/dist/antd.css';
 import styles from '../styles/Home.module.css';
 
@@ -41,11 +41,12 @@ function Home() {
     { title: 'Iron Man', poster: 'ironman.jpg', voteAverage: 7.6, voteCount: 22_7726, overview: 'After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.' },
     { title: 'Inception', poster: 'inception.jpg', voteAverage: 8.4, voteCount: 31_546, overview: 'Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life.' },
   ];
+  const movies = <Movies />;
 
-  const movies = moviesData.map((data, i) => {
-    const isLiked = likedMovies.some(movie => movie === data.title);
-    return <Movie key={i} updateLikedMovies={updateLikedMovies} isLiked={isLiked} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} />;
-  });
+  // const movies = moviesData.map((data, i) => {
+  //   const isLiked = likedMovies.some(movie => movie === data.title);
+  //   return <Movie key={i} updateLikedMovies={updateLikedMovies} isLiked={isLiked} title={data.title} overview={data.overview} poster={data.poster} voteAverage={data.voteAverage} voteCount={data.voteCount} />;
+  // });
 
   return (
     <div className={styles.main}>
