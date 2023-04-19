@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await axios.get('/movies');
+      const response = await axios.get('https://mymovies-backend-two.vercel.app/');
       const formattedMovies = response.data.movies.map(formatMovieData);
       setMoviesData(formattedMovies);
     };
