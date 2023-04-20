@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from 'antd';
 import Moment from 'react-moment';
-
+import Link from 'next/link'
 function Header() {
 	const [date, setDate] = useState('2050-11-22T23:59:59');
 	const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,8 +50,12 @@ function Header() {
 			</div>
 
 			<div className={styles.linkContainer}>
-				<span className={styles.link}>Articles</span>
-				<span className={styles.link}>Bookmarks</span>
+				<Link href="/">
+					<a className={styles.link}>Articles</a>
+				</Link>
+				<Link href="/bookmarks">
+					<a className={styles.link}>Bookmarks</a>
+				</Link>
 			</div>
 
 			{isModalVisible && <div id="react-modals">
