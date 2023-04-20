@@ -6,12 +6,17 @@ import { useEffect, useState } from 'react';
 
 function Home() {
   const [articlesData, setArticlesData] = useState([]);
+  const [topArticle, setTopArticle] = useState([]);
 
   useEffect(() => {
     fetch('/api/articles')
       .then((response) => response.json())
-      .then((data) => setArticlesData(data.articles));
-  }, []);
+      .then((data) =>  { 
+        setArticlesData(data.articles);
+        setTopArticle(data.articles[0]);
+
+  });
+}, []);
 
   const articles = articlesData.map((data, i) => {
     return <Article key={i} {...data} />;
