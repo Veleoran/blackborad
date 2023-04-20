@@ -1,8 +1,5 @@
 const express = require('express');
 const fetch = require('node-fetch');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const router = express.Router();
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
