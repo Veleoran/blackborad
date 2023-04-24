@@ -24,7 +24,7 @@ function Home() {
   return (
     <div className={styles.globalContainer}>
       <h1 className={styles.title}> My World Tour</h1>
-      <span className={styles.counter}>Number of contries: {countries.length} </span>
+      <span className={styles.counter}>Number of countries: {countries.length} </span>
       
       <div className={styles.countriesContainer}>
         {pays}
