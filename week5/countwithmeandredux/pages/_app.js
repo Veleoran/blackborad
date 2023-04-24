@@ -1,5 +1,8 @@
 import '../styles/globals.css';
 import Head from 'next/head';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 function App({ Component, pageProps }) {
   return (
@@ -7,9 +10,12 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Next.js App</title>
       </Head>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </>
   );
 }
 
 export default App;
+
