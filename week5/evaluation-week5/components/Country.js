@@ -1,7 +1,6 @@
 import styles from '../styles/Country.module.css';
 
 
-
 function Country(props) {
   return (
     <div className={styles.countryCard}>
