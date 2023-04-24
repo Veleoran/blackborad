@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Country from './Country';
-
+import styles from '../styles/Home.module.css'
 function Home() {
   const [countries, setCountries] = useState([]);
 
@@ -10,23 +10,28 @@ function Home() {
       .then((data) => setCountries(data.data));
   }, []);
 
+  let pays = countries.map((data, i) => {
+    return <Country
+      key={i}
+      name={data.name}
+      flag={data.flag}
+      iso3={data.iso3}/>
+
+  })  
+
+ 
+
   return (
-    <div className="App">
-      <h1>My World Tour</h1>
-      <p>{countries.length} pays</p>
-      <div className="countries">
-        {
-          countries.map((country) => (
-            <Country
-              key={country.country}
-              name={country.country}
-              flag={country.flag}
-            />
-          ))
-        }
-      </div>
+    <div className={styles.globalContainer}>
+      <h1 className={styles.title}> My World Tour</h1>
+      <span className={styles.counter}>Number of contries: {countries.length} </span>
+      
+      <div className={styles.countriesContainer}>
+        {pays}
+        </div>
     </div>
   );
 }
+ 
 
 export default Home;
