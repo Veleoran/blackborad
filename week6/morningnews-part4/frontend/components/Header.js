@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 function Header() {
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.user.value);
+	const token = useSelector((state) => state.user.token);
 
 	const [date, setDate] = useState('2050-11-22T23:59:59');
 	const [isModalVisible, setIsModalVisible] = useState(false);
@@ -31,7 +31,7 @@ function Header() {
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
-					dispatch(login(signUpUsername));
+					dispatch(login({ username: signUpUsername, token: data.token }));
 					setSignUpUsername('');
 					setSignUpPassword('');
 				}
@@ -46,7 +46,7 @@ function Header() {
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
-					dispatch(login(signInUsername));
+					dispatch(login({ username: signInUsername, token: data.token }));
 					setSignInUsername('');
 					setSignInPassword('');
 				}
@@ -97,27 +97,85 @@ function Header() {
 		}
 	}
 
-
 	return (
 		<header className={styles.header}>
-			<div className={styles.logoContainer}>
-				<Moment className={styles.date} date={date} format="MMM Do YYYY" />
-				<h1 className={styles.title}>Morning News</h1>
-				{userSection}
+		  <div className={styles.logoContainer}>
+			<Moment className={styles.date} date={date} format="MMM Do YYYY" />
+			<h1 className={styles.title}>Morning News</h1>
+			{token ? (
+			  <div className={styles.logoutSection}>
+				<p>Welcome {username} / </p>
+				<button onClick={() => handleLogout()}>Logout</button>
+			  </div>
+			) : (
+			  <>
+				{isModalVisible ? (
+				  <FontAwesomeIcon
+					icon={faXmark}
+					onClick={() => showModal()}
+					className={styles.userSection}
+				  />
+				) : (
+				  <FontAwesomeIcon
+					icon={faUser}
+					onClick={() => showModal()}
+					className={styles.userSection}
+				  />
+				)}
+			  </>
+			)}
+		  </div>
+	
+		  <div className={styles.linkContainer}>
+			<Link href="/">
+			  <span className={styles.link}>Articles</span>
+			</Link>
+			<Link href="/bookmarks">
+			  <span className={styles.link}>Bookmarks</span>
+			</Link>
+		  </div>
+	
+		  {isModalVisible && (
+			<div id="react-modals">
+			  <Modal
+				getContainer="#react-modals"
+				className={styles.modal}
+				visible={isModalVisible}
+				closable={false}
+				footer={null}
+			  >
+				{modalContent}
+			  </Modal>
 			</div>
+		  )}
+		</header>
+	  );
+	}
+	
+	export default Header;
 
-			<div className={styles.linkContainer}>
-				<Link href="/"><span className={styles.link}>Articles</span></Link>
-				<Link href="/bookmarks"><span className={styles.link}>Bookmarks</span></Link>
-			</div>
 
-			{isModalVisible && <div id="react-modals">
-				<Modal getContainer="#react-modals" className={styles.modal} visible={isModalVisible} closable={false} footer={null}>
-					{modalContent}
-				</Modal>
-			</div>}
-		</header >
-	);
-}
 
-export default Header;
+// 	return (
+// 		<header className={styles.header}>
+// 			<div className={styles.logoContainer}>
+// 				<Moment className={styles.date} date={date} format="MMM Do YYYY" />
+// 				<h1 className={styles.title}>Morning News</h1>
+// 				{userSection}
+// 			</div>
+
+// 			<div className={styles.linkContainer}>
+// 				<Link href="/"><span className={styles.link}>Articles</span></Link>
+// 				<Link href="/bookmarks"><span className={styles.link}>Bookmarks</span></Link>
+// 			</div>
+
+// 			{isModalVisible && <div id="react-modals">
+// 				<Modal getContainer="#react-modals" className={styles.modal} visible={isModalVisible} closable={false} footer={null}>
+// 					{modalContent}
+// 				</Modal>
+// 			</div>} 
+// 		</header >
+// 	);
+// }
+
+// export default Header;
