@@ -1,4 +1,5 @@
 const uid2 = require('uid2');
+import User from '../models/users';
 
 const generateToken = () => {
   return uid2(32);
@@ -22,15 +23,15 @@ exports.canBookmark = async (req, res) => {
         return;
       }
   
-      
       const user = await User.findOne({ token });
-  
       if (!user) {
         res.status(400).json({ result: false, error: 'User not found' });
         return;
       }
+      else{
   
-      res.json({ result: true, canBookmark: user.canBookmark });
+        res.json({ result: true, canBookmark: user.canBookmark });
+      }
     } catch (error) {
       res.status(500).json({ result: false, error });
     }
