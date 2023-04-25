@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const uid2 = require('uid2');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const userController = require('../controllers/userController');
 require('../models/connection');
 const User = require('../models/users');
