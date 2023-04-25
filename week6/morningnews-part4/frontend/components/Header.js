@@ -7,10 +7,13 @@ import { faUser, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Moment from 'react-moment';
 import { Modal } from 'antd';
 import Link from 'next/link';
+import { removeAllBookmark } from '../reducers/bookmarks';
+
 
 function Header() {
 	const dispatch = useDispatch();
 	const token = useSelector((state) => state.user.token);
+	const username = useSelector((state) => state.user.username);
 
 	const [date, setDate] = useState('2050-11-22T23:59:59');
 	const [isModalVisible, setIsModalVisible] = useState(false);
@@ -54,15 +57,16 @@ function Header() {
 	};
 
 	const handleLogout = () => {
-		dispatch(logout());
-	};
+		dispatch(removeAllBookmark());
+		dispatch({ type: 'LOGOUT' });
+	  };
 
 	const showModal = () => {
 		setIsModalVisible(!isModalVisible);
 	};
 
 	let modalContent;
-	if (!user.isConnected) {
+	if (!token) {
 		modalContent = (
 			<div className={styles.registerContainer}>
 				<div className={styles.registerSection}>
@@ -82,10 +86,10 @@ function Header() {
 	}
 
 	let userSection;
-	if (user.isConnected) {
+	if (token) {
 		userSection = (
       <div className={styles.logoutSection}>
-        <p>Welcome {user.username} / </p>
+        <p>Welcome {username} / </p>
         <button onClick={() => handleLogout()}>Logout</button>
       </div>
     );

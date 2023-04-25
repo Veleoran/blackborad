@@ -3,18 +3,29 @@ import { addBookmark, removeBookmark } from '../reducers/bookmarks';
 import styles from '../styles/TopArticle.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function TopArticle(props) {
-
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.user);
 
 	const handleBookmarkClick = () => {
-		if (props.isBookmarked) {
-			dispatch(removeBookmark(props));
-		} else {
-			dispatch(addBookmark(props));
+		if (!user.token) {
+			return;
 		}
+
+		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+			.then(response => response.json())
+			.then(data => {
+				if (data.result && data.canBookmark) {
+					if (props.isBookmarked) {
+						dispatch(removeBookmark(props));
+					} else {
+						dispatch(addBookmark(props));
+					}
+				}
+			});
 	}
 
 	let iconStyle = {};

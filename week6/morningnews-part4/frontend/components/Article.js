@@ -4,16 +4,29 @@ import Image from 'next/image';
 import styles from '../styles/Article.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Article(props) {
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.user);
 
 	const handleBookmarkClick = () => {
-		if (props.isBookmarked) {
-			dispatch(removeBookmark(props));
-		} else {
-			dispatch(addBookmark(props));
+		if (!user.token) {
+			return;
 		}
+
+		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+			.then(response => response.json())
+			.then(data => {
+				if (data.result && data.canBookmark) {
+					if (props.isBookmarked) {
+						dispatch(removeBookmark(props));
+					} else {
+						dispatch(addBookmark(props));
+					}
+				}
+			});
 	}
 
 	let iconStyle = {};
