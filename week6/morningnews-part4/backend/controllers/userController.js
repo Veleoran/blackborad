@@ -1,5 +1,5 @@
 const uid2 = require('uid2');
-import User from '../models/users';
+const User = require('../models/users');
 
 const generateToken = () => {
   return uid2(32);
