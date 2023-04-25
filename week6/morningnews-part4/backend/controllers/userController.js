@@ -22,6 +22,7 @@ exports.canBookmark = async (req, res) => {
         return;
       }
   
+      
       const user = await User.findOne({ token });
   
       if (!user) {
