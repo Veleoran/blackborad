@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 
 import { Provider } from 'react-redux';
-import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import bookmarks from '../reducers/bookmarks';
 import user from '../reducers/user';
 import hiddenArticles from '../reducers/hiddenArticles';
@@ -22,6 +22,7 @@ const store = configureStore({
 });
 
 const persistor = persistStore(store);
+
 function App({ Component, pageProps }) {
   return (
     <Provider store={store}>

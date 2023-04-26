@@ -12,7 +12,7 @@ function Article(props) {
 
 	const handleHideArticleClick = () => {
 		// Dispatch l'action pour ajouter l'article aux articles cachés
-		dispatch(hideArticle(props.id));
+		dispatch(hideArticle(props));
 
 	};
 
@@ -32,7 +32,18 @@ function Article(props) {
 					}
 				}
 			});
-	}
+	};
+
+	// Récupérez l'état des articles cachés
+	// const hiddenArticles = useSelector((state) => state.hiddenArticles.value);
+
+	// // Vérifiez si l'article est caché
+	// const isHidden = hiddenArticles.includes(props.id);
+  
+	// // Si l'article est caché, ne pas afficher le contenu
+	// if (isHidden) {
+	//   return null;
+	// };
 
 	let iconStyle = {};
 	if (props.isBookmarked) {
@@ -43,8 +54,8 @@ function Article(props) {
 		<div className={styles.articles}>
 			<div className={styles.articleHeader}>
 				<h3>{props.title}</h3>
-				<FontAwesomeIcon onClick={handleHideArticleClick} icon={faEyeSlash} className={styles.hideIcon} />
-				<FontAwesomeIcon onClick={handleBookmarkClick} icon={faBookmark} style={iconStyle} className={styles.bookmarkIcon} />
+				<FontAwesomeIcon onClick={() => handleHideArticleClick()} icon={faEyeSlash} className={styles.hideIcon} />
+				<FontAwesomeIcon onClick={() => handleBookmarkClick()} icon={faBookmark} style={iconStyle} className={styles.bookmarkIcon} />
 			</div>
 			<h4 style={{ textAlign: "right" }}>- {props.author}</h4>
 			<div className={styles.divider}></div>
