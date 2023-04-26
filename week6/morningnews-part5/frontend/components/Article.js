@@ -3,7 +3,8 @@ import { addBookmark, removeBookmark } from '../reducers/bookmarks';
 import Image from 'next/image';
 import styles from '../styles/Article.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { hideArticle } from '../reducers/hiddenArticles';
 
 function Article(props) {
 	const dispatch = useDispatch();
@@ -13,6 +14,13 @@ function Article(props) {
 		if (!user.token) {
 			return;
 		}
+		const handleHideArticleClick = () => {
+			// Dispatch l'action pour ajouter l'article aux articles cachés
+			dispatch(hideArticle(props.article.id));
+		  };
+		  
+		  <FontAwesomeIcon onClick={handleHideArticleClick} icon={faEyeSlash} className={styles.hideIcon} />
+
 
 		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
 			.then(response => response.json())
@@ -36,7 +44,8 @@ function Article(props) {
 		<div className={styles.articles}>
 			<div className={styles.articleHeader}>
 				<h3>{props.title}</h3>
-				<FontAwesomeIcon onClick={() => handleBookmarkClick()} icon={faBookmark} style={iconStyle} className={styles.bookmarkIcon} />
+				<FontAwesomeIcon onClick={handleHideArticleClick} icon={faEyeSlash} className={styles.hideIcon} />
+
 			</div>
 			<h4 style={{ textAlign: "right" }}>- {props.author}</h4>
 			<div className={styles.divider}></div>
