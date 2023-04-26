@@ -34,7 +34,7 @@ let weather = [
 
   router.post('/weather', async (req, res) => {
     if (!weather.some(e => e.cityName.toLowerCase() === req.body.cityName.toLowerCase())) {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=${OWM_API_KEYS}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityName}&appid=${OWM_API_KEYS}&units=metric`)
       .then(response => response.json())
       .then(apiData => {
        const newCity = {
