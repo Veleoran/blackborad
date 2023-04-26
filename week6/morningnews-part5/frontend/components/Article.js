@@ -12,7 +12,8 @@ function Article(props) {
 
 	const handleHideArticleClick = () => {
 		// Dispatch l'action pour ajouter l'article aux articles cachés
-		dispatch(hideArticle(props.article.id));
+		dispatch(hideArticle(props.id));
+
 	};
 
 	const handleBookmarkClick = () => {
