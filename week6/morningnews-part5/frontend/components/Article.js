@@ -10,17 +10,15 @@ function Article(props) {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user.value);
 
+	const handleHideArticleClick = () => {
+		// Dispatch l'action pour ajouter l'article aux articles cachés
+		dispatch(hideArticle(props.article.id));
+	};
+
 	const handleBookmarkClick = () => {
 		if (!user.token) {
 			return;
 		}
-		const handleHideArticleClick = () => {
-			// Dispatch l'action pour ajouter l'article aux articles cachés
-			dispatch(hideArticle(props.article.id));
-		  };
-		  
-		  <FontAwesomeIcon onClick={handleHideArticleClick} icon={faEyeSlash} className={styles.hideIcon} />
-
 
 		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
 			.then(response => response.json())
@@ -45,7 +43,7 @@ function Article(props) {
 			<div className={styles.articleHeader}>
 				<h3>{props.title}</h3>
 				<FontAwesomeIcon onClick={handleHideArticleClick} icon={faEyeSlash} className={styles.hideIcon} />
-
+				<FontAwesomeIcon onClick={handleBookmarkClick} icon={faBookmark} style={iconStyle} className={styles.bookmarkIcon} />
 			</div>
 			<h4 style={{ textAlign: "right" }}>- {props.author}</h4>
 			<div className={styles.divider}></div>
