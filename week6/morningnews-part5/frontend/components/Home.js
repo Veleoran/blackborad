@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css';
 
 function Home() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
-  const hidden = useSelector((state) => state.hiddenArticles.value);
+  const hiddenArticles = useSelector((state) => state.hiddenArticles.value);
 
 
   const [articlesData, setArticlesData] = useState([]);
