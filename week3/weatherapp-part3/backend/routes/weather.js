@@ -94,9 +94,14 @@ router.delete("/:cityName", (req, res) => {
       e => e.cityName.toLowerCase() !== req.params.cityName.toLowerCase()
     );
     res.json({ result: true, weather });
-} else {
-  res.json({ result: false, error: "City not found" });
-}
+  } else {
+    res.json( { result: true });
+    
+    
+
+    res.json({ result: false, error: "City not found" });
+  }
+});
 
 
 module.exports = router;
