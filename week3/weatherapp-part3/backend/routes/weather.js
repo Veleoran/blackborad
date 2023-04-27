@@ -84,9 +84,7 @@ router.delete("/:cityName", (req, res) => {
 }).then(deletedDoc => {
     if (deletedDoc.deleteCount > 0) {
         //document successfully deleted
-        res.json({ result: true });
-    } else {
-      res.json({ result: false, error: "City not found" });
+        
     }
 })
   const searchedWeather = weather.find(
