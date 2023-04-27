@@ -48,8 +48,8 @@ router.post("/", (req, res) => {
           // City already exists in DB
           res.json({ result: false, error: "City already saved" });
         }  } else {
-            // City already exists in DB
-            res.json({ result: false, error: "City already saved" });
+        // City already exists in DB
+        res.json({ result: false, error: "City already saved" });
       }
     });
 });
