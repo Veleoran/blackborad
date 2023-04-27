@@ -54,6 +54,7 @@ router.post("/", (req, res) => {
     });
 });
 
+
 router.get("/", (req, res) => {
     City.find().then(data => {
         res.json({ weather:data });
@@ -72,21 +73,32 @@ router.get("/", (req, res) => {
           });
       });
       
-      
+      router.delete("/:cityName", (req, res) => {
+        City.deleteOne({
+          cityName: { $regex: new RegExp(req.params.cityName, "i") }
+        }).then(deletedDoc => {
+          if (deletedDoc.deletedCount > 0) {
+            // Document successfully deleted
+            res.json({ result: true });
+          } else {
+            res.json({ result: false, error: "City not found" });
+          }
+        });
+      });
  
 
      
 
 
-router.delete("/:cityName", (req, res) => {
-    City.deleteOne({
-    cityName: { $regex: new RegExp(req.params.cityName, "i") }
-}).then(deletedDoc => {
-    if (deletedDoc.deleteCount > 0) {
-        //document successfully deleted
+// router.delete("/:cityName", (req, res) => {
+//     City.deleteOne({
+//     cityName: { $regex: new RegExp(req.params.cityName, "i") }
+// }).then(deletedDoc => {
+//     if (deletedDoc.deleteCount > 0) {
+//         //document successfully deleted
         
-    }
-})
+//     }
+// })
   const searchedWeather = weather.find(
     e => e.cityName.toLowerCase() === req.params.cityName.toLowerCase()
   );
