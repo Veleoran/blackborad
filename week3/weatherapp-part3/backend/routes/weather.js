@@ -80,9 +80,9 @@ router.get("/", (req, res) => {
 
 router.delete("/:cityName", (req, res) => {
     City.deleteOne({
-    cityName: { $regex: new RegExp(req.params.cityName, "i") }
+    cityName: { $regex: new RegExp(req.params.cityName, "i") },
 }).then(deletedDoc => {
-    if (deletedDoc.deleteCount > 0) {
+    if (deletedDoc.deletedCount > 0) {
         //document successfully deleted
     }
 })
