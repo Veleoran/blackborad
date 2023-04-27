@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
-
-require('../models/connection');
-
 const fetch = require('node-fetch');
-OWM_API_KEYS = 'c8c6d4401bf32bb786af86b17f48d75c';
+
+require('../connection');
+
+
+const OWM_API_KEYS = 'c8c6d4401bf32bb786af86b17f48d75c';
 
 
 
@@ -47,17 +48,51 @@ let weather = [
   
         weather.push(newCity);
         res.json({ result: true, weather: newCity });
-      } catch (error) {
-        res.status(500).json({ result: false, error: 'Error fetching data from the API' });
-      }
+      });
+     
     } else {
       res.json({ result: false, error: 'City already saved' });
     }
   });
+  router.get('/weather', (req, res) => {
+    res.json({ weather });
+  });
+  
 
-var express = require('express');
-const { response } = require('../app');
-var router = express.Router();
+  router.get("/weather/:cityName", (req, res) => {
+    const searchedWeather = weather.find(
+      e => e.cityName.toLowerCase() === req.params.cityName.toLowerCase()
+    );
+    if (searchedWeather) {
+      res.json({ result: true, weather: searchedWeather });
+    } else {
+      res.json({ result: false, error: "City not found" });
+    }
+  });
+  
+router.delete('/weather/:cityName', (req, res) => {
+  const searchedWeather = weather.find(
+    e => e.cityName.toLowerCase() === req.params.cityName.toLowerCase());
+
+  if (searchedWeather) {
+    weather = weather.filter(
+      e => e.cityName.toLowerCase !== req.params.cityName.toLowerCase()
+      );
+    res.json({ result: true, weather });
+  } else {
+    res.json({ result: false, error: 'City not found' });
+  }
+});
+
+
+module.exports = router;
+
+
+
+
+  // var express = require('express');
+  // const { response } = require('../app');
+  // var router = express.Router();
 
 
 
@@ -77,29 +112,24 @@ var router = express.Router();
 //   }
 // });
 
-router.get('/weather', (req, res) => {
-  res.json({ weather });
-});
 
-router.get('/weather/:cityName', (req, res) => {
-  const searchedWeather = weather.find(e => e.cityName === req.params.cityName);
+// router.get('/weather/:cityName', (req, res) => {
+//   const searchedWeather = weather.find(e => e.cityName === req.params.cityName);
 
-  if (searchedWeather) {
-    res.json({ result: true, weather: searchedWeather });
-  } else {
-    res.json({ result: false, error: 'City not found' });
-  }
-});
+//   if (searchedWeather) {
+//     res.json({ result: true, weather: searchedWeather });
+//   } else {
+//     res.json({ result: false, error: 'City not found' });
+//   }
+// });
 
-router.delete('/weather/:cityName', (req, res) => {
-  const searchedWeather = weather.find(e => e.cityName === req.params.cityName);
+// router.delete('/weather/:cityName', (req, res) => {
+//   const searchedWeather = weather.find(e => e.cityName === req.params.cityName);
 
-  if (searchedWeather) {
-    weather = weather.filter(e => e.cityName !== req.params.cityName);
-    res.json({ result: true, weather });
-  } else {
-    res.json({ result: false, error: 'City not found' });
-  }
-});
-
-module.exports = router;})
+//   if (searchedWeather) {
+//     weather = weather.filter(e => e.cityName !== req.params.cityName);
+//     res.json({ result: true, weather });
+//   } else {
+//     res.json({ result: false, error: 'City not found' });
+//   }
+// });
