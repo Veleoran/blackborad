@@ -54,38 +54,38 @@ router.post("/", (req, res) => {
     });
 });
 
+
 router.get("/", (req, res) => {
-  City.find().then(data => {
-    res.json({ weather: data });
-  });
+    City.find().then(data => {
+        res.json({ weather:data });
+    })
+ 
 });
+    
+    router.get("/:cityName", (req, res) => {
+        City.findOne({ cityName: { $regex: new RegExp(req.params.cityName, "i") } })
+          .then(data => {
+            if (data) {
+              res.json({ result: true, weather: data });
+            } else {
+              res.json({ result: false, error: "City not found" });
+            }
+          });
+      });
+      router.delete("/:cityName", (req, res) => {
+        City.deleteOne({
+          cityName: { $regex: new RegExp(req.params.cityName, "i") }
+        }).then(deletedDoc => {
+          if (deletedDoc.deletedCount > 0) {
+            // Document successfully deleted
+            res.json({ result: true });
+          } else {
+            res.json({ result: false, error: "City not found" });
+          }
+        });
+      });
 
-router.get("/:cityName", (req, res) => {
-  City.findOne({ cityName: { $regex: new RegExp(req.params.cityName, "i") } })
-    .then(data => {
-      if (data) {
-        res.json({ result: true, weather: data });
-      } else {
-        res.json({ result: false, error: "City not found" });
-      }
-    });
-});
-
-router.delete("/:cityName", (req, res) => {
-  City.deleteOne({
-    cityName: { $regex: new RegExp(req.params.cityName, "i") },
-  }).then(deletedDoc => {
-    if (deletedDoc.deletedCount > 0) {
-      // Document successfully deleted
-      res.json({ result: true });
-    } else {
-      res.json({ result: false, error: "City not found" });
-    }
-  });
-});
-
-module.exports = router;
-
+     
 
 
 // router.delete("/:cityName", (req, res) => {
