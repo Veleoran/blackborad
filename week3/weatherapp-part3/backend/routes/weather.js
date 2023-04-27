@@ -72,7 +72,19 @@ router.get("/", (req, res) => {
           });
       });
       
-      
+      router.delete("/:cityName", (req, res) => {
+        City.deleteOne({
+          cityName: { $regex: new RegExp(req.params.cityName, "i") }
+        }).then(deletedDoc => {
+          if (deletedDoc.deletedCount > 0) {
+            // Document successfully deleted
+            res.json({ result: true });
+          } else {
+            res.json({ result: false, error: "City not found" });
+          }
+        });
+      });
+         
  
 
      
