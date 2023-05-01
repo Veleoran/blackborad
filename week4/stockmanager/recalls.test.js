@@ -1,28 +1,17 @@
-const axios = require('axios');
+const request = require('supertest');
+const app = require('./app');
 
-// Remplacez par l'URL de votre API si nécessaire
-const baseURL = 'http://localhost:3000';
+it('GET /recalls/byBrand/:id', async () => {
+	const res = await request(app).get('/recalls/byBrand/Alvalle');
 
-describe('Recalls', () => {
-  test('Test 1: Get product IDs recalled by brand', async () => {
-    const brand = 'Brand Name'; // Remplacez par un nom de marque valide
-    const response = await axios.get(`${baseURL}/recalls/byBrand/${brand}`);
+	expect(res.statusCode).toBe(200);
+	expect(res.body.products).toEqual([4800]);
+});
 
-    expect(response.status).toBe(200);
-    response.data.forEach(product => {
-      expect(product.brand).toBe(brand);
-      expect(product.recall).toBe(true);
-    });
-  });
+it('GET /recalls/byTimestamp/:timestamp', async () => {
+	const timestamp = new Date('2042-07-25').getTime();
+	const res = await request(app).get(`/recalls/byTimestamp/${timestamp}`);
 
-  test('Test 2: Get product IDs recalled by timestamp', async () => {
-    const timestamp = 1672444800; // Remplacez par un timestamp valide
-    const response = await axios.get(`${baseURL}/recalls/byTimestamp/${timestamp}`);
-
-    expect(response.status).toBe(200);
-    response.data.forEach(product => {
-      expect(product.expirationDate).toBe(timestamp);
-      expect(product.recall).toBe(true);
-    });
-  });
+	expect(res.statusCode).toBe(200);
+	expect(res.body.products).toEqual([2022, 2044]);
 });

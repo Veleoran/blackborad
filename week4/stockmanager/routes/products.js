@@ -1,52 +1,30 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
+const data = require('../data');
 
+router.get('/byId/:id', (req, res) => {
+	const { id } = req.params;
 
+	const product = data.find(product => product.id === Number(id));
 
-const { getProductById, getProductsByBrand, getProductByBatchId } = require('../services/productsService');
+	res.json({ product });
+});
 
-exports.getById = async (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const product = await getProductById(id);
+router.get('/byBatchId/:id', (req, res) => {
+	const { id } = req.params;
 
-  if (product) {
-    res.status(200).json(product);
-  } else {
-    res.status(404).json({ message: 'Product not found' });
-  }
-};
+	const product = data.find(product => product.batches.find(batch => batch.id === Number(id)));
 
-exports.getByBrand = async (req, res) => {
-  const brand = req.params.brand;
-  const products = await getProductsByBrand(brand);
+	res.json({ product });
+});
 
-  res.status(200).json(products);
-};
+router.get('/byBrand/:brand', (req, res) => {
+	const { brand } = req.params;
 
-exports.getByBatchId = async (req, res) => {
-  const batchId = parseInt(req.params.id, 10);
-  const product = await getProductByBatchId(batchId);
+	const products = data.filter(product => product.brand === brand);
 
-  if (product) {
-    res.status(200).json(product);
-  } else {
-    res.status(404).json({ message: 'Product not found' });
-  }
-};
-
-
-// // Remplacez par votre propre implémentation de contrôleur
-// router.get('/byId/:id', (req, res) => {
-//   // Implémentation du contrôleur
-// });
-
-// router.get('/byBrand/:brand', (req, res) => {
-//   // Implémentation du contrôleur
-// });
-
-// router.get('/byBatchId/:id', (req, res) => {
-//   // Implémentation du contrôleur
-// });
+	res.json({ products });
+});
 
 module.exports = router;
