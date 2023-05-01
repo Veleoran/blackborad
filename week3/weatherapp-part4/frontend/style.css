@@ -19,6 +19,7 @@ body {
 #logo {
 	width: 60px;
 	margin-right: 25px;
+	cursor: pointer;
 }
 
 #userIcon {
@@ -126,7 +127,7 @@ input:focus {
 	background-color: #1A4DE4;
 	margin: 15px;
 	padding: 15px;
-	border-radius: 40px;
+	border-radius: 20px;
 	font-size: 20px;
 	color: white;
 	font-size: 14px;
@@ -151,7 +152,52 @@ input:focus {
 	width: 60px;
 }
 
-button {
+#userButton,
+#logoButton {
 	background-color: transparent;
 	border: none;
+}
+
+#currentPos {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 1130px;
+	padding: 20px;
+	margin: 30px;
+	background-color: white;
+	background-size: cover;
+	border-radius: 20px;
+}
+
+#leftSide {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+#currentPosIcon {
+	width: 150px;
+	margin-right: 150px;
+}
+
+#currentPosName {
+	font-size: 24px;
+	margin-left: 30px;
+}
+
+#currentPosDescription {
+	font-size: 18px;
+	margin-left: 30px;
+}
+
+.temperature {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 250px;
+	font-size: 18px;
+	color: #1A4DE4;
+	font-weight: bold;
 }
