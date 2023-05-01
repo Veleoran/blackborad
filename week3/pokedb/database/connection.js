@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-require('dotenv').config();
 
 // Insert your connection string inside this variable
-const connectionString = process.env.MONGODB_URI;
+const connectionString = 'mongodb+srv://.../pokeDB';
+
 mongoose.set("strictQuery", true); // Remove Mongoose warning in console
 
 mongoose
@@ -10,4 +10,5 @@ mongoose
   .then(() => console.log("Database connected"))
   .catch(error => console.error(error));
 
-module.exports = mongoose; // Do not edit/remove this line
+
+module.exports = connectionString; // Do not edit/remove this line

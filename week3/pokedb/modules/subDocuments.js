@@ -1,55 +1,57 @@
-const Pokemon = require("./models/pokemonWithForeignKey");
+const { Pokemon } = require("../database/setup"); // Do not edit/remove this line !
 
-
-// Display pokemons from database
+//! Display pokemons from database
 function displayPokemons() {
-  Pokemon.find().then((data) => {
+  Pokemon.find().then(data => {
     console.log("ALL POKEMONS =>", data);
   });
 }
+displayPokemons()
 
-// Create a new pokemon in database
+//! Create a new pokemon in database
 function createPokemon(pokemonName, typeName, typeColor) {
   const newPokemon = new Pokemon({
     name: pokemonName,
     types: [{ name: typeName, color: typeColor }],
   });
-
-  newPokemon.save().then(() => console.log("Pokemon created"));
+  newPokemon.save().then(pokemon => console.log("SAVED POKEMON =>", pokemon));
 }
+// createPokemon('pikachu', 'electric', 'yellow')
 
-// Add a sub-document/sub-object to an array
-function addType(pokemonName, typeName, typeColor) {
+//! Add a sub-document/sub-object to an array
+async function addType(pokemonName, typeName, typeColor) {
   Pokemon.updateOne(
     { name: pokemonName },
     { $push: { types: { name: typeName, color: typeColor } } }
-  ).then(() => console.log("Type added to Pokemon"));
+  ).then(result => {
+    console.log("POKEMON UPDATED =>", result);
+  });
 }
+// addType('pikachu', 'electric', 'yellow')
 
-// Update type in "pokemon" collection
-function updateType(typeName, typeColor) {
-  Pokemon.updateOne(
-    { "types.name": typeName },
+//! Update an array of sub-documents/sub-objects
+async function updateType(typeName, typeColor) {
+  Pokemon.updateMany(
+    { types: { $elemMatch: { name: typeName } } },
     { $set: { "types.$.color": typeColor } }
-  ).then(() => console.log("Type updated"));
+  ).then(result => {
+    console.log("POKEMONS UPDATED =>", result);
+  });
 }
+// updateType('rock', 'grey')
 
-// Delete type from "pokemon" collection
-function deleteType(typeName) {
-  Pokemon.updateOne(
-    { "types.name": typeName },
+//! Delete a sub-document from an array
+async function deleteType(typeName) {
+  Pokemon.updateMany(
+    { types: { $elemMatch: { name: typeName } } }, // alternatively, you could match using this shorthand syntax : { "types.name": typeName },
     { $pull: { types: { name: typeName } } }
-  ).then(() => console.log("Type deleted from Pokemon"));
+  ).then(result => {
+    console.log("TYPES DELETED =>", result);
+  });
 }
+// deleteType('pikachu', 'electric')
 
-// Execute functions
-displayPokemons();
-createPokemon("Pikachu", "Electric", "Yellow");
-addType("Pikachu", "Rock", "Brown");
-updateType("Electric", "LightYellow");
-deleteType("Rock");
-
-// Export functions
+// Do not edit/remove the code below this line !
 module.exports = {
   displayPokemons,
   createPokemon,
@@ -57,4 +59,3 @@ module.exports = {
   updateType,
   deleteType,
 };
-
