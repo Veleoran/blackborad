@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
@@ -47,7 +47,7 @@ function Movie(props) {
 
   return (
     <div className={styles.card}>
-            <img className={styles.image} src={`https://image.tmdb.org/t/p/w500${props.poster}`} alt={props.title} />
+      <img className={styles.image} src={props.poster} alt={props.title} />
       <div className={styles.textContainer}>
         <div>
           <span className={styles.name}>{props.title}</span>
@@ -64,31 +64,4 @@ function Movie(props) {
   );
 }
 
-function Movies() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/movies')
-      .then(response => response.json())
-      .then(data => setMovies(data.movies));
-  }, []);
-
-  return (
-    <div>
-      <h1>Derniers films</h1>
-      <ul>
-        {movies.map(movie => (
-          <Movie
-            key={movie.id}
-            title={movie.title}
-            poster={movie.poster_path}
-            overview={movie.overview}
-            voteAverage={movie.vote_average}
-            voteCount={movie.vote_count}
-          />
-        ))}
-      </ul>
-    </div>
-  );
-}
-export { Movie, Movies };
+export default Movie;
