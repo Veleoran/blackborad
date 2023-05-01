@@ -1,5 +1,5 @@
 {
-  "name": "morningnews-backend-part2",
+  "name": "morningnews-backend-part3",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "debug": "~2.6.9",
     "dotenv": "^16.0.1",
     "express": "~4.16.1",
-    "mongoose": "^7.0.5",
+    "mongoose": "^6.4.0",
     "morgan": "~1.9.1",
     "node-fetch": "2"
   },
