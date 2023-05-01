@@ -1,24 +1,21 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Article from './Article';
 import TopArticle from './TopArticle';
 import styles from '../styles/Home.module.css';
-import { useEffect, useState } from 'react';
 
 function Home() {
   const [articlesData, setArticlesData] = useState([]);
-  const [topArticle, setTopArticle] = useState([]);
+  const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/articles`;
-
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) =>  { 
-        setArticlesData(data.articles);
+    fetch('http://localhost:3000/articles')
+      .then(response => response.json())
+      .then(data => {
         setTopArticle(data.articles[0]);
-
-  });
-}, []);
+        setArticlesData(data.articles.filter((data, i) => i > 0));
+      });
+  }, []);
 
   const articles = articlesData.map((data, i) => {
     return <Article key={i} {...data} />;
@@ -38,7 +35,5 @@ function Home() {
     </div>
   );
 }
-
-
 
 export default Home;

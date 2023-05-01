@@ -2,25 +2,25 @@
 	width: 400px;
 	height: 400px;
 	margin: 10px;
-}
-
-.divider {
+  }
+  
+  .divider {
 	width: 100%;
 	height: 1px;
 	background-color: rgb(233, 190, 89);
 	margin: 15px 0px 15px 0px
-}
-
-.articleHeader {
+  }
+  
+  .articleHeader {
 	display: flex;
 	justify-content: space-between;
 	height: 40px;
-}
-
-.bookmarkIcon {
+  }
+  
+  .bookmarkIcon {
 	cursor: pointer;
-}
-
-.bookmarkIcon:hover {
+  }
+  
+  .bookmarkIcon:hover {
 	opacity: 0.6;
-}
+  }
