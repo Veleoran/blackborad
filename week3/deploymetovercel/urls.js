@@ -1,5 +1,5 @@
 // Insert the backend URL given by Vercel in this variable
-const BACKEND_URL = 'https://whatyearisit-backend.vercel.app/';
+const BACKEND_URL = 'https://https://whatyearbk-rh47.vercel.app//';
 
 // Insert the frontend URL given by Vercel in this variable
 const FRONTEND_URL = 'https://whatyearisit-frontend.vercel.app/';
