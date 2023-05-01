@@ -20,6 +20,7 @@ const pokemonSchema_V2 = new mongoose.Schema({
 
 const Pokemon = mongoose.model("pokemons", pokemonSchema);
 const Pokemon_V2 = mongoose.model("pokemons_V2", pokemonSchema_V2);
+
 const Type = mongoose.model("types", typeSchema);
 
 module.exports = { Pokemon, Pokemon_V2, Type }; // Do not edit/remove this line !
