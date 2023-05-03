@@ -1,12 +1,12 @@
 const SET_NICKNAME = 'SET_NICKNAME';
-const ADD_CITY = 'ADD_CITY' ;
-const REMOVE_CITY = 'REMOVE_CITY' ;
+const ADD_PLACE = 'ADD_PLACE' ;
+const REMOVE_PLACE = 'REMOVE_PLACE' ;
 
 
 
 const initialState = {
     nickname: "",
-    cities: [],
+    place: [],
   };
   
   const userReducer = (state = initialState, action) => {
@@ -16,18 +16,19 @@ const initialState = {
           ...state,
           nickname: action.payload,
         };
-        case 'ADD_CITY':
+        case 'ADD_PLACE':
       return {
-         ...state, cities: [...state.cities, action.payload]
+         ...state, places: [...state.places, action.payload]
          };
-    case 'REMOVE_CITY':
+    case 'REMOVE_PLACE':
       return {
-         ...state, cities: state.cities.filter(city => city.name !== action.payload) 
+         ...state, places: state.places.filter(place => place.name !== action.payload) 
         };
       default:
         return state;
     }
   };
   
+  
   export default userReducer;
-  export { SET_NICKNAME, ADD_CITY, REMOVE_CITY };
+  export { SET_NICKNAME, ADD_PLACE, REMOVE_PLACE };
