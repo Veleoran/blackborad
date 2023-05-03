@@ -36,7 +36,8 @@ const TabNavigator = () => {
       },
       tabBarActiveTintColor: '#ec6e5b',
       tabBarInactiveTintColor: '#335561',
-      headerShown: false,
+      
+    headerShown: false,
     })}>
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Places" component={PlacesScreen} />
