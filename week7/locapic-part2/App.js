@@ -5,18 +5,19 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
 import PlacesScreen from './screens/PlacesScreen';
+
 import { Provider } from 'react-redux';
-import store from './store';
+import user from './reducers/user';
 import { useState} from 'react';
 import { configureStore } from '@reduxjs/toolkit';
-// import user from '../reducers/user'
+
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-// const store = configureStore({
-//   reducer: { friends },
-//  });
+const store = configureStore({
+  reducer: { user },
+ });
  
 
 

@@ -11,25 +11,24 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from 'react-redux';
-import  {addPlace, removePlace } from '../reducers/user';
+import  { addPlace, removePlace } from '../reducers/user';
 
 
 export default function PlacesScreen() {
- const nickname = useSelector((state) => state.user.nickname);
- const places = useSelector((state) => state.user.place);
+ const user = useSelector((state) => state.user.value);
  const dispatch = useDispatch();
 
  const [city, setCity] = useState('');
 
- const handleAddCity =  () => {
+ const handleSubmit =  () => {
   if (city.length === 0) { 
     return;
   }
 
   fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}`)
   .then((response) => response.json())
-  .then((data) => 
-   {
+  .then((data) => {
+   
     const firstCity = data.features[0];
     
     const newPlace = {
@@ -43,54 +42,11 @@ export default function PlacesScreen() {
     });
   };
 
-  
-//   try {
-//     const url = buildSearchUrl(search);
-//     const response =  fetch(url);
-//     const data =  response.json();
-//     if (data.features.length > 0) {
-//       const city = {
-//         name: data.features[0].properties.city,
-//         latitude: data.features[0].geometry.coordinates[1],
-//         longitude: data.features[0].geometry.coordinates[0],
-//       };
-//       dispatch(addCity(city));
-//     } else {
-//       alert('Aucune ville trouvée');
-//     }
-//   } catch (error) {
-//     alert('Erreur lors de la recherche de la ville');
-//   }
-//   setSearch('');
-// };
+  const handleRemoveCity = (cityName) => { // Ajout de la fonction handleRemoveCity
+    dispatch(removePlace(cityName));
+  };
 
-//   try {
-//     const response = await fetch('https://api-adresse.data.gouv.fr/search/?q=${encodedAddress}&type=housenumber&autocomplete=1')
-//   const data = await response.json();
-//   if (data.features.length > 0) {
-//     const city = {
-//       name: data.features[0].properties.city,
-//       latitude: data.features[0].geometry.coordinates[1],
-//       longitude: data.features[0].geometry.coordinates[0],
-//     };
-//     dispatch(addCity(city));
-
-//   } else {
-//     alert('Aucune ville trouvée');
-//   }
-
-//  } catch (error) {
-//   alert('Erreur lors de la recherche de la vile');
-//  }
-//  setSearch('');
-// };
-
-// const handleRemoveCity = (cityName) => {
-//   dispatch(removeCity(cityName));
-// };
-
-
-  const renderedPlaces = places.map((data, i) => {
+  const places = user.places.map((data, i) => {
     return (
       <View key={i} style={styles.card}>
         <View>
@@ -106,17 +62,18 @@ export default function PlacesScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>{nickname}'s places</Text>
+      <Text style={styles.title}>{user.nickname}'s places</Text>
  
       <View style={styles.inputContainer}>
-        <TextInput placeholder="New city" onChangeText={(value) => setCity(value)} value={city} style={styles.input} />
-        <TouchableOpacity onPress={() => handleAddCity()} style={styles.button} activeOpacity={0.8}>
+        <TextInput style={styles.input} placeholder="New city" value={city} onChangeText= {(value) => setCity(value)} />
+
+        <TouchableOpacity onPress={handleSubmit} style={styles.button} activeOpacity={0.8}>
           <Text style={styles.textButton}>Add</Text>
         </TouchableOpacity>
       </View>
  
       <ScrollView contentContainerStyle={styles.scrollView}>
-        {renderedPlaces}
+        {places}
       </ScrollView>
     </SafeAreaView>
   );
