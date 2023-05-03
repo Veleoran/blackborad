@@ -8,8 +8,11 @@ import {
   View,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux';
 
 export default function PlacesScreen() {
+  const nickname = useSelector((state) => state.user.nickname);
+
   const placesData = [
     { name: 'Paris', latitude: 48.859, longitude: 2.347 },
     { name: 'Lyon', latitude: 45.758, longitude: 4.835 },
@@ -30,7 +33,7 @@ export default function PlacesScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>John Doe's places</Text>
+      <Text style={styles.title}>{nickname}'s places</Text>
 
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="New city" />
