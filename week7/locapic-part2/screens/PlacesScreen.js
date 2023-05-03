@@ -30,11 +30,11 @@ export default function PlacesScreen() {
   .then((response) => response.json())
   .then((data) => 
    {
-    const fistCity = data.features[0];
+    const firstCity = data.features[0];
     const newPlace = {
       name: firstCity.properties.city,
-      latitude: fistCity.geometry.coordinates[1],
-        longitude: fistCity.geometry.coordinates[0],
+      latitude: firstCity.geometry.coordinates[1],
+        longitude: firstCity.geometry.coordinates[0],
       };
 
       dispatch(addPlace(newPlace));
@@ -115,7 +115,7 @@ export default function PlacesScreen() {
       </View>
  
       <ScrollView contentContainerStyle={styles.scrollView}>
-        {renderedplaces}
+        {renderedPlaces}
       </ScrollView>
     </SafeAreaView>
   );
