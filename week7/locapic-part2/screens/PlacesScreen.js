@@ -31,6 +31,7 @@ export default function PlacesScreen() {
   .then((data) => 
    {
     const firstCity = data.features[0];
+    
     const newPlace = {
       name: firstCity.properties.city,
       latitude: firstCity.geometry.coordinates[1],
@@ -109,7 +110,7 @@ export default function PlacesScreen() {
  
       <View style={styles.inputContainer}>
         <TextInput placeholder="New city" onChangeText={(value) => setCity(value)} value={city} style={styles.input} />
-        <TouchableOpacity onPress={() => handleSubmit()} style={styles.button} activeOpacity={0.8}>
+        <TouchableOpacity onPress={() => handleAddCity()} style={styles.button} activeOpacity={0.8}>
           <Text style={styles.textButton}>Add</Text>
         </TouchableOpacity>
       </View>
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '80%',
+    width: '75%',
     backgroundColor: '#ffffff',
     padding: 20,
     marginTop: 20,

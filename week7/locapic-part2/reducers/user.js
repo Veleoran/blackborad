@@ -1,34 +1,18 @@
-const SET_NICKNAME = 'SET_NICKNAME';
-const ADD_PLACE = 'ADD_PLACE' ;
-const REMOVE_PLACE = 'REMOVE_PLACE' ;
-
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    nickname: "",
-    place: [],
-  };
-  
-  const userReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case SET_NICKNAME:
-        return {
-          ...state,
-          nickname: action.payload,
-        };
-        case 'ADD_PLACE':
-      return {
-         ...state, places: [...state.places, action.payload]
-         };
-    case 'REMOVE_PLACE':
-      return {
-         ...state, places: state.places.filter(place => place.name !== action.payload) 
-        };
-      default:
-        return state;
-    }
-  };
-  
-  
-  export default userReducer;
-  export { SET_NICKNAME, ADD_PLACE, REMOVE_PLACE };
+ value: { nickname: null },
+};
+
+export const userSlice = createSlice({
+ name: 'user',
+ initialState,
+ reducers: {
+   updateNickname: (state, action) => {
+     state.value.nickname = action.payload;
+   },
+ },
+});
+
+export const { updateNickname } = userSlice.actions;
+export default userSlice.reducer;
