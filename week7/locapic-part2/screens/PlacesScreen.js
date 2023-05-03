@@ -8,25 +8,77 @@ import {
   View,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import  {addCity, removeCity } from '../reducers/user';
+import { useState } from 'react';
 
 export default function PlacesScreen() {
-  const nickname = useSelector((state) => state.user.nickname);
+ const nickname = useSelector((state) => state.user.nickname);
+ const cities = useSelector((state) => state.user.cities);
+ const dispatch = useDispatch();
 
-  const placesData = [
-    { name: 'Paris', latitude: 48.859, longitude: 2.347 },
-    { name: 'Lyon', latitude: 45.758, longitude: 4.835 },
-    { name: 'Marseille', latitude: 43.282, longitude: 5.405 },
-  ];
+ const [search, setSearch] = useState('');
 
-  const places = placesData.map((data, i) => {
+ const handleAddCity = async () => {
+  if (search === '') return;
+
+  
+  try {
+    const url = buildSearchUrl(search);
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.features.length > 0) {
+      const city = {
+        name: data.features[0].properties.city,
+        latitude: data.features[0].geometry.coordinates[1],
+        longitude: data.features[0].geometry.coordinates[0],
+      };
+      dispatch(addCity(city));
+    } else {
+      alert('Aucune ville trouvée');
+    }
+  } catch (error) {
+    alert('Erreur lors de la recherche de la ville');
+  }
+  setSearch('');
+};
+
+//   try {
+//     const response = await fetch('https://api-adresse.data.gouv.fr/search/?q=${encodedAddress}&type=housenumber&autocomplete=1')
+//   const data = await response.json();
+//   if (data.features.length > 0) {
+//     const city = {
+//       name: data.features[0].properties.city,
+//       latitude: data.features[0].geometry.coordinates[1],
+//       longitude: data.features[0].geometry.coordinates[0],
+//     };
+//     dispatch(addCity(city));
+
+//   } else {
+//     alert('Aucune ville trouvée');
+//   }
+
+//  } catch (error) {
+//   alert('Erreur lors de la recherche de la vile');
+//  }
+//  setSearch('');
+// };
+
+const handleRemoveCity = (cityName) => {
+  dispatch(removeCity(cityName));
+};
+
+
+  const places = cities.map((data, i) => {
     return (
       <View key={i} style={styles.card}>
         <View>
           <Text style={styles.name}>{data.name}</Text>
           <Text>LAT : {data.latitude} LON : {data.longitude}</Text>
         </View>
+        <TouchableOpacity onPress={() => handleRemoveCity(data.name)}>
         <FontAwesome name='trash-o' size={25} color='#ec6e5b' />
+        </TouchableOpacity>
       </View>
     );
   });
@@ -34,20 +86,22 @@ export default function PlacesScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>{nickname}'s places</Text>
-
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="New city" />
-        <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+        <TextInput
+          style={styles.input}
+          placeholder="New city"
+          value={search}
+          onChangeText={(text) => setSearch(text)}
+        />
+        <TouchableOpacity style={styles.button} activeOpacity={0.8} onPress={handleAddCity}>
           <Text style={styles.textButton}>Add</Text>
         </TouchableOpacity>
       </View>
-
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {places}
-      </ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollView}>{places}</ScrollView>
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
