@@ -12,6 +12,8 @@ export const userSlice = createSlice({
 	initialState,
 	reducers: {
 		addUserInfosToStore: (state, action) => {
+			state.username = action.payload.username;
+			state.token = action.payload.token;
 			// Write your code here
 		},
 	},

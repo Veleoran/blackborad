@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import UserInfos from './UserInfos';
+import { useDispatch } from "react-redux";
+import { addUserInfosToStore } from "../reducers/user";
+
 
 function Home() {
 	const [usernameInput, setUsernameInput] = useState('');
@@ -15,6 +18,8 @@ function Home() {
 		})
 			.then(response => response.json())
 			.then(userData => {
+			 dispatch(addUserInfosToStore(userData.newUserInfos));
+              setUsernameInput('');
 				// Write your code here
 
 				setUsernameInput('');
