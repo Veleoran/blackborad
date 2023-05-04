@@ -90,7 +90,7 @@ const markers = user.places.map((data, i) => {
 
 
 
-      <MapView onLognPress= {(e) => 
+      <MapView onLongPress= {(e) => 
       handleLongPress(e) } mapType="hybrid" style={styles.map}>
 {currentPosition && <Marker coordinate={currentPosition} title ='My position' pinColor='#fecb2d' />}
          {markers}
