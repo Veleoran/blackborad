@@ -7,6 +7,7 @@ import { addPlace } from '../reducers/user';
 import MapView, { Marker } from 'react-native-maps';
 import {Dimensions} from 'react-native';
 
+
 import * as Location from 'expo-location';
 
 export default function MapScreen() {
