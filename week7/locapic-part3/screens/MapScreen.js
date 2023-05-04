@@ -60,18 +60,33 @@ const markers = user.places.map((data, i) => {
   
   return (
     <View style={styles.container}>
-      <Modal visible={modalVisible} animationType="fade" transparent>
-        <View style= {styles.centeredView}>
-          <View style={styles.modalView}>
-            <TextInput placeholder="New place" onChangeText={(value) =>
-            setNewPlace(value)} value={newPlace}  style={styles.input} />
-            <TouchableOpacity onPress={() => handleNewPlace()} style=
-            {styles.button} activeOpacity={0.8}>
-              <Text style= {styles.textButton}>Close</Text>
-              </TouchableOpacity>
-              </View>
-            </View>
-            </Modal>
+    <Modal visible={modalVisible} animationType="fade" transparent>
+  <View style={styles.centeredView}>
+    <View style={styles.modalView}>
+      <TextInput
+        placeholder="New place"
+        onChangeText={(value) => setNewPlace(value)}
+        value={newPlace}
+        style={styles.input}
+      />
+      <TouchableOpacity
+        onPress={() => handleNewPlace()}
+        style={styles.button}
+        activeOpacity={0.8}
+      >
+        <Text style={styles.textButton}>Add</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => handleClose()}
+        style={styles.button}
+        activeOpacity={0.8}
+      >
+        <Text style={styles.textButton}>Close</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</Modal>
+
 
 
       <MapView onLognPress= {(e) => 
