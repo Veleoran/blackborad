@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 function UserInfos() {
 
     // Use useSelector to retrieve state from the redux store
-    const username = useSelector((state) => state.user.username);
-    const token = useSelector((state) => state.user.token);
+    const username = useSelector((state) => state.user.value.username);
+    const token = useSelector((state) => state.user.value.token);
 
 	return (
 		<div>
