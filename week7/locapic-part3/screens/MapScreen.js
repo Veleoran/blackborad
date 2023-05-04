@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
-import { Modal, StyleSheet, Text, TextInput,TouchableOpacity, View } from 'react-native-web';
-import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
-// import { StyleSheet, View } from 'react-native';
-import {Dimensions} from 'react-native';
 import { useState} from 'react';
+import { Modal, StyleSheet, Text, TextInput,TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { addPlace } from '../reducers/user';
-
+import MapView, { Marker } from 'react-native-maps';
+import {Dimensions} from 'react-native';
 import * as Location from 'expo-location';
 
 export default function MapScreen() {
@@ -17,9 +15,7 @@ export default function MapScreen() {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [tempCoordinates, setTempCoordinates] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [newPlaceName, setNewPlaceName] = useState("")
-  const[newPlaceCoordinates, setNewPlaceCoordinates] = useState(null);
-  const places = useSelector((state) => state.user.value.places);
+  const [newPlace, setNewPlace] = useState("")
  
 
 
@@ -50,11 +46,11 @@ export default function MapScreen() {
       dispatch(addPlace({ name: newPlace, latitude:
       tempCoordinates.latitude, longitude: tempCoordinates.longitude }));
       setModalVisible(false);
-      setNewPlaceName("");
+      setNewPlace("");
     };
     const handleClose = () => {
       setModalVisible(false);
-      setNewPlaceName("");
+      setNewPlace("");
     };
 const markers = user.places.map((data, i) => {
   return<Marker key={i} coordinate={{ latitude: data.lat
