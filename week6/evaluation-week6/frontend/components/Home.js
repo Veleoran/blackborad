@@ -7,7 +7,7 @@ import { addUserInfosToStore } from "../reducers/user";
 
 function Home() {
 	const [usernameInput, setUsernameInput] = useState('');
-
+	const dispatch = useDispatch();
 	const handleClick = () => {
 		fetch('http://localhost:3000/users/signup', {
 			method: 'POST',
