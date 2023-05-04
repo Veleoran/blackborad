@@ -86,11 +86,6 @@ const markers = user.places.map((data, i) => {
    );
     }
       
-        
-      
-   
-
-
 const styles = StyleSheet.create({
 
   container: {
@@ -98,6 +93,7 @@ const styles = StyleSheet.create({
   },
   
   map: {
+    flex: 1,
     width: Dimensions.get('window').width,
     height:  Dimensions.get('window').height,
   },
@@ -118,4 +114,27 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-  }
+    evelation: 5,
+  },
+
+  input: {
+    width: 150,
+    borderBottomColor: '#ec6e5b',
+    borderBottomWidth: 1,
+    fontSize: 16,
+  },
+  button: {
+    width: 150,
+    alignItems: 'center',
+    marginTop: 20,
+    paddingTop: 8,
+    backgroundColor: '#ec6e5b',
+    borderRadius: 10,
+  },
+  textButton: {
+    color: '#ffffff',
+    height: 24,
+    fontWeight: '600',
+    fontSize: 15,
+  },
+ });
