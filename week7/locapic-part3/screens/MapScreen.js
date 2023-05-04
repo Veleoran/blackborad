@@ -69,6 +69,7 @@ const markers = user.places.map((data, i) => {
         value={newPlace}
         style={styles.input}
       />
+      
       <TouchableOpacity
         onPress={() => handleNewPlace()}
         style={styles.button}
