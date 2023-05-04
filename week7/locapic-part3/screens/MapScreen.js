@@ -55,7 +55,7 @@ export default function MapScreen() {
       setNewPlace("");
     };
 const markers = user.places.map((data, i) => {
-  return<Marker key={i} coordinate={{ latitude: data.lat
+  return<Marker key={i} coordinate={{ latitude: data.latitude
   , longitude: data.longitude }} title={data.name} />
 });
   
