@@ -14,8 +14,8 @@ export default function App() {
       {
         title: name,
         coordinates: {
-          latitude: Number(latitude),
-          longitude: Number(longitude),
+          latitude: Number(latitude).toString(),
+          longitude: Number(longitude).toString(),
         },
       },
     ]);
