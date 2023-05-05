@@ -1,38 +1,73 @@
-import { StyleSheet, Text, View, TextInput, Pressable, SafeAreaView } from 'react-native';
-import MapView from 'react-native-maps';
+import React, { useState } from 'react';
+import { Text, View, TextInput, Pressable, SafeAreaView } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 
 export default function App() {
-	return (
-		<View>
-			<SafeAreaView style={styles.inputSection}>
-				<TextInput
-					placeholder='Place Name'
-					style={styles.input}
-				/>
-				<TextInput
-					placeholder='Latitude'
-					style={styles.input}
-				/>
-				<TextInput
-					placeholder='Longitude'
-					style={styles.input}
-				/>
-				<Pressable style={styles.button}>
-					<Text style={styles.buttonText}>Go</Text>
-				</Pressable>
-			</SafeAreaView>
-			<MapView
-				initialRegion={{
-					latitude: 5,
-					longitude: 5,
-					latitudeDelta: 0.5,
-					longitudeDelta: 0.5,
-				}}
-				style={styles.map}
-			></MapView>
-		</View>
-	);
+  const [name, setName] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  const [markers, setMarkers] = useState([]);
+
+  const addMarker = () => {
+    setMarkers([
+      ...markers,
+      {
+        title: name,
+        coordinates: {
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+        },
+      },
+    ]);
+    setName('');
+    setLatitude('');
+    setLongitude('');
+  };
+
+  return (
+    <View>
+      <SafeAreaView>
+        <TextInput
+          placeholder='Place Name'
+          value={name}
+          onChangeText={setName}
+        />
+        <TextInput
+          placeholder='Latitude'
+          value={latitude}
+          onChangeText={setLatitude}
+          keyboardType='numeric'
+        />
+        <TextInput
+          placeholder='Longitude'
+          value={longitude}
+          onChangeText={setLongitude}
+          keyboardType='numeric'
+        />
+        <Pressable onPress={addMarker}>
+          <Text>Go</Text>
+        </Pressable>
+      </SafeAreaView>
+      <MapView
+        initialRegion={{
+          latitude: 5,
+          longitude: 5,
+          latitudeDelta: 0.5,
+          longitudeDelta: 0.5,
+        }}
+        style={{ width: '100%', height: '70%' }}>
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            title={marker.title}
+            coordinate={marker.coordinates}
+          />
+        ))}
+      </MapView>
+    </View>
+  );
 }
+
 
 const styles = StyleSheet.create({
 	container: {
