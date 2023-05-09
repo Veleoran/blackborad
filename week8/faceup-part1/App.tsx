@@ -9,7 +9,7 @@ import GalleryScreen from './screens/GalleryScreen';
 
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import user from './reducers/user';
+import user from './reducers/users';
 
 const store = configureStore({
  reducer: { user },
@@ -41,6 +41,20 @@ const TabNavigator = () => {
    </Tab.Navigator>
  );
 }
+
+export type StackParamList = {
+  Home: undefined;
+  TabNavigator: { screen: keyof TabParamList };
+};
+// App.tsx
+// ...
+export type TabParamList = {
+  Snap: undefined;
+  Gallery: undefined;
+};
+
+
+
 
 export default function App() {
  return (
