@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addPlace, removePlace } from '../reducers/user';
 
 
