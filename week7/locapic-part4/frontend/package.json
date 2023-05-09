@@ -20,7 +20,7 @@
     "@react-navigation/native": "6",
     "@react-navigation/native-stack": "6",
     "@reduxjs/toolkit": "^1.8.3",
-    "expo": "^48",
+    "expo": "^48.0.16",
     "expo-location": "~15.1.1",
     "expo-status-bar": "~1.4.4",
     "react": "^18",
