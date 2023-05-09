@@ -10,9 +10,7 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { addPlace, removePlace } from '../reducers/user';
-
 
 const BACKEND_ADDRESS = 'http://BACKEND_IP:3000';
 
@@ -159,5 +157,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 15,
   },
-
 });

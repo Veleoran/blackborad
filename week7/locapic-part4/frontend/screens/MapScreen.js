@@ -5,7 +5,6 @@ import { addPlace, importPlaces } from '../reducers/user';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
-
 const BACKEND_ADDRESS = 'http://BACKEND_IP:3000';
 
 export default function MapScreen() {
