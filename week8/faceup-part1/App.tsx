@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import user from './reducers/users';
 
-const store = configureStore({
+const store = configureStore({      
  reducer: { user },
 });
 
@@ -20,9 +20,10 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
  return (
-   <Tab.Navigator screenOptions={({ route }) => ({
-     tabBarIcon: ({ color, size }) => {
-       let iconName: string = '';
+      <Tab.Navigator>
+         <Tab.Screen name="Snap" component={SnapScreen} />
+         <Tab.Screen name="Gallery" component={GalleryScreen} />
+
 
        if (route.name === 'Snap') {
          iconName = 'camera';
@@ -36,8 +37,7 @@ const TabNavigator = () => {
      tabBarInactiveTintColor: '#b2b2b2',
      headerShown: false,
    })}>
-     <Tab.Screen name="Snap" component={SnapScreen} />
-     <Tab.Screen name="Gallery" component={GalleryScreen} />
+    
    </Tab.Navigator>
  );
 }
