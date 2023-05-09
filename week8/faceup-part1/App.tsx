@@ -1,8 +1,8 @@
+import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { FontAwesome } from '@expo/vector-icons';
-
+import { FontAwesome } from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from './screens/HomeScreen';
 import SnapScreen from './screens/SnapScreen';
 import GalleryScreen from './screens/GalleryScreen';
@@ -20,9 +20,9 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
  return (
-      <Tab.Navigator>
-         <Tab.Screen name="Snap" component={SnapScreen} />
-         <Tab.Screen name="Gallery" component={GalleryScreen} />
+  <Tab.Navigator screenOptions={({ route }) => ({
+    tabBarIcon: ({ color, size }) => {
+      let iconName: string = '';
 
 
        if (route.name === 'Snap') {
@@ -37,20 +37,11 @@ const TabNavigator = () => {
      tabBarInactiveTintColor: '#b2b2b2',
      headerShown: false,
    })}>
+     <Tab.Screen name="Snap" component={SnapScreen} />
+      <Tab.Screen name="Gallery" component={GalleryScreen} />
     
    </Tab.Navigator>
  );
-}
-
-export type StackParamList = {
-  Home: undefined;
-  TabNavigator: { screen: keyof TabParamList };
-};
-// App.tsx
-// ...
-export type TabParamList = {
-  Snap: undefined;
-  Gallery: undefined;
 };
 
 
