@@ -4,8 +4,6 @@ const { checkBody } = require('../modules/checkBody');
 const uid2 = require('uid2');
 const bcrypt = require('bcrypt');
 
-
-
 const app = express();
 app.use(express.json());
 
@@ -37,3 +35,4 @@ app.delete('/places/:nickname/:name', async (req, res) => {
 });
 
 app.listen(3000, () => console.log('Server started on port 3000'));
+module.exports = mongoose.model('Place', placeSchema);
