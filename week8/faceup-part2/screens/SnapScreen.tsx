@@ -24,7 +24,6 @@ export default function SnapScreen() {
 
   const takePicture = async () => {
     const photo = await cameraRef.takePictureAsync({ quality: 0.3 });
-    console.log(photo)
     dispatch(addPhotos(photo.uri));
   }
 
