@@ -40,32 +40,44 @@ import {
   );
  }
  
- 
-const styles = StyleSheet.create({
-  camera: {
+
+ const styles = StyleSheet.create({
+  container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
-  buttonsContainer: {
-    flex: 0.1,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    paddingTop: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
   },
-  button: {
-    width: 44,
-    height: 44,
+  text: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  galleryContainer: {
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  },
+  photoContainer: {
+    position: 'relative',
+    margin: 10,
+  },
+  deleteIcon: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    padding: 5,
     borderRadius: 50,
   },
-  snapContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingBottom: 25,
+  photo: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
   },
 });
