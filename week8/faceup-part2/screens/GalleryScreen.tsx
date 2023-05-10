@@ -53,7 +53,7 @@ import {
     marginTop: 20,
   },
   text: {
-    fontSize: 18,
+    fontSize: 19,
     textAlign: 'center',
     marginBottom: 20,
   },
