@@ -1,9 +1,10 @@
+
 import React from "react";
 import { useState, useEffect, useRef } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Camera, CameraType, FlashMode } from 'expo-camera';
 import { useDispatch } from 'react-redux';
-import {  addPhotos } from '../reducers/user';
+import { addPhotos } from '../reducers/user';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function SnapScreen() {
@@ -26,6 +27,7 @@ export default function SnapScreen() {
     if (cameraRef.current) {
       const photo = await cameraRef.current.takePictureAsync({ quality: 0.3 });
       dispatch(addPhotos(photo.uri));
+    }
   }
 
   if (!hasPermission) {
@@ -51,7 +53,7 @@ export default function SnapScreen() {
       </View>
 
       <View style={styles.snapContainer}>
-      <TouchableOpacity onPress={() =>  takePicture()}>
+        <TouchableOpacity onPress={() =>  takePicture()}>
           <FontAwesome name='circle-thin' size={95} color='#ffffff' />
         </TouchableOpacity>
       </View>
