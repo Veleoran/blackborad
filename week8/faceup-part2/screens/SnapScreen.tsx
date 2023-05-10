@@ -23,8 +23,9 @@ export default function SnapScreen() {
   }, []);
 
   const takePicture = async () => {
-    const photo = await cameraRef.takePictureAsync({ quality: 0.3 });
-    dispatch(addPhotos(photo.uri));
+    if (cameraRef.current) {
+      const photo = await cameraRef.current.takePictureAsync({ quality: 0.3 });
+      dispatch(addPhotos(photo.uri));
   }
 
   if (!hasPermission) {
