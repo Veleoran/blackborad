@@ -13,13 +13,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function GalleryScreen() {
   const user = useSelector((state: { user: UserState }) => state.user.value);
+  const photosData =const photosData = useSelector(state => state.user.photos);
 
-  const photosData: string[] = [
-    'https://static.lacapsule.academy/faceup/picture1.jpg',
-    'https://static.lacapsule.academy/faceup/picture2.jpg',
-    'https://static.lacapsule.academy/faceup/picture3.jpg',
-    'https://static.lacapsule.academy/faceup/picture4.jpg',
-  ];
 
   const photos = photosData.map((data: string, i: number) => {
     return (
