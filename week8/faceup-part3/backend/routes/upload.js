@@ -5,6 +5,7 @@ const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 
 router.post('/upload', async (req, res) => {
+  
     // Génération du chemin du fichier temporaire avec un nom unique
     const photoPath = `./tmp/${uniqid()}.jpg`;
 
