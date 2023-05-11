@@ -16,13 +16,14 @@ router.post('/upload', async (req, res) => {
     // Téléchargement du fichier vers Cloudinary    res.json({ result: true });
     const resultCloudinary = await cloudinary.uploader.upload(photoPath);
     // Suppression du fichier temporaire
-    fs.unlinkSync(photoPath);
+    
 // Renvoi de la réponse avec l'URL de l'image sur Cloudinary
 res.json({ result: true, url: resultCloudinary.secure_url });
 } else {
         // Renvoi de la réponse avec une erreur en cas d'échec du déplacement
     res.json({ result: false, error: resultMove });
   }
+  fs.unlinkSync(photoPath);
 });
 
 module.exports = router;
