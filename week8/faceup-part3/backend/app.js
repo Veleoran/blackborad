@@ -1,6 +1,4 @@
 require('dotenv').config();
-
-
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -11,6 +9,9 @@ var indexRouter = require('./routes/index');
 var app = express();
 const fileUpload = require('express-fileupload');
 app.use(fileUpload());
+const uploadRoutes = require('./routes/upload');
+app.use('/upload', uploadRoutes);
+
 
 
 
@@ -24,5 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+
 
 module.exports = app;
